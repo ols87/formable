@@ -1,0 +1,11 @@
+@import "../ui/colors.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: serif;
+}

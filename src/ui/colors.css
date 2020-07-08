@@ -1,0 +1,4 @@
+:root {
+  --color-success: theme("colors.green.600");
+  --color-error: theme("colors.red.600");
+}
