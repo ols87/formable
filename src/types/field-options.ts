@@ -4,4 +4,6 @@ export interface FormFieldOptionsType {
   type?: string;
   required?: boolean;
   disabled?: boolean;
+  rows?: number;
+  autoExpand?: boolean;
 }
