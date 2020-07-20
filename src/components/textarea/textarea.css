@@ -17,8 +17,10 @@
   position: absolute;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  border: none;
-  border-width: 0 !important;
+  border-top: 0;
+  border-bottom: 0;
+  border-top-width: 0 !important;
+  border-bottom-width: 0 !important;
   box-sizing: border-box;
 }
 

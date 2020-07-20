@@ -92,9 +92,13 @@ export class ComponentTextarea implements ComponentInterface {
       return;
     }
 
+    this.checkScrollHeightTextareaHidden();
+  }
+
+  checkScrollHeightTextareaHidden() {
     setTimeout(() => {
       const textareaHidden = this.el.shadowRoot.lastElementChild.firstElementChild;
-
+      
       if (!textareaHidden) {
         return;
       }
@@ -104,11 +108,35 @@ export class ComponentTextarea implements ComponentInterface {
         return;
       }
 
-      this.rows = Math.floor(textareaHidden.scrollHeight / this.lineHeight) + 1;
+      this.rows = Math.floor(textareaHidden.scrollHeight / this.lineHeight);
+
+      this.checkScrollHeightTextarea();
     }, 0);
   }
 
+  checkScrollHeightTextarea() {
+    setTimeout(() => {
+      const textarea = this.el.shadowRoot.lastElementChild.children[1];
+
+      if (!textarea) {
+        return;
+      }
+
+      if (textarea.scrollHeight === textarea.clientHeight) {
+        return;
+      }
+
+      this.checkScrollHeightTextareaHidden();
+    }, 10);
+  }
+
   callEvent(eventName: string, event) {
+    console.log(eventName);
+    
+    if (eventName === 'onKeyDown') {
+      this.checkAutoExpand();
+    }
+
     if (eventName === "onBlur") {
       this.fieldConfig.formControl = {
         ...this.fieldConfig.formControl,
@@ -205,6 +233,7 @@ export class ComponentTextarea implements ComponentInterface {
           onClick={(event) => this.callEvent("onClick", event)}
           onFocus={(event) => this.callEvent("onFocus", event)}
           onBlur={(event) => this.callEvent("onBlur", event)}
+          onKeyDown={(event) => this.callEvent("onKeyDown", event)}
           rows={this.rows}
         />
 
