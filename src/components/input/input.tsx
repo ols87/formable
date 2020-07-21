@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, h, Prop, State } from "@stencil/core";
 
-import { FormFieldConfigType } from "../../types";
+import { InputFieldConfigType } from "../../types";
 
 import { ValidatorType } from "@utils/validation/types";
 
@@ -12,11 +12,11 @@ import { ValidatorType } from "@utils/validation/types";
 export class ComponentInput implements ComponentInterface {
   @State() errorMessage: string;
 
-  @Prop() fieldConfig: FormFieldConfigType = {
+  @Prop() fieldConfig: InputFieldConfigType = {
     options: {
       id: "",
       type: "text",
-      required: false,
+      required: false
     },
   };
 

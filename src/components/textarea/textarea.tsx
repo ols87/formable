@@ -7,7 +7,7 @@ import {
   Element,
 } from "@stencil/core";
 
-import { FormFieldConfigType } from "../../types";
+import { TextareaFieldConfigType } from "../../types";
 
 import { ValidatorType } from "@utils/validation/types";
 
@@ -23,10 +23,9 @@ export class ComponentTextarea implements ComponentInterface {
   @State() hiddenValue: string;
   @Element() el: HTMLElement;
 
-  @Prop() fieldConfig: FormFieldConfigType = {
+  @Prop() fieldConfig: TextareaFieldConfigType = {
     options: {
       id: "",
-      type: "text",
       required: false,
       autoExpand: true,
       rows: 2,
@@ -131,8 +130,6 @@ export class ComponentTextarea implements ComponentInterface {
   }
 
   callEvent(eventName: string, event) {
-    console.log(eventName);
-    
     if (eventName === 'onKeyDown') {
       this.checkAutoExpand();
     }
@@ -235,6 +232,7 @@ export class ComponentTextarea implements ComponentInterface {
           onBlur={(event) => this.callEvent("onBlur", event)}
           onKeyDown={(event) => this.callEvent("onKeyDown", event)}
           rows={this.rows}
+          cols={this.fieldConfig.options.cols}
         />
 
         <label class="textarea-label">{this.fieldConfig.options.label}</label>

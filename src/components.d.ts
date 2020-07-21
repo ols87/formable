@@ -5,16 +5,29 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { FormFieldConfigType, } from "./types";
+import { FormFieldType, FormGroupType, InputFieldConfigType, TextareaFieldConfigType, } from "./types";
 export namespace Components {
+    interface FormableForm {
+        "fields": FormFieldType;
+        "form": FormGroupType;
+        "submit": any;
+    }
     interface FormableInput {
-        "fieldConfig": FormFieldConfigType;
+        "fieldConfig": InputFieldConfigType;
     }
     interface FormableTextarea {
-        "fieldConfig": FormFieldConfigType;
+        "fieldConfig": TextareaFieldConfigType;
+    }
+    interface TestField {
     }
 }
 declare global {
+    interface HTMLFormableFormElement extends Components.FormableForm, HTMLStencilElement {
+    }
+    var HTMLFormableFormElement: {
+        prototype: HTMLFormableFormElement;
+        new (): HTMLFormableFormElement;
+    };
     interface HTMLFormableInputElement extends Components.FormableInput, HTMLStencilElement {
     }
     var HTMLFormableInputElement: {
@@ -27,29 +40,48 @@ declare global {
         prototype: HTMLFormableTextareaElement;
         new (): HTMLFormableTextareaElement;
     };
+    interface HTMLTestFieldElement extends Components.TestField, HTMLStencilElement {
+    }
+    var HTMLTestFieldElement: {
+        prototype: HTMLTestFieldElement;
+        new (): HTMLTestFieldElement;
+    };
     interface HTMLElementTagNameMap {
+        "formable-form": HTMLFormableFormElement;
         "formable-input": HTMLFormableInputElement;
         "formable-textarea": HTMLFormableTextareaElement;
+        "test-field": HTMLTestFieldElement;
     }
 }
 declare namespace LocalJSX {
+    interface FormableForm {
+        "fields"?: FormFieldType;
+        "form"?: FormGroupType;
+        "submit"?: any;
+    }
     interface FormableInput {
-        "fieldConfig"?: FormFieldConfigType;
+        "fieldConfig"?: InputFieldConfigType;
     }
     interface FormableTextarea {
-        "fieldConfig"?: FormFieldConfigType;
+        "fieldConfig"?: TextareaFieldConfigType;
+    }
+    interface TestField {
     }
     interface IntrinsicElements {
+        "formable-form": FormableForm;
         "formable-input": FormableInput;
         "formable-textarea": FormableTextarea;
+        "test-field": TestField;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "formable-form": LocalJSX.FormableForm & JSXBase.HTMLAttributes<HTMLFormableFormElement>;
             "formable-input": LocalJSX.FormableInput & JSXBase.HTMLAttributes<HTMLFormableInputElement>;
             "formable-textarea": LocalJSX.FormableTextarea & JSXBase.HTMLAttributes<HTMLFormableTextareaElement>;
+            "test-field": LocalJSX.TestField & JSXBase.HTMLAttributes<HTMLTestFieldElement>;
         }
     }
 }

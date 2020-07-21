@@ -8,3 +8,15 @@ export interface FormControlType {
   markUnTouched?: Function;
   submit?: Function;
 }
+
+export interface FormGroupType {
+  error?: {
+    [key: string]: boolean;
+  };
+  touched?: boolean;
+  valid?: boolean;
+  getValue?: Function;
+  markAllTouched?: Function;
+  markAllUnTouched?: Function;
+  submit?: Function;
+}
