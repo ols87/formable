@@ -34,23 +34,33 @@ export class ComponentInput implements ComponentInterface {
 
     this.fieldConfig.formControl.markUnTouched = () => {
       this.fieldConfig.formControl.touched = false;
+      this.errorMessage = null;
     };
 
     this.fieldConfig.formControl.submit = () => {
       this.fieldConfig.formControl.touched = true;
       this.checkValidation();
     };
+
+    this.fieldConfig.formControl.reset = () => {
+      this.fieldConfig.formControl.error = null;
+      this.fieldConfig.formControl.touched = false;
+      this.fieldConfig.formControl.valid = false;
+      this.fieldConfig.value = null;
+      this.errorMessage = null;
+    };
   }
 
   className(): string {
     const value = this.fieldConfig.value ? "has-value" : "is-empty";
     const error = this.errorMessage ? "has-error" : "is-valid";
+
     return `input ${value} ${error}`;
   }
 
   setValue(event) {
     this.fieldConfig.value = event.target.value;
-
+    
     this.callEvent("onInput", event);
 
     this.checkValidation();

@@ -11,11 +11,11 @@ export class FormableForm implements ComponentInterface {
   @Prop() submit: any = () => {};
 
   componentWillLoad() {
-    this.form = {
+    this.form = Object.assign(this.form, {
       error: null,
       touched: false,
       valid: false,
-    };
+    });
 
     this.form.markAllTouched = () => {
       this.form.touched = true;
@@ -23,13 +23,16 @@ export class FormableForm implements ComponentInterface {
     };
 
     this.form.markAllUnTouched = () => {
-      this.form.touched = false;
-      this.markAllUbTouched();
+      this.markAllUnTouched();
     };
 
     this.form.submit = () => {
       this.form.touched = true;
       this.checkValidation();
+    };
+
+    this.form.reset = () => {
+      this.reset();
     };
 
     this.form.getValue = () => {
@@ -43,7 +46,7 @@ export class FormableForm implements ComponentInterface {
     }
 
     this.form.valid = true;
-    this.form.error = null
+    this.form.error = null;
 
     for (const key in this.fields) {
       if (this.fields.hasOwnProperty(key)) {
@@ -64,7 +67,7 @@ export class FormableForm implements ComponentInterface {
     }
   }
 
-  markAllUbTouched() {
+  markAllUnTouched() {
     this.form.touched = false;
 
     for (const key in this.fields) {
@@ -76,6 +79,24 @@ export class FormableForm implements ComponentInterface {
         }
       }
     }
+  }
+
+  reset() {
+    for (const key in this.fields) {
+      if (this.fields.hasOwnProperty(key)) {
+        const formField = this.fields[key];
+
+        if (formField.formControl?.reset) {
+          formField.formControl.reset();
+        }
+      }
+    }
+
+    this.form = Object.assign(this.form, {
+      error: null,
+      touched: false,
+      valid: false,
+    });
   }
 
   getValue() {
@@ -105,30 +126,26 @@ export class FormableForm implements ComponentInterface {
     this.submit();
   }
 
-  getFieldConfigType() {
-    return Object.values(this.fields).map((field: any) => {
-      switch (field.type) {
-        case "input":
-          return <formable-input fieldConfig={field}></formable-input>;
-        case "textarea":
-          return <formable-textarea fieldConfig={field}></formable-textarea>;
-        default:
-          return <formable-input fieldConfig={field}></formable-input>;
-      }
-    });
+  getFieldConfigType(field) {
+    switch (field.type) {
+      case "input":
+        return <formable-input fieldConfig={field}></formable-input>;
+      case "textarea":
+        return <formable-textarea fieldConfig={field}></formable-textarea>;
+      default:
+        return <formable-input fieldConfig={field}></formable-input>;
+    }
   }
 
   render() {
     return (
-      <form
-        noValidate
-        onSubmit={(event: any) => {
-          this.onSubmit(event);
-          return false;
-        }}
-      >
+      <form noValidate onSubmit={(event: any) => { this.onSubmit(event) }}>
         <slot name="start"></slot>
-        {this.getFieldConfigType()}
+
+        {Object.values(this.fields).map((field: any) => {
+          return this.getFieldConfigType(field);
+        })}
+
         <slot></slot>
       </form>
     );

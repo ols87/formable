@@ -7,7 +7,8 @@ import { FormGroupType, FormFieldType } from "../../types";
   // shadow: true,
 })
 export class TestField implements ComponentInterface {
-  @State() form: FormGroupType;
+  @State() form: FormGroupType = {};
+
   @State() fields: FormFieldType = {
     email: {
       type: 'input',
@@ -30,7 +31,14 @@ export class TestField implements ComponentInterface {
   }
 
   submit() {
-    console.log(this.form.getValue(), this.form);
+    if (!this.form.valid) {
+      // return;
+    }
+
+    console.log(this.form.getValue());
+    this.form.reset();
+    console.log(this.form.getValue());
+
   }
 
   render() {

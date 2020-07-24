@@ -7,6 +7,7 @@ export interface FormControlType {
   markTouched?: Function;
   markUnTouched?: Function;
   submit?: Function;
+  reset?: Function;
 }
 
 export interface FormGroupType {
@@ -19,4 +20,5 @@ export interface FormGroupType {
   markAllTouched?: Function;
   markAllUnTouched?: Function;
   submit?: Function;
+  reset?: Function;
 }

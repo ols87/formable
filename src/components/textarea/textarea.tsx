@@ -49,11 +49,20 @@ export class ComponentTextarea implements ComponentInterface {
 
     this.fieldConfig.formControl.markUnTouched = () => {
       this.fieldConfig.formControl.touched = false;
+      this.errorMessage = null;
     };
 
     this.fieldConfig.formControl.submit = () => {
       this.fieldConfig.formControl.touched = true;
       this.checkValidation();
+    };
+
+    this.fieldConfig.formControl.reset = () => {
+      this.fieldConfig.formControl.error = null;
+      this.fieldConfig.formControl.touched = false;
+      this.fieldConfig.formControl.valid = false;
+      this.fieldConfig.value = null;
+      this.errorMessage = null;
     };
   }
 
