@@ -28,13 +28,19 @@ export class ComponentTextarea implements ComponentInterface {
     options: {
       id: "",
       required: false,
-      autoExpand: true,
-      rows: 2,
+      autoExpand: false,
+      rows: 3,
     },
   };
 
   componentWillLoad() {
-    this.rows = this.fieldConfig.options.rows || 2;
+    this.rows = this.fieldConfig.options.rows;
+
+    if (!this.rows) {
+      this.rows = 3;
+      this.fieldConfig.options.rows = this.rows;
+    }
+
     this.hiddenValue = this.fieldConfig.value;
 
     this.fieldConfig.formControl = {
@@ -65,7 +71,7 @@ export class ComponentTextarea implements ComponentInterface {
       this.fieldConfig.formControl.error = null;
       this.fieldConfig.formControl.touched = false;
       this.fieldConfig.formControl.valid = false;
-      this.fieldConfig.value = null;
+      this.fieldConfig.value = undefined;
       this.errorMessage = null;
       this.setClassName();
     };

@@ -40,13 +40,10 @@ export class TestField implements ComponentInterface {
 
   submit() {
     if (!this.form.valid) {
-      // return;
+      return;
     }
 
     console.log(this.form.getValue());
-    // this.form.reset();
-    console.log(this.form.getValue());
-
   }
 
   render() {

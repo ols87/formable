@@ -35,7 +35,7 @@
   &:focus,
   &:active,
   &.has-value {
-    & + .input-label {
+    & + .textarea-label {
       top: 0.75rem;
       @apply text-sm;
     }
@@ -45,7 +45,7 @@
     @apply border-red-600;
     @apply bg-red-100;
 
-    & + .input-label {
+    & + .textarea-label {
       @apply text-error;
     }
   }
