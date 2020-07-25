@@ -7,7 +7,6 @@ import { InputFieldConfigType } from ".";
 @Component({
   tag: "formable-input",
   styleUrl: "input.css",
-  shadow: true,
 })
 export class ComponentInput implements ComponentInterface {
   @State() errorMessage: string;
