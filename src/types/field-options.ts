@@ -5,10 +5,6 @@ export interface FormFieldOptionsType {
   disabled?: boolean;
 }
 
-export interface InputFieldOptionsType extends FormFieldOptionsType {
-  type?: string;
-}
-
 export interface TextareaFieldOptionsType extends FormFieldOptionsType {
   rows?: number;
   cols?: number;

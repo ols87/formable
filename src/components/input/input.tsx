@@ -1,8 +1,8 @@
 import { Component, ComponentInterface, h, Prop, State } from "@stencil/core";
 
-import { InputFieldConfigType } from "../../types";
-
 import { ValidatorType } from "@utils/validation/types";
+
+import { InputFieldConfigType } from ".";
 
 @Component({
   tag: "formable-input",
@@ -17,7 +17,7 @@ export class ComponentInput implements ComponentInterface {
     options: {
       id: "",
       type: "text",
-      required: false
+      required: false,
     },
   };
 
@@ -67,7 +67,7 @@ export class ComponentInput implements ComponentInterface {
 
   setValue(event) {
     this.fieldConfig.value = event.target.value;
-    
+
     this.callEvent("onInput", event);
     this.checkValidation();
     this.setClassName();

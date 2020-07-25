@@ -81,7 +81,8 @@ export class ComponentTextarea implements ComponentInterface {
 
   componentDidLoad() {
     setTimeout(() => {
-      const textareaHidden = this.el.shadowRoot.lastElementChild.firstElementChild;
+      const textareaHidden = this.el.shadowRoot.lastElementChild
+        .firstElementChild;
 
       if (!textareaHidden) {
         return;
@@ -119,8 +120,9 @@ export class ComponentTextarea implements ComponentInterface {
 
   checkScrollHeightTextareaHidden() {
     setTimeout(() => {
-      const textareaHidden = this.el.shadowRoot.lastElementChild.firstElementChild;
-      
+      const textareaHidden = this.el.shadowRoot.lastElementChild
+        .firstElementChild;
+
       if (!textareaHidden) {
         return;
       }
@@ -153,7 +155,7 @@ export class ComponentTextarea implements ComponentInterface {
   }
 
   callEvent(eventName: string, event) {
-    if (eventName === 'onKeyDown') {
+    if (eventName === "onKeyDown") {
       this.checkAutoExpand();
     }
 

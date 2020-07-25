@@ -3,11 +3,11 @@ import {
   FormControlType,
   FormFieldOptionsType,
   FormFieldEventsType,
-  InputFieldOptionsType,
   TextareaFieldOptionsType,
-  InputFieldEventsType,
   TextareaFieldEventsType,
 } from "./";
+
+import { InputFieldConfigType } from "@components/input";
 
 export interface FormFieldConfigType {
   type?: string;
@@ -18,16 +18,14 @@ export interface FormFieldConfigType {
   formControl?: FormControlType;
 }
 
-export interface InputFieldConfigType extends FormFieldConfigType {
-  options: InputFieldOptionsType;
-  events?: InputFieldEventsType;
-}
-
 export interface TextareaFieldConfigType extends FormFieldConfigType {
   options: TextareaFieldOptionsType;
   events?: TextareaFieldEventsType;
 }
 
 export interface FormFieldType {
-  [key: string]: FormFieldConfigType | InputFieldConfigType | TextareaFieldConfigType;
+  [key: string]:
+    | FormFieldConfigType
+    | InputFieldConfigType
+    | TextareaFieldConfigType;
 }
