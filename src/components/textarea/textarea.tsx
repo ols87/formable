@@ -18,6 +18,7 @@ import { ValidatorType } from "@utils/validation/types";
 })
 export class ComponentTextarea implements ComponentInterface {
   @State() errorMessage: string;
+  @State() className: string;
   @State() lineHeight: number;
   @State() rows: number;
   @State() hiddenValue: string;
@@ -45,16 +46,19 @@ export class ComponentTextarea implements ComponentInterface {
     this.fieldConfig.formControl.markTouched = () => {
       this.fieldConfig.formControl.touched = true;
       this.checkValidation();
+      this.setClassName();
     };
 
     this.fieldConfig.formControl.markUnTouched = () => {
       this.fieldConfig.formControl.touched = false;
       this.errorMessage = null;
+      this.setClassName();
     };
 
     this.fieldConfig.formControl.submit = () => {
       this.fieldConfig.formControl.touched = true;
       this.checkValidation();
+      this.setClassName();
     };
 
     this.fieldConfig.formControl.reset = () => {
@@ -63,7 +67,10 @@ export class ComponentTextarea implements ComponentInterface {
       this.fieldConfig.formControl.valid = false;
       this.fieldConfig.value = null;
       this.errorMessage = null;
+      this.setClassName();
     };
+
+    this.setClassName();
   }
 
   componentDidLoad() {
@@ -79,11 +86,11 @@ export class ComponentTextarea implements ComponentInterface {
     }, 0);
   }
 
-  className(): string {
+  setClassName() {
     const value = this.fieldConfig.value ? "has-value" : "is-empty";
     const error = this.errorMessage ? "has-error" : "is-valid";
 
-    return `textarea ${value} ${error}`;
+    this.className = `textarea ${value} ${error}`;
   }
 
   setValue(event) {
@@ -91,6 +98,7 @@ export class ComponentTextarea implements ComponentInterface {
     this.hiddenValue = event.target.value;
 
     this.checkValidation();
+    this.setClassName();
     this.checkAutoExpand();
     this.callEvent("onInput", event);
   }
@@ -150,6 +158,7 @@ export class ComponentTextarea implements ComponentInterface {
       };
 
       this.checkValidation();
+      this.setClassName();
     }
 
     if (this.fieldConfig.events && this.fieldConfig.events[eventName]) {
@@ -222,13 +231,13 @@ export class ComponentTextarea implements ComponentInterface {
     return (
       <div class="textarea-wrapper">
         <textarea
-          class={this.className() + " textarea-hidden"}
+          class={this.className + " textarea-hidden"}
           value={this.hiddenValue}
           rows={this.fieldConfig.options.rows || 3}
         ></textarea>
 
         <textarea
-          class={this.className()}
+          class={this.className}
           id={this.fieldConfig.options.id}
           required={this.fieldConfig.options.required}
           disabled={this.fieldConfig.options.disabled}

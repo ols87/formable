@@ -27,6 +27,14 @@ export class TestField implements ComponentInterface {
         required: true,
         type: 'password'
       }
+    },
+    description: {
+      type: 'textarea',
+      options: {
+        id: 'description',
+        label: 'Description',
+        required: true
+      }
     }
   }
 
@@ -36,7 +44,7 @@ export class TestField implements ComponentInterface {
     }
 
     console.log(this.form.getValue());
-    this.form.reset();
+    // this.form.reset();
     console.log(this.form.getValue());
 
   }
@@ -46,6 +54,9 @@ export class TestField implements ComponentInterface {
       <formable-form form={this.form} fields={this.fields} submit={this.submit}>
         <button type="submit" class="btn btn-primary submit-button">
           Submit
+        </button>
+        <button type="button" onClick={() => this.form.reset()} class="btn btn-primary submit-button">
+          Reset
         </button>
       </formable-form>
     );

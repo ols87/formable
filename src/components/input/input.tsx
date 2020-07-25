@@ -11,6 +11,7 @@ import { ValidatorType } from "@utils/validation/types";
 })
 export class ComponentInput implements ComponentInterface {
   @State() errorMessage: string;
+  @State() className: string;
 
   @Prop() fieldConfig: InputFieldConfigType = {
     options: {
@@ -30,40 +31,46 @@ export class ComponentInput implements ComponentInterface {
     this.fieldConfig.formControl.markTouched = () => {
       this.fieldConfig.formControl.touched = true;
       this.checkValidation();
+      this.setClassName();
     };
 
     this.fieldConfig.formControl.markUnTouched = () => {
       this.fieldConfig.formControl.touched = false;
       this.errorMessage = null;
+      this.setClassName();
     };
 
     this.fieldConfig.formControl.submit = () => {
       this.fieldConfig.formControl.touched = true;
       this.checkValidation();
+      this.setClassName();
     };
 
     this.fieldConfig.formControl.reset = () => {
       this.fieldConfig.formControl.error = null;
       this.fieldConfig.formControl.touched = false;
       this.fieldConfig.formControl.valid = false;
-      this.fieldConfig.value = null;
+      this.fieldConfig.value = undefined;
       this.errorMessage = null;
+      this.setClassName();
     };
+
+    this.setClassName();
   }
 
-  className(): string {
+  setClassName() {
     const value = this.fieldConfig.value ? "has-value" : "is-empty";
     const error = this.errorMessage ? "has-error" : "is-valid";
 
-    return `input ${value} ${error}`;
+    this.className = `input ${value} ${error}`;
   }
 
   setValue(event) {
     this.fieldConfig.value = event.target.value;
     
     this.callEvent("onInput", event);
-
     this.checkValidation();
+    this.setClassName();
   }
 
   callEvent(eventName: string, event) {
@@ -74,6 +81,7 @@ export class ComponentInput implements ComponentInterface {
       };
 
       this.checkValidation();
+      this.setClassName();
     }
 
     if (this.fieldConfig.events && this.fieldConfig.events[eventName]) {
@@ -146,8 +154,10 @@ export class ComponentInput implements ComponentInterface {
     return (
       <div class="input-wrapper">
         <input
-          class={this.className()}
+          autoComplete="on"
+          class={this.className}
           id={this.fieldConfig.options.id}
+          name={this.fieldConfig.options.id}
           type={this.fieldConfig.options.type}
           required={this.fieldConfig.options.required}
           disabled={this.fieldConfig.options.disabled}
