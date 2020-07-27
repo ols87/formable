@@ -7,7 +7,7 @@ import {
   Element,
 } from "@stencil/core";
 
-import { TextareaFieldConfigType } from "../../types";
+import { TextareaFieldConfigType } from "./types";
 
 import { ValidatorType } from "@utils/validation/types";
 

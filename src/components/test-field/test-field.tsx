@@ -26,16 +26,34 @@ export class TestField implements ComponentInterface {
         label: 'Password',
         required: true,
         type: 'password'
+      },
+      validators: {
+        ip: {
+          expression: (value, ctr) => /(\d{1,3}\.){3}\d{1,3}/.test(value),
+          message: (value, ctr) => `${value} is not valid IP Address`
+        }
       }
     },
-    description: {
-      type: 'textarea',
-      options: {
-        id: 'description',
-        label: 'Description',
-        required: true
-      }
-    }
+    // description: {
+    //   type: 'textarea',
+    //   options: {
+    //     id: 'description',
+    //     label: 'Description',
+    //     required: true
+    //   }
+    // },
+    // select: {
+    //   type: 'select',
+    //   options: {
+    //     id: 'select',
+    //     label: 'Select',
+    //     required: true,
+    //     data: [
+    //       { value: 1, label: "Select one" },
+    //       { value: 2, label: "Select Two" },
+    //     ],
+    //   },
+    // }
   }
 
   submit() {

@@ -3,29 +3,36 @@ import {
   FormControlType,
   FormFieldOptionsType,
   FormFieldEventsType,
-  TextareaFieldOptionsType,
-  TextareaFieldEventsType,
+  SelectFieldOptionsType,
 } from "./";
 
-import { InputFieldConfigType } from "@components/input";
+import { TextareaFieldConfigType } from "@components/textarea/types";
+import { InputFieldConfigType } from "@components/input/types";
+import { ComponentInterface } from "@stencil/core";
 
 export interface FormFieldConfigType {
   type?: string;
   options: FormFieldOptionsType;
   events?: FormFieldEventsType;
   validators?: ValidationType;
-  value?: string;
+  value?: any;
   formControl?: FormControlType;
 }
 
-export interface TextareaFieldConfigType extends FormFieldConfigType {
-  options: TextareaFieldOptionsType;
-  events?: TextareaFieldEventsType;
+export interface ComponentFieldInterface extends ComponentInterface {
+  errorMessage: string;
+  className: string;
+  fieldConfig: InputFieldConfigType;
+  callEvent: Function;
+  checkValidation: Function;
+  setClassName: Function;
+  setValue: Function;
+}
+
+export interface SelectFieldConfigType extends FormFieldConfigType {
+  options: SelectFieldOptionsType;
 }
 
 export interface FormFieldType {
-  [key: string]:
-    | FormFieldConfigType
-    | InputFieldConfigType
-    | TextareaFieldConfigType;
+  [key: string]: FormFieldConfigType | InputFieldConfigType | TextareaFieldConfigType | SelectFieldConfigType;
 }

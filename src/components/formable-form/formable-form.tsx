@@ -132,6 +132,8 @@ export class FormableForm implements ComponentInterface {
         return <formable-input fieldConfig={field}></formable-input>;
       case "textarea":
         return <formable-textarea fieldConfig={field}></formable-textarea>;
+      case "select":
+        return <formable-select fieldConfig={field}></formable-select>;
       default:
         return <formable-input fieldConfig={field}></formable-input>;
     }
