@@ -1,81 +1,50 @@
 import {
   Component,
-  ComponentInterface,
   h,
   State,
   Prop,
   Element,
 } from "@stencil/core";
 
-import { FormFieldConfigType } from "../../types";
+import { TextareaFieldConfigType, ComponentTextareaInterface } from "./types";
 
-import { ValidatorType } from "@utils/validation/types";
+import * as textareaCtl from "./utils";
 
 @Component({
   tag: "formable-textarea",
   styleUrl: "textarea.css",
   shadow: true,
 })
-export class ComponentTextarea implements ComponentInterface {
+export class ComponentTextarea implements ComponentTextareaInterface {
   @State() errorMessage: string;
+  @State() className: string;
   @State() lineHeight: number;
   @State() rows: number;
   @State() hiddenValue: string;
   @Element() el: HTMLElement;
 
-  @Prop() fieldConfig: FormFieldConfigType = {
+  @Prop() fieldConfig: TextareaFieldConfigType = {
     options: {
       id: "",
-      type: "text",
       required: false,
-      autoExpand: true,
-      rows: 2,
+      autoExpand: false,
+      rows: 3,
     },
   };
 
   componentWillLoad() {
-    this.rows = this.fieldConfig.options.rows || 2;
-    this.hiddenValue = this.fieldConfig.value;
-
-    this.fieldConfig.formControl = {
-      error: null,
-      touched: false,
-      valid: false,
-    };
-
-    this.fieldConfig.formControl.markTouched = () => {
-      this.fieldConfig.formControl.touched = true;
-      this.checkValidation();
-    };
-
-    this.fieldConfig.formControl.markUnTouched = () => {
-      this.fieldConfig.formControl.touched = false;
-    };
-
-    this.fieldConfig.formControl.submit = () => {
-      this.fieldConfig.formControl.touched = true;
-      this.checkValidation();
-    };
+    textareaCtl.componentWillLoad(this);
   }
 
   componentDidLoad() {
-    setTimeout(() => {
-      const textareaHidden = this.el.shadowRoot.lastElementChild.firstElementChild;
-
-      if (!textareaHidden) {
-        return;
-      }
-
-      this.lineHeight = textareaHidden.clientHeight / this.rows;
-      this.checkAutoExpand();
-    }, 0);
+    textareaCtl.componentDidLoad(this);
   }
 
-  className(): string {
+  setClassName() {
     const value = this.fieldConfig.value ? "has-value" : "is-empty";
     const error = this.errorMessage ? "has-error" : "is-valid";
 
-    return `textarea ${value} ${error}`;
+    this.className = `textarea ${value} ${error}`;
   }
 
   setValue(event) {
@@ -83,6 +52,7 @@ export class ComponentTextarea implements ComponentInterface {
     this.hiddenValue = event.target.value;
 
     this.checkValidation();
+    this.setClassName();
     this.checkAutoExpand();
     this.callEvent("onInput", event);
   }
@@ -96,133 +66,32 @@ export class ComponentTextarea implements ComponentInterface {
   }
 
   checkScrollHeightTextareaHidden() {
-    setTimeout(() => {
-      const textareaHidden = this.el.shadowRoot.lastElementChild.firstElementChild;
-      
-      if (!textareaHidden) {
-        return;
-      }
-
-      if (textareaHidden.scrollHeight === textareaHidden.clientHeight) {
-        this.rows = this.fieldConfig.options.rows;
-        return;
-      }
-
-      this.rows = Math.floor(textareaHidden.scrollHeight / this.lineHeight);
-
-      this.checkScrollHeightTextarea();
-    }, 0);
-  }
-
-  checkScrollHeightTextarea() {
-    setTimeout(() => {
-      const textarea = this.el.shadowRoot.lastElementChild.children[1];
-
-      if (!textarea) {
-        return;
-      }
-
-      if (textarea.scrollHeight === textarea.clientHeight) {
-        return;
-      }
-
-      this.checkScrollHeightTextareaHidden();
-    }, 10);
+    textareaCtl.checkScrollHeightTextareaHidden(this);
   }
 
   callEvent(eventName: string, event) {
-    console.log(eventName);
-    
-    if (eventName === 'onKeyDown') {
+    if (eventName === "onKeyDown") {
       this.checkAutoExpand();
     }
 
-    if (eventName === "onBlur") {
-      this.fieldConfig.formControl = {
-        ...this.fieldConfig.formControl,
-        touched: true,
-      };
-
-      this.checkValidation();
-    }
-
-    if (this.fieldConfig.events && this.fieldConfig.events[eventName]) {
-      this.fieldConfig.events[eventName](event);
-    }
+    textareaCtl.callEvent(eventName, event, this);
   }
 
   checkValidation() {
-    if (!this.fieldConfig.formControl?.touched) {
-      return;
-    }
-
-    if (this.fieldConfig.options.required) {
-      this.fieldConfig.formControl.error = {
-        ...this.fieldConfig.formControl.error,
-        required: !this.fieldConfig.value,
-      };
-
-      if (!this.fieldConfig.value) {
-        this.errorMessage = "This field is required";
-        this.fieldConfig.formControl.valid = false;
-        return;
-      }
-
-      this.errorMessage = null;
-      this.fieldConfig.formControl.valid = true;
-      delete this.fieldConfig.formControl.error.required;
-    }
-
-    for (const key in this.fieldConfig.validators) {
-      if (this.fieldConfig.validators.hasOwnProperty(key)) {
-        const validator = this.fieldConfig.validators[key];
-
-        this.fieldConfig.formControl.error = {
-          ...this.fieldConfig.formControl.error,
-          [key]: !this.checkValidateExpression(validator),
-        };
-
-        if (this.fieldConfig.formControl.error[key]) {
-          this.errorMessage = this.getValidateMessage(validator);
-          this.fieldConfig.formControl.valid = false;
-          return;
-        }
-
-        this.fieldConfig.formControl.valid = true;
-        delete this.fieldConfig.formControl.error[key];
-      }
-    }
-  }
-
-  checkValidateExpression(validator: ValidatorType) {
-    return validator.expression(
-      this.fieldConfig.value,
-      this.fieldConfig.formControl
-    );
-  }
-
-  getValidateMessage(validator: ValidatorType) {
-    if (typeof validator.message === "string") {
-      return validator.message;
-    }
-
-    return validator.message(
-      this.fieldConfig.value,
-      this.fieldConfig.formControl
-    );
+    textareaCtl.checkValidation(this);
   }
 
   render() {
     return (
       <div class="textarea-wrapper">
         <textarea
-          class={this.className() + " textarea-hidden"}
+          class={this.className + " textarea-hidden"}
           value={this.hiddenValue}
           rows={this.fieldConfig.options.rows || 3}
         ></textarea>
 
         <textarea
-          class={this.className()}
+          class={this.className}
           id={this.fieldConfig.options.id}
           required={this.fieldConfig.options.required}
           disabled={this.fieldConfig.options.disabled}
@@ -235,6 +104,7 @@ export class ComponentTextarea implements ComponentInterface {
           onBlur={(event) => this.callEvent("onBlur", event)}
           onKeyDown={(event) => this.callEvent("onKeyDown", event)}
           rows={this.rows}
+          cols={this.fieldConfig.options.cols}
         />
 
         <label class="textarea-label">{this.fieldConfig.options.label}</label>

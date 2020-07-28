@@ -1,10 +1,10 @@
-.textarea-wrapper {
+.input-wrapper {
   @apply relative;
   @apply flex;
   margin: var(--form-item-margin);
 }
 
-.textarea-label {
+.input-label {
   @apply absolute;
   top: 1.4rem;
   left: 0.75rem;
@@ -12,30 +12,19 @@
   transition: all linear 0.1s;
 }
 
-.textarea-hidden {
-  visibility: hidden;
-  position: absolute;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  border-top: 0;
-  border-bottom: 0;
-  border-top-width: 0 !important;
-  border-bottom-width: 0 !important;
-  box-sizing: border-box;
-}
-
-.textarea {
+.input {
   @apply border border-solid border-gray-400;
   @apply rounded-lg;
   @apply text-sm;
-  @apply pt-6 pr-3 pb-2 pl-3;
+  @apply pt-6 pr-3 pl-3;
   @apply text-gray-800;
+  @apply h-10;
   @apply w-full;
 
   &:focus,
   &:active,
   &.has-value {
-    & + .textarea-label {
+    & + .input-label {
       top: 0.75rem;
       @apply text-sm;
     }
@@ -45,16 +34,24 @@
     @apply border-red-600;
     @apply bg-red-100;
 
-    & + .textarea-label {
+    & + .input-label {
       @apply text-error;
     }
   }
 }
 
-.textarea-error {
+select.input {
+  height: 76px;
+}
+
+.input-error {
   @apply absolute;
   bottom: -1.25rem;
   left: 0.75rem;
   @apply text-error;
   @apply text-xs;
+}
+
+.hidden {
+  display: none;
 }

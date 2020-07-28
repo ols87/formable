@@ -1,7 +1,4 @@
-export interface FormFieldEventsType {
-  onChange?: Function;
-  onClick?: Function;
-}
+import { FormFieldEventsType } from "@type/.";
 
 export interface TextareaFieldEventsType extends FormFieldEventsType {
   onBlur?: Function;
