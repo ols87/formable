@@ -1,12 +1,13 @@
-import { Component, ComponentInterface, h, State, Prop } from "@stencil/core";
-import { SelectFieldConfigType } from "../../types";
+import { Component, h, State, Prop } from "@stencil/core";
+import { ComponentSelectInterface, SelectFieldConfigType } from "./types";
+import * as selectCtl from './utils';
 
 @Component({
   tag: "formable-select",
   styleUrl: "formable-select.css",
   shadow: true,
 })
-export class FormableSelect implements ComponentInterface {
+export class FormableSelect implements ComponentSelectInterface {
   @State() errorMessage: string;
   @State() className: string;
   @Prop() fieldConfig: SelectFieldConfigType = {
@@ -18,40 +19,7 @@ export class FormableSelect implements ComponentInterface {
   };
 
   componentWillLoad() {
-    this.fieldConfig.formControl = {
-      error: null,
-      touched: false,
-      valid: false,
-    };
-
-    this.fieldConfig.formControl.markTouched = () => {
-      this.fieldConfig.formControl.touched = true;
-      this.checkValidation();
-      this.setClassName();
-    };
-
-    this.fieldConfig.formControl.markUnTouched = () => {
-      this.fieldConfig.formControl.touched = false;
-      this.errorMessage = null;
-      this.setClassName();
-    };
-
-    this.fieldConfig.formControl.submit = () => {
-      this.fieldConfig.formControl.touched = true;
-      this.checkValidation();
-      this.setClassName();
-    };
-
-    this.fieldConfig.formControl.reset = () => {
-      this.fieldConfig.formControl.error = null;
-      this.fieldConfig.formControl.touched = false;
-      this.fieldConfig.formControl.valid = false;
-      this.fieldConfig.value = undefined;
-      this.errorMessage = null;
-      this.setClassName();
-    };
-
-    this.setClassName();
+    selectCtl.componentWillLoad(this);
   }
 
   setClassName() {
@@ -70,19 +38,7 @@ export class FormableSelect implements ComponentInterface {
   }
 
   callEvent(eventName: string, event) {
-    if (eventName === "onBlur") {
-      this.fieldConfig.formControl = {
-        ...this.fieldConfig.formControl,
-        touched: true,
-      };
-
-      this.checkValidation();
-      this.setClassName();
-    }
-
-    if (this.fieldConfig.events && this.fieldConfig.events[eventName]) {
-      this.fieldConfig.events[eventName](event);
-    }
+    selectCtl.callEvent(eventName, event, this);
   }
 
   checkValidation() {
@@ -94,20 +50,7 @@ export class FormableSelect implements ComponentInterface {
       return;
     }
 
-    this.fieldConfig.formControl.error = {
-      ...this.fieldConfig.formControl.error,
-      required: !this.fieldConfig.value,
-    };
-
-    if (!this.fieldConfig.value) {
-      this.errorMessage = "This field is required";
-      this.fieldConfig.formControl.valid = false;
-      return;
-    }
-
-    this.errorMessage = null;
-    this.fieldConfig.formControl.valid = true;
-    delete this.fieldConfig.formControl.error.required;
+    selectCtl.checkRequired(this);
   }
 
   render() {

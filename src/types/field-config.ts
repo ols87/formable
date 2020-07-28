@@ -3,12 +3,12 @@ import {
   FormControlType,
   FormFieldOptionsType,
   FormFieldEventsType,
-  SelectFieldOptionsType,
 } from "./";
 
 import { TextareaFieldConfigType } from "@components/textarea/types";
 import { InputFieldConfigType } from "@components/input/types";
 import { ComponentInterface } from "@stencil/core";
+import { SelectFieldConfigType } from "@components/formable-select/types";
 
 export interface FormFieldConfigType {
   type?: string;
@@ -27,10 +27,6 @@ export interface ComponentFieldInterface extends ComponentInterface {
   checkValidation: Function;
   setClassName: Function;
   setValue: Function;
-}
-
-export interface SelectFieldConfigType extends FormFieldConfigType {
-  options: SelectFieldOptionsType;
 }
 
 export interface FormFieldType {

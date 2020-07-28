@@ -10,17 +10,29 @@ export function checkValidation(
   }
 
   if (self.fieldConfig.options.required) {
-    checkRequired(self, requiredMessage); 
+    if (self.checkRequired) {
+      self.checkRequired(requiredMessage);
+    } else {
+      checkRequired(self, requiredMessage);
+    }
 
     if (!self.fieldConfig.formControl.valid) {
       return;
     }
   }
 
+  if (self.checkValidators) {
+    self.checkValidators();
+    return;
+  }
+
   checkValidators(self);
 }
 
-export function checkRequired(self: ComponentFieldInterface, requiredMessage?: string) {
+export function checkRequired(
+  self: ComponentFieldInterface,
+  requiredMessage?: string
+) {
   self.fieldConfig.formControl.error = {
     ...self.fieldConfig.formControl.error,
     required: !self.fieldConfig.value,

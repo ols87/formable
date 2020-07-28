@@ -6,4 +6,6 @@ export interface InputFieldConfigType extends FormFieldConfigType {
   events?: InputFieldEventsType;
 }
 
-export interface ComponentInputInterface extends ComponentFieldInterface {}
+export interface ComponentInputInterface extends ComponentFieldInterface {
+  fieldConfig: InputFieldConfigType;
+}

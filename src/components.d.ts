@@ -5,8 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { FormFieldType, FormGroupType, SelectFieldConfigType, } from "./types";
+import { FormFieldType, FormGroupType, } from "./types";
 import { InputFieldConfigType, } from "./components/input/types";
+import { SelectFieldConfigType, } from "./components/formable-select/types";
 import { TextareaFieldConfigType, } from "./components/textarea/types";
 export namespace Components {
     interface FormableForm {

@@ -34,26 +34,27 @@ export class TestField implements ComponentInterface {
         }
       }
     },
-    // description: {
-    //   type: 'textarea',
-    //   options: {
-    //     id: 'description',
-    //     label: 'Description',
-    //     required: true
-    //   }
-    // },
-    // select: {
-    //   type: 'select',
-    //   options: {
-    //     id: 'select',
-    //     label: 'Select',
-    //     required: true,
-    //     data: [
-    //       { value: 1, label: "Select one" },
-    //       { value: 2, label: "Select Two" },
-    //     ],
-    //   },
-    // }
+    description: {
+      type: 'textarea',
+      options: {
+        id: 'description',
+        label: 'Description',
+        required: true,
+        autoExpand: true
+      }
+    },
+    select: {
+      type: 'select',
+      options: {
+        id: 'select',
+        label: 'Select',
+        required: true,
+        data: [
+          { value: 1, label: "Select one" },
+          { value: 2, label: "Select Two" },
+        ],
+      },
+    }
   }
 
   submit() {
