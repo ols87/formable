@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop } from "@stencil/core";
+import { Component, h, State, Prop } from "@stencil/core";
 import { ComponentRadioInterface, RadioFieldConfigType } from "./types";
 import * as radioCtl from "./utils";
 

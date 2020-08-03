@@ -62,6 +62,13 @@ export class TestField implements ComponentInterface {
         id: 'radio',
         label: 'Radio',
       }
+    },
+    toggle: {
+      type: 'toggle',
+      options: {
+        id: 'toggle',
+        label: 'Toggle'
+      }
     }
   }
 

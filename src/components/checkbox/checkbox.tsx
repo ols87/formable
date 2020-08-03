@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop } from "@stencil/core";
+import { Component, h, State, Prop } from "@stencil/core";
 import { ComponentCheckboxInterface, CheckboxFieldConfigType } from "./types";
 import * as checkboxCtl from "./utils";
 

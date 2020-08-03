@@ -138,6 +138,8 @@ export class FormableForm implements ComponentInterface {
         return <formable-checkbox fieldConfig={field}></formable-checkbox>;
       case "radio":
         return <formable-radio fieldConfig={field}></formable-radio>;
+      case "toggle":
+        return <formable-toggle fieldConfig={field}></formable-toggle>;
       default:
         return <formable-input fieldConfig={field}></formable-input>;
     }

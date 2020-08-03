@@ -1,9 +1,5 @@
 import { ValidationType } from "@utils/validation/types";
-import {
-  FormControlType,
-  FormFieldOptionsType,
-  FormFieldEventsType,
-} from "./";
+import { FormControlType, FormFieldOptionsType, FormFieldEventsType } from "./";
 
 import { TextareaFieldConfigType } from "@components/textarea/types";
 import { InputFieldConfigType } from "@components/input/types";
@@ -11,6 +7,7 @@ import { ComponentInterface } from "@stencil/core";
 import { SelectFieldConfigType } from "@components/formable-select/types";
 import { CheckboxFieldConfigType } from "@components/checkbox/types";
 import { RadioFieldConfigType } from "@components/radio/types";
+import { ToggleFieldConfigType } from "@components/toggle/types";
 
 export interface FormFieldConfigType {
   type?: string;
@@ -32,5 +29,12 @@ export interface ComponentFieldInterface extends ComponentInterface {
 }
 
 export interface FormFieldType {
-  [key: string]: FormFieldConfigType | InputFieldConfigType | TextareaFieldConfigType | SelectFieldConfigType | CheckboxFieldConfigType | RadioFieldConfigType;
+  [key: string]:
+    | FormFieldConfigType
+    | InputFieldConfigType
+    | TextareaFieldConfigType
+    | SelectFieldConfigType
+    | CheckboxFieldConfigType
+    | RadioFieldConfigType
+    | ToggleFieldConfigType;
 }

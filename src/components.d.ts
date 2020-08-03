@@ -11,6 +11,7 @@ import { InputFieldConfigType, } from "./components/input/types";
 import { RadioFieldConfigType, } from "./components/radio/types";
 import { SelectFieldConfigType, } from "./components/formable-select/types";
 import { TextareaFieldConfigType, } from "./components/textarea/types";
+import { ToggleFieldConfigType, } from "./components/toggle/types";
 export namespace Components {
     interface FormableCheckbox {
         "fieldConfig": CheckboxFieldConfigType;
@@ -31,6 +32,9 @@ export namespace Components {
     }
     interface FormableTextarea {
         "fieldConfig": TextareaFieldConfigType;
+    }
+    interface FormableToggle {
+        "fieldConfig": ToggleFieldConfigType;
     }
     interface TestField {
     }
@@ -72,6 +76,12 @@ declare global {
         prototype: HTMLFormableTextareaElement;
         new (): HTMLFormableTextareaElement;
     };
+    interface HTMLFormableToggleElement extends Components.FormableToggle, HTMLStencilElement {
+    }
+    var HTMLFormableToggleElement: {
+        prototype: HTMLFormableToggleElement;
+        new (): HTMLFormableToggleElement;
+    };
     interface HTMLTestFieldElement extends Components.TestField, HTMLStencilElement {
     }
     var HTMLTestFieldElement: {
@@ -85,6 +95,7 @@ declare global {
         "formable-radio": HTMLFormableRadioElement;
         "formable-select": HTMLFormableSelectElement;
         "formable-textarea": HTMLFormableTextareaElement;
+        "formable-toggle": HTMLFormableToggleElement;
         "test-field": HTMLTestFieldElement;
     }
 }
@@ -109,6 +120,9 @@ declare namespace LocalJSX {
     interface FormableTextarea {
         "fieldConfig"?: TextareaFieldConfigType;
     }
+    interface FormableToggle {
+        "fieldConfig"?: ToggleFieldConfigType;
+    }
     interface TestField {
     }
     interface IntrinsicElements {
@@ -118,6 +132,7 @@ declare namespace LocalJSX {
         "formable-radio": FormableRadio;
         "formable-select": FormableSelect;
         "formable-textarea": FormableTextarea;
+        "formable-toggle": FormableToggle;
         "test-field": TestField;
     }
 }
@@ -131,6 +146,7 @@ declare module "@stencil/core" {
             "formable-radio": LocalJSX.FormableRadio & JSXBase.HTMLAttributes<HTMLFormableRadioElement>;
             "formable-select": LocalJSX.FormableSelect & JSXBase.HTMLAttributes<HTMLFormableSelectElement>;
             "formable-textarea": LocalJSX.FormableTextarea & JSXBase.HTMLAttributes<HTMLFormableTextareaElement>;
+            "formable-toggle": LocalJSX.FormableToggle & JSXBase.HTMLAttributes<HTMLFormableToggleElement>;
             "test-field": LocalJSX.TestField & JSXBase.HTMLAttributes<HTMLTestFieldElement>;
         }
     }
