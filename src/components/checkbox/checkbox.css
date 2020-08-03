@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+
+.checkbox-wrapper {
+  @apply relative;
+  @apply flex;
+  @apply items-center;
+  margin: var(--form-item-margin);
+}
+
+.checkbox-label {
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+
+.checkbox {
+  @apply mr-2;
+  cursor: pointer;
+
+  &.has-error {
+    @apply border-red-600;
+    @apply bg-red-100;
+
+    & + .checkbox-label {
+      @apply text-error;
+    }
+  }
+}
+
+.checkbox-error {
+  @apply absolute;
+  bottom: -1.25rem;
+  left: 0.75rem;
+  @apply text-error;
+  @apply text-xs;
+}
+
+.hidden {
+  display: none;
+}

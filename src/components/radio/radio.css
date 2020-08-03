@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.radio-wrapper {
+  @apply relative;
+  @apply flex;
+  @apply items-center;
+  margin: var(--form-item-margin);
+}
+
+.radio-label {
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+
+.radio {
+  @apply mr-2;
+  @apply mt-0;
+  cursor: pointer;
+
+  &.has-error {
+    @apply border-red-600;
+    @apply bg-red-100;
+
+    & + .radio-label {
+      @apply text-error;
+    }
+  }
+}
+
+.radio-error {
+  @apply absolute;
+  bottom: -1.25rem;
+  left: 0.75rem;
+  @apply text-error;
+  @apply text-xs;
+}
+
+.hidden {
+  display: none;
+}

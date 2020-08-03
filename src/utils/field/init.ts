@@ -4,7 +4,7 @@ export function componentWillLoad(self: ComponentFieldInterface) {
   self.fieldConfig.formControl = {
     error: null,
     touched: false,
-    valid: false,
+    valid: self.fieldConfig.options?.required ? false : true,
   };
 
   self.fieldConfig.formControl.markTouched = () => {
