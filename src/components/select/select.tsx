@@ -4,7 +4,7 @@ import * as selectCtl from './utils';
 
 @Component({
   tag: "formable-select",
-  styleUrl: "formable-select.css",
+  styleUrl: "select.css",
   shadow: true,
 })
 export class FormableSelect implements ComponentSelectInterface {

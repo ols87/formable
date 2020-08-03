@@ -9,7 +9,7 @@ import { CheckboxFieldConfigType, } from "./components/checkbox/types";
 import { FormFieldType, FormGroupType, } from "./types";
 import { InputFieldConfigType, } from "./components/input/types";
 import { RadioFieldConfigType, } from "./components/radio/types";
-import { SelectFieldConfigType, } from "./components/formable-select/types";
+import { SelectFieldConfigType, } from "./components/select/types";
 import { TextareaFieldConfigType, } from "./components/textarea/types";
 import { ToggleFieldConfigType, } from "./components/toggle/types";
 export namespace Components {
