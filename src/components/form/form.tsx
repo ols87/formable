@@ -3,7 +3,7 @@ import { FormFieldType, FormGroupType } from "../../types";
 
 @Component({
   tag: "formable-form",
-  styleUrl: "formable-form.css",
+  styleUrl: "form.css",
 })
 export class FormableForm implements ComponentInterface {
   @Prop() form: FormGroupType = {};
