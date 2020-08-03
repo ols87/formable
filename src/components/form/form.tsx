@@ -3,7 +3,7 @@ import { FormFieldType, FormGroupType } from "../../types";
 
 @Component({
   tag: "formable-form",
-  styleUrl: "formable-form.css",
+  styleUrl: "form.css",
 })
 export class FormableForm implements ComponentInterface {
   @Prop() form: FormGroupType = {};
@@ -134,6 +134,12 @@ export class FormableForm implements ComponentInterface {
         return <formable-textarea fieldConfig={field}></formable-textarea>;
       case "select":
         return <formable-select fieldConfig={field}></formable-select>;
+      case "checkbox":
+        return <formable-checkbox fieldConfig={field}></formable-checkbox>;
+      case "radio":
+        return <formable-radio fieldConfig={field}></formable-radio>;
+      case "toggle":
+        return <formable-toggle fieldConfig={field}></formable-toggle>;
       default:
         return <formable-input fieldConfig={field}></formable-input>;
     }

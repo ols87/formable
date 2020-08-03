@@ -4,7 +4,7 @@ import * as selectCtl from './utils';
 
 @Component({
   tag: "formable-select",
-  styleUrl: "formable-select.css",
+  styleUrl: "select.css",
   shadow: true,
 })
 export class FormableSelect implements ComponentSelectInterface {
@@ -69,7 +69,7 @@ export class FormableSelect implements ComponentSelectInterface {
           onFocus={(event) => this.callEvent("onFocus", event)}
           onBlur={(event) => this.callEvent("onBlur", event)}
         >
-          <option selected disabled hidden label=""></option>
+          <option selected hidden label=""></option>
 
           {this.fieldConfig.options.data.map(item => 
             <option value={item.value} selected={this.fieldConfig.value == item.value} label={item.label}>

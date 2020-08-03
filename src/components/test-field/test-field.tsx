@@ -26,12 +26,6 @@ export class TestField implements ComponentInterface {
         label: 'Password',
         required: true,
         type: 'password'
-      },
-      validators: {
-        ip: {
-          expression: (value, ctr) => /(\d{1,3}\.){3}\d{1,3}/.test(value),
-          message: (value, ctr) => `${value} is not valid IP Address`
-        }
       }
     },
     description: {
@@ -54,6 +48,27 @@ export class TestField implements ComponentInterface {
           { value: 2, label: "Select Two" },
         ],
       },
+    },
+    checkbox: {
+      type: 'checkbox',
+      options: {
+        id: 'checkbox',
+        label: 'Select'
+      }
+    },
+    radio: {
+      type: 'radio',
+      options: {
+        id: 'radio',
+        label: 'Radio',
+      }
+    },
+    toggle: {
+      type: 'toggle',
+      options: {
+        id: 'toggle',
+        label: 'Toggle'
+      }
     }
   }
 
