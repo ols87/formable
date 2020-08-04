@@ -11,14 +11,14 @@ function componentWillLoad(self: ComponentTextareaInterface) {
 
   self.hiddenValue = self.fieldConfig.value;
 
-  parent.componentWillLoad(self);
+  // parent.componentWillLoad(self);
   self.setClassName();
 }
 
 function componentDidLoad(self: ComponentTextareaInterface) {
   setTimeout(() => {
-    const textareaHidden = self.el.shadowRoot.lastElementChild
-      .firstElementChild;
+    const textareaHidden =
+      self.el.shadowRoot.lastElementChild.firstElementChild;
 
     if (!textareaHidden) {
       return;
@@ -31,8 +31,8 @@ function componentDidLoad(self: ComponentTextareaInterface) {
 
 function checkScrollHeightTextareaHidden(self: ComponentTextareaInterface) {
   setTimeout(() => {
-    const textareaHidden = self.el.shadowRoot.lastElementChild
-      .firstElementChild;
+    const textareaHidden =
+      self.el.shadowRoot.lastElementChild.firstElementChild;
 
     if (!textareaHidden) {
       return;

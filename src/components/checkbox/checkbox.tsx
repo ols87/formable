@@ -1,6 +1,6 @@
 import { Component, h, State, Prop } from "@stencil/core";
 import { ComponentCheckboxInterface, CheckboxFieldConfigType } from "./types";
-import * as checkboxCtl from "./utils";
+import { CheckboxCtrl } from "./";
 
 @Component({
   tag: "formable-checkbox",
@@ -8,9 +8,6 @@ import * as checkboxCtl from "./utils";
   shadow: true,
 })
 export class FormableCheckbox implements ComponentCheckboxInterface {
-  @State() errorMessage: string;
-  @State() className: string;
-  @State() checked: boolean;
   @Prop() fieldConfig: CheckboxFieldConfigType = {
     options: {
       id: "",
@@ -18,14 +15,23 @@ export class FormableCheckbox implements ComponentCheckboxInterface {
     },
   };
 
+  @State() controller: any = CheckboxCtrl.bind(this)();
+
+  @State() errorMessage: string;
+
+  @State() className: string;
+
+  @State() checked: boolean;
+
   componentWillLoad() {
-    checkboxCtl.componentWillLoad(this);
+    this.controller.componentWillLoad();
 
     this.checked = this.fieldConfig.value ? true : false;
   }
 
   setClassName() {
     const value = this.fieldConfig.value ? "has-value" : "is-empty";
+
     const error = this.errorMessage ? "has-error" : "is-valid";
 
     this.className = `checkbox ${value} ${error}`;
@@ -33,15 +39,18 @@ export class FormableCheckbox implements ComponentCheckboxInterface {
 
   setValue(event) {
     this.checked = !this.checked;
+
     this.fieldConfig.value = this.checked;
 
     this.callEvent("onChange", event);
+
     this.checkValidation();
+
     this.setClassName();
   }
 
-  callEvent(eventName: string, event) {
-    checkboxCtl.callEvent(eventName, event, this);
+  callEvent(eventName: string, event: MouseEvent) {
+    this.controller.callEvent(eventName, event);
   }
 
   checkValidation() {
@@ -53,7 +62,7 @@ export class FormableCheckbox implements ComponentCheckboxInterface {
       return;
     }
 
-    checkboxCtl.checkRequired(this);
+    this.controller.checkRequired();
   }
 
   onLabelClick(event: any) {
@@ -62,6 +71,7 @@ export class FormableCheckbox implements ComponentCheckboxInterface {
     }
 
     this.callEvent("onClick", event);
+
     this.setValue(event);
   }
 

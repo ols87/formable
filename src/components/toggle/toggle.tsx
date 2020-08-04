@@ -1,10 +1,10 @@
-import { Component, h, State, Prop } from '@stencil/core';
-import { ComponentToggleInterface, ToggleFieldConfigType } from './types';
+import { Component, h, State, Prop } from "@stencil/core";
+import { ComponentToggleInterface, ToggleFieldConfigType } from "./types";
 import * as toggleCtl from "./utils";
 
 @Component({
-  tag: 'formable-toggle',
-  styleUrl: 'toggle.css',
+  tag: "formable-toggle",
+  styleUrl: "toggle.css",
   shadow: true,
 })
 export class FormableToggle implements ComponentToggleInterface {
@@ -19,7 +19,7 @@ export class FormableToggle implements ComponentToggleInterface {
   };
 
   componentWillLoad() {
-    toggleCtl.componentWillLoad(this);
+    // toggleCtl.componentWillLoad(this);
 
     this.checked = this.fieldConfig.value ? true : false;
   }
@@ -41,7 +41,7 @@ export class FormableToggle implements ComponentToggleInterface {
   }
 
   callEvent(eventName: string, event) {
-    toggleCtl.callEvent(eventName, event, this);
+    // toggleCtl.callEvent(eventName, event, this);
   }
 
   checkValidation() {
@@ -53,7 +53,7 @@ export class FormableToggle implements ComponentToggleInterface {
       return;
     }
 
-    toggleCtl.checkRequired(this);
+    // toggleCtl.checkRequired(this);
   }
 
   onLabelClick(event: any) {
@@ -68,7 +68,10 @@ export class FormableToggle implements ComponentToggleInterface {
   render() {
     return (
       <div class="toggle-wrapper">
-        <div class="switch toggle" onClick={(event) => this.onLabelClick(event)}>
+        <div
+          class="switch toggle"
+          onClick={(event) => this.onLabelClick(event)}
+        >
           <input
             type="checkbox"
             {...{ checked: this.checked }}

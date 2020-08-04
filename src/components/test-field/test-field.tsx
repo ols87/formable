@@ -11,37 +11,37 @@ export class TestField implements ComponentInterface {
 
   @State() fields: FormFieldType = {
     email: {
-      type: 'input',
+      type: "input",
       options: {
-        id: 'email',
-        label: 'Email',
-        required: true
+        id: "email",
+        label: "Email",
+        required: true,
       },
-      value: 'formable@gmail.com'
+      value: "formable@gmail.com",
     },
     password: {
-      type: 'input',
+      type: "input",
       options: {
-        id: 'password',
-        label: 'Password',
+        id: "password",
+        label: "Password",
         required: true,
-        type: 'password'
-      }
+        type: "password",
+      },
     },
     description: {
-      type: 'textarea',
+      type: "textarea",
       options: {
-        id: 'description',
-        label: 'Description',
+        id: "description",
+        label: "Description",
         required: true,
-        autoExpand: true
-      }
+        autoExpand: true,
+      },
     },
     select: {
-      type: 'select',
+      type: "select",
       options: {
-        id: 'select',
-        label: 'Select',
+        id: "select",
+        label: "Select",
         required: true,
         data: [
           { value: 1, label: "Select one" },
@@ -50,27 +50,30 @@ export class TestField implements ComponentInterface {
       },
     },
     checkbox: {
-      type: 'checkbox',
+      type: "checkbox",
       options: {
-        id: 'checkbox',
-        label: 'Select'
-      }
+        id: "checkbox",
+        label: "Select",
+      },
+      events: {
+        onChange: () => console.log(1),
+      },
     },
     radio: {
-      type: 'radio',
+      type: "radio",
       options: {
-        id: 'radio',
-        label: 'Radio',
-      }
+        id: "radio",
+        label: "Radio",
+      },
     },
     toggle: {
-      type: 'toggle',
+      type: "toggle",
       options: {
-        id: 'toggle',
-        label: 'Toggle'
-      }
-    }
-  }
+        id: "toggle",
+        label: "Toggle",
+      },
+    },
+  };
 
   submit() {
     if (!this.form.valid) {
@@ -86,7 +89,11 @@ export class TestField implements ComponentInterface {
         <button type="submit" class="btn btn-primary submit-button">
           Submit
         </button>
-        <button type="button" onClick={() => this.form.reset()} class="btn btn-primary submit-button">
+        <button
+          type="button"
+          onClick={() => this.form.reset()}
+          class="btn btn-primary submit-button"
+        >
           Reset
         </button>
       </formable-form>

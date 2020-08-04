@@ -1,20 +1,25 @@
-import * as parent from "../../../utils/field/init";
-import { ComponentCheckboxInterface } from "../types";
+import * as field from "@utils/field/init";
 
-function componentWillLoad(self: ComponentCheckboxInterface) {
-  parent.componentWillLoad(self);
+export function componentWillLoad() {
+  field.componentWillLoad.bind(this)();
 
-  self.fieldConfig.formControl.reset = () => {
-    self.fieldConfig.formControl.error = null;
-    self.fieldConfig.formControl.touched = false;
-    self.fieldConfig.formControl.valid = self.fieldConfig.options?.required ? false : true;
-    self.fieldConfig.value = undefined;
-    self.errorMessage = null;
-    self.checked = false;
-    self.setClassName();
+  this.fieldConfig.formControl.reset = () => {
+    this.fieldConfig.formControl.error = null;
+
+    this.fieldConfig.formControl.touched = false;
+
+    this.fieldConfig.formControl.valid = this.fieldConfig.options?.required
+      ? false
+      : true;
+
+    this.fieldConfig.value = undefined;
+
+    this.errorMessage = null;
+
+    this.checked = false;
+
+    this.setClassName();
   };
 
-  self.setClassName();
+  this.setClassName();
 }
-
-export { componentWillLoad };

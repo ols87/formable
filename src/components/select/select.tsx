@@ -1,6 +1,6 @@
 import { Component, h, State, Prop } from "@stencil/core";
 import { ComponentSelectInterface, SelectFieldConfigType } from "./types";
-import * as selectCtl from './utils';
+import * as selectCtl from "./utils";
 
 @Component({
   tag: "formable-select",
@@ -38,7 +38,7 @@ export class FormableSelect implements ComponentSelectInterface {
   }
 
   callEvent(eventName: string, event) {
-    selectCtl.callEvent(eventName, event, this);
+    // selectCtl.callEvent(eventName, event, this);
   }
 
   checkValidation() {
@@ -50,7 +50,7 @@ export class FormableSelect implements ComponentSelectInterface {
       return;
     }
 
-    selectCtl.checkRequired(this);
+    // selectCtl.checkRequired(this);
   }
 
   render() {
@@ -71,10 +71,13 @@ export class FormableSelect implements ComponentSelectInterface {
         >
           <option selected hidden label=""></option>
 
-          {this.fieldConfig.options.data.map(item => 
-            <option value={item.value} selected={this.fieldConfig.value == item.value} label={item.label}>
-            </option>
-          )}
+          {this.fieldConfig.options.data.map((item) => (
+            <option
+              value={item.value}
+              selected={this.fieldConfig.value == item.value}
+              label={item.label}
+            ></option>
+          ))}
         </select>
 
         <label class="input-label">{this.fieldConfig.options.label}</label>

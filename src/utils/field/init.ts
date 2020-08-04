@@ -1,36 +1,47 @@
-import { ComponentFieldInterface } from "../../types";
-
-export function componentWillLoad(self: ComponentFieldInterface) {
-  self.fieldConfig.formControl = {
+export function componentWillLoad() {
+  this.fieldConfig.formControl = {
     error: null,
     touched: false,
-    valid: self.fieldConfig.options?.required ? false : true,
+    valid: this.fieldConfig.options?.required ? false : true,
   };
 
-  self.fieldConfig.formControl.markTouched = () => {
-    self.fieldConfig.formControl.touched = true;
-    self.checkValidation();
-    self.setClassName();
+  this.fieldConfig.formControl.markTouched = () => {
+    this.fieldConfig.formControl.touched = true;
+
+    this.checkValidation();
+
+    this.setClassName();
   };
 
-  self.fieldConfig.formControl.markUnTouched = () => {
-    self.fieldConfig.formControl.touched = false;
-    self.errorMessage = null;
-    self.setClassName();
+  this.fieldConfig.formControl.markUnTouched = () => {
+    this.fieldConfig.formControl.touched = false;
+
+    this.errorMessage = null;
+
+    this.setClassName();
   };
 
-  self.fieldConfig.formControl.submit = () => {
-    self.fieldConfig.formControl.touched = true;
-    self.checkValidation();
-    self.setClassName();
+  this.fieldConfig.formControl.submit = () => {
+    this.fieldConfig.formControl.touched = true;
+
+    this.checkValidation();
+
+    this.setClassName();
   };
 
-  self.fieldConfig.formControl.reset = () => {
-    self.fieldConfig.formControl.error = null;
-    self.fieldConfig.formControl.touched = false;
-    self.fieldConfig.formControl.valid = self.fieldConfig.options?.required ? false : true;
-    self.fieldConfig.value = undefined;
-    self.errorMessage = null;
-    self.setClassName();
+  this.fieldConfig.formControl.reset = () => {
+    this.fieldConfig.formControl.error = null;
+
+    this.fieldConfig.formControl.touched = false;
+
+    this.fieldConfig.formControl.valid = this.fieldConfig.options?.required
+      ? false
+      : true;
+
+    this.fieldConfig.value = undefined;
+
+    this.errorMessage = null;
+
+    this.setClassName();
   };
 }

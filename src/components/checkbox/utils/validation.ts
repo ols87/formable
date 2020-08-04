@@ -1,1 +1,1 @@
-export { checkRequired } from "../../../utils/field/validation";
+export { checkRequired } from "@utils/field/validation";

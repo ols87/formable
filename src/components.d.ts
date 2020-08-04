@@ -5,13 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CheckboxFieldConfigType, } from "./components/checkbox/types";
-import { FormFieldType, FormGroupType, } from "./types";
-import { InputFieldConfigType, } from "./components/input/types";
-import { RadioFieldConfigType, } from "./components/radio/types";
-import { SelectFieldConfigType, } from "./components/select/types";
-import { TextareaFieldConfigType, } from "./components/textarea/types";
-import { ToggleFieldConfigType, } from "./components/toggle/types";
+import { CheckboxFieldConfigType } from "./components/checkbox/types";
+import { FormFieldType, FormGroupType } from "./types";
+import { InputFieldConfigType } from "./components/input/types";
+import { RadioFieldConfigType } from "./components/radio/types";
+import { SelectFieldConfigType } from "./components/select/types";
+import { TextareaFieldConfigType } from "./components/textarea/types";
+import { ToggleFieldConfigType } from "./components/toggle/types";
 export namespace Components {
     interface FormableCheckbox {
         "fieldConfig": CheckboxFieldConfigType;

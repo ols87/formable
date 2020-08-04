@@ -1,10 +1,4 @@
-import {
-  Component,
-  h,
-  State,
-  Prop,
-  Element,
-} from "@stencil/core";
+import { Component, h, State, Prop, Element } from "@stencil/core";
 
 import { TextareaFieldConfigType, ComponentTextareaInterface } from "./types";
 
@@ -74,11 +68,11 @@ export class ComponentTextarea implements ComponentTextareaInterface {
       this.checkAutoExpand();
     }
 
-    textareaCtl.callEvent(eventName, event, this);
+    // textareaCtl.callEvent(eventName, event, this);
   }
 
   checkValidation() {
-    textareaCtl.checkValidation(this);
+    // textareaCtl.checkValidation(this);
   }
 
   render() {

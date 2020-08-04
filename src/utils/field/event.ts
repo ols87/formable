@@ -1,17 +1,16 @@
-import { ComponentFieldInterface } from "../../types";
-
-export function callEvent(eventName: string, event, self: ComponentFieldInterface) {
+export function callEvent(eventName: string, event: CustomEvent) {
   if (eventName === "onBlur") {
-    self.fieldConfig.formControl = {
-      ...self.fieldConfig.formControl,
+    this.fieldConfig.formControl = {
+      ...this.fieldConfig.formControl,
       touched: true,
     };
 
-    self.checkValidation();
-    self.setClassName();
+    this.checkValidation.bind(this)();
+
+    this.setClassName();
   }
 
-  if (self.fieldConfig.events && self.fieldConfig.events[eventName]) {
-    self.fieldConfig.events[eventName](event);
+  if (this.fieldConfig.events && this.fieldConfig.events[eventName]) {
+    this.fieldConfig.events[eventName](event);
   }
 }

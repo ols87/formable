@@ -1,72 +1,66 @@
 import { ValidatorType } from "@utils/validation/types";
-import { FormFieldConfigType, ComponentFieldInterface } from "../../types";
+import { FormFieldConfigType } from "@type/.";
 
-export function checkValidation(
-  self: ComponentFieldInterface,
-  requiredMessage?: string
-) {
-  if (!self.fieldConfig.formControl?.touched) {
+export function checkValidation(requiredMessage?: string) {
+  if (!this.fieldConfig.formControl?.touched) {
     return;
   }
 
-  if (self.fieldConfig.options.required) {
-    if (self.checkRequired) {
-      self.checkRequired(requiredMessage);
+  if (this.fieldConfig.options.required) {
+    if (this.checkRequired) {
+      this.checkRequired(requiredMessage);
     } else {
-      checkRequired(self, requiredMessage);
+      checkRequired(requiredMessage);
     }
 
-    if (!self.fieldConfig.formControl.valid) {
+    if (!this.fieldConfig.formControl.valid) {
       return;
     }
   }
 
-  if (self.checkValidators) {
-    self.checkValidators();
+  if (this.checkValidators) {
+    this.checkValidators();
     return;
   }
 
-  checkValidators(self);
+  checkValidators();
 }
 
-export function checkRequired(
-  self: ComponentFieldInterface,
-  requiredMessage?: string
-) {
-  self.fieldConfig.formControl.error = {
-    ...self.fieldConfig.formControl.error,
-    required: !self.fieldConfig.value,
+export function checkRequired(requiredMessage?: string) {
+  this.fieldConfig.formControl.error = {
+    ...this.fieldConfig.formControl.error,
+    required: !this.fieldConfig.value,
   };
 
-  if (!self.fieldConfig.value) {
-    self.errorMessage = requiredMessage || "This field is required";
-    self.fieldConfig.formControl.valid = false;
+  if (!this.fieldConfig.value) {
+    this.errorMessage = requiredMessage || "This field is required";
+    this.fieldConfig.formControl.valid = false;
     return;
   }
 
-  self.errorMessage = undefined;
-  self.fieldConfig.formControl.valid = true;
-  delete self.fieldConfig.formControl.error.required;
+  this.errorMessage = undefined;
+  this.fieldConfig.formControl.valid = true;
+  delete this.fieldConfig.formControl.error.required;
 }
 
-export function checkValidators(self: ComponentFieldInterface) {
-  for (const key in self.fieldConfig.validators) {
-    if (self.fieldConfig.validators.hasOwnProperty(key)) {
-      const validator = self.fieldConfig.validators[key];
+export function checkValidators() {
+  for (const key in this.fieldConfig.validators) {
+    if (this.fieldConfig.validators.hasOwnProperty(key)) {
+      const validator = this.fieldConfig.validators[key];
 
-      self.fieldConfig.formControl.error = {
-        ...self.fieldConfig.formControl.error,
-        [key]: !checkValidateExpression(validator, self.fieldConfig),
+      this.fieldConfig.formControl.error = {
+        ...this.fieldConfig.formControl.error,
+        [key]: !checkValidateExpression(validator, this.fieldConfig),
       };
 
-      if (self.fieldConfig.formControl.error[key]) {
-        self.fieldConfig.formControl.valid = false;
-        self.errorMessage = getValidateMessage(validator, self.fieldConfig);
+      if (this.fieldConfig.formControl.error[key]) {
+        this.fieldConfig.formControl.valid = false;
+        this.errorMessage = getValidateMessage(validator, this.fieldConfig);
         return;
       }
 
-      self.fieldConfig.formControl.valid = true;
-      delete self.fieldConfig.formControl.error[key];
+      this.fieldConfig.formControl.valid = true;
+      delete this.fieldConfig.formControl.error[key];
     }
   }
 }

@@ -21,7 +21,7 @@ export class ComponentInput implements ComponentInputInterface {
   };
 
   componentWillLoad() {
-    inputCtl.componentWillLoad(this);
+    // inputCtl.componentWillLoad(this);
     this.setClassName();
   }
 
@@ -41,11 +41,11 @@ export class ComponentInput implements ComponentInputInterface {
   }
 
   callEvent(eventName: string, event) {
-    inputCtl.callEvent(eventName, event, this);
+    // inputCtl.callEvent(eventName, event, this);
   }
 
   checkValidation() {
-    inputCtl.checkValidation(this);
+    // inputCtl.checkValidation(this);
   }
 
   render() {

@@ -19,7 +19,7 @@ export class FormableRadio implements ComponentRadioInterface {
   };
 
   componentWillLoad() {
-    radioCtl.componentWillLoad(this);
+    // radioCtl.componentWillLoad(this);
 
     this.checked = this.fieldConfig.value ? true : false;
   }
@@ -41,7 +41,7 @@ export class FormableRadio implements ComponentRadioInterface {
   }
 
   callEvent(eventName: string, event) {
-    radioCtl.callEvent(eventName, event, this);
+    // radioCtl.callEvent(eventName, event, this);
   }
 
   checkValidation() {
@@ -53,7 +53,7 @@ export class FormableRadio implements ComponentRadioInterface {
       return;
     }
 
-    radioCtl.checkRequired(this);
+    // radioCtl.checkRequired(this);
   }
 
   onLabelClick(event: any) {
