@@ -5,149 +5,60 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CheckboxFieldConfigType } from "./components/checkbox/types";
-import { FormFieldType, FormGroupType } from "./types";
-import { InputFieldConfigType } from "./components/input/types";
-import { RadioFieldConfigType } from "./components/radio/types";
-import { SelectFieldConfigType } from "./components/select/types";
-import { TextareaFieldConfigType } from "./components/textarea/types";
-import { ToggleFieldConfigType } from "./components/toggle/types";
+import { InputProperty } from "./components/input/types/input-property";
+import { InputProperty as InputProperty1 } from "@components/input/types/input-property";
 export namespace Components {
-    interface FormableCheckbox {
-        "fieldConfig": CheckboxFieldConfigType;
+    interface VfInput {
+        "field": InputProperty;
     }
-    interface FormableForm {
-        "fields": FormFieldType;
-        "form": FormGroupType;
-        "submit": any;
-    }
-    interface FormableInput {
-        "fieldConfig": InputFieldConfigType;
-    }
-    interface FormableRadio {
-        "fieldConfig": RadioFieldConfigType;
-    }
-    interface FormableSelect {
-        "fieldConfig": SelectFieldConfigType;
-    }
-    interface FormableTextarea {
-        "fieldConfig": TextareaFieldConfigType;
-    }
-    interface FormableToggle {
-        "fieldConfig": ToggleFieldConfigType;
-    }
-    interface TestField {
+    interface VfTest {
+        "bar": InputProperty;
+        "foo": InputProperty;
     }
 }
 declare global {
-    interface HTMLFormableCheckboxElement extends Components.FormableCheckbox, HTMLStencilElement {
+    interface HTMLVfInputElement extends Components.VfInput, HTMLStencilElement {
     }
-    var HTMLFormableCheckboxElement: {
-        prototype: HTMLFormableCheckboxElement;
-        new (): HTMLFormableCheckboxElement;
+    var HTMLVfInputElement: {
+        prototype: HTMLVfInputElement;
+        new (): HTMLVfInputElement;
     };
-    interface HTMLFormableFormElement extends Components.FormableForm, HTMLStencilElement {
+    interface HTMLVfTestElement extends Components.VfTest, HTMLStencilElement {
     }
-    var HTMLFormableFormElement: {
-        prototype: HTMLFormableFormElement;
-        new (): HTMLFormableFormElement;
-    };
-    interface HTMLFormableInputElement extends Components.FormableInput, HTMLStencilElement {
-    }
-    var HTMLFormableInputElement: {
-        prototype: HTMLFormableInputElement;
-        new (): HTMLFormableInputElement;
-    };
-    interface HTMLFormableRadioElement extends Components.FormableRadio, HTMLStencilElement {
-    }
-    var HTMLFormableRadioElement: {
-        prototype: HTMLFormableRadioElement;
-        new (): HTMLFormableRadioElement;
-    };
-    interface HTMLFormableSelectElement extends Components.FormableSelect, HTMLStencilElement {
-    }
-    var HTMLFormableSelectElement: {
-        prototype: HTMLFormableSelectElement;
-        new (): HTMLFormableSelectElement;
-    };
-    interface HTMLFormableTextareaElement extends Components.FormableTextarea, HTMLStencilElement {
-    }
-    var HTMLFormableTextareaElement: {
-        prototype: HTMLFormableTextareaElement;
-        new (): HTMLFormableTextareaElement;
-    };
-    interface HTMLFormableToggleElement extends Components.FormableToggle, HTMLStencilElement {
-    }
-    var HTMLFormableToggleElement: {
-        prototype: HTMLFormableToggleElement;
-        new (): HTMLFormableToggleElement;
-    };
-    interface HTMLTestFieldElement extends Components.TestField, HTMLStencilElement {
-    }
-    var HTMLTestFieldElement: {
-        prototype: HTMLTestFieldElement;
-        new (): HTMLTestFieldElement;
+    var HTMLVfTestElement: {
+        prototype: HTMLVfTestElement;
+        new (): HTMLVfTestElement;
     };
     interface HTMLElementTagNameMap {
-        "formable-checkbox": HTMLFormableCheckboxElement;
-        "formable-form": HTMLFormableFormElement;
-        "formable-input": HTMLFormableInputElement;
-        "formable-radio": HTMLFormableRadioElement;
-        "formable-select": HTMLFormableSelectElement;
-        "formable-textarea": HTMLFormableTextareaElement;
-        "formable-toggle": HTMLFormableToggleElement;
-        "test-field": HTMLTestFieldElement;
+        "vf-input": HTMLVfInputElement;
+        "vf-test": HTMLVfTestElement;
     }
 }
 declare namespace LocalJSX {
-    interface FormableCheckbox {
-        "fieldConfig"?: CheckboxFieldConfigType;
+    interface VfInput {
+        "field"?: InputProperty;
+        "onEventBlur"?: (event: CustomEvent<InputProperty>) => void;
+        "onEventChange"?: (event: CustomEvent<InputProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<InputProperty>) => void;
+        "onEventFocus"?: (event: CustomEvent<InputProperty>) => void;
+        "onEventInput"?: (event: CustomEvent<InputProperty>) => void;
+        "onEventInvalid"?: (event: CustomEvent<InputProperty>) => void;
     }
-    interface FormableForm {
-        "fields"?: FormFieldType;
-        "form"?: FormGroupType;
-        "submit"?: any;
-    }
-    interface FormableInput {
-        "fieldConfig"?: InputFieldConfigType;
-    }
-    interface FormableRadio {
-        "fieldConfig"?: RadioFieldConfigType;
-    }
-    interface FormableSelect {
-        "fieldConfig"?: SelectFieldConfigType;
-    }
-    interface FormableTextarea {
-        "fieldConfig"?: TextareaFieldConfigType;
-    }
-    interface FormableToggle {
-        "fieldConfig"?: ToggleFieldConfigType;
-    }
-    interface TestField {
+    interface VfTest {
+        "bar"?: InputProperty;
+        "foo"?: InputProperty;
     }
     interface IntrinsicElements {
-        "formable-checkbox": FormableCheckbox;
-        "formable-form": FormableForm;
-        "formable-input": FormableInput;
-        "formable-radio": FormableRadio;
-        "formable-select": FormableSelect;
-        "formable-textarea": FormableTextarea;
-        "formable-toggle": FormableToggle;
-        "test-field": TestField;
+        "vf-input": VfInput;
+        "vf-test": VfTest;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "formable-checkbox": LocalJSX.FormableCheckbox & JSXBase.HTMLAttributes<HTMLFormableCheckboxElement>;
-            "formable-form": LocalJSX.FormableForm & JSXBase.HTMLAttributes<HTMLFormableFormElement>;
-            "formable-input": LocalJSX.FormableInput & JSXBase.HTMLAttributes<HTMLFormableInputElement>;
-            "formable-radio": LocalJSX.FormableRadio & JSXBase.HTMLAttributes<HTMLFormableRadioElement>;
-            "formable-select": LocalJSX.FormableSelect & JSXBase.HTMLAttributes<HTMLFormableSelectElement>;
-            "formable-textarea": LocalJSX.FormableTextarea & JSXBase.HTMLAttributes<HTMLFormableTextareaElement>;
-            "formable-toggle": LocalJSX.FormableToggle & JSXBase.HTMLAttributes<HTMLFormableToggleElement>;
-            "test-field": LocalJSX.TestField & JSXBase.HTMLAttributes<HTMLTestFieldElement>;
+            "vf-input": LocalJSX.VfInput & JSXBase.HTMLAttributes<HTMLVfInputElement>;
+            "vf-test": LocalJSX.VfTest & JSXBase.HTMLAttributes<HTMLVfTestElement>;
         }
     }
 }

@@ -1,74 +1,70 @@
-import { Component, h, Prop, State } from "@stencil/core";
-
-import { InputFieldConfigType, ComponentInputInterface } from "./types";
-
-import * as inputCtl from "./utils";
+import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import { InputProperty } from "./types/input-property";
 
 @Component({
-  tag: "formable-input",
-  styleUrl: "input.css",
+  tag: "vf-input",
 })
-export class ComponentInput implements ComponentInputInterface {
-  @State() errorMessage: string;
-  @State() className: string;
+export class ComponentInput {
+  @Prop() field: InputProperty;
 
-  @Prop() fieldConfig: InputFieldConfigType = {
-    options: {
-      id: "",
-      type: "text",
-      required: false,
-    },
-  };
+  @Event() eventInput: EventEmitter<InputProperty>;
+  @Event() eventInvalid: EventEmitter<InputProperty>;
+  @Event() eventChange: EventEmitter<InputProperty>;
+  @Event() eventClick: EventEmitter<InputProperty>;
+  @Event() eventFocus: EventEmitter<InputProperty>;
+  @Event() eventBlur: EventEmitter<InputProperty>;
 
-  componentWillLoad() {
-    // inputCtl.componentWillLoad(this);
-    this.setClassName();
+  callEvent(name: string, event: any) {
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+
+    this.setValue(event.target.value);
+
+    if (this.field.events?.hasOwnProperty(`on${name}`)) {
+      this.field.events[`on${name}`](this.field);
+    }
+
+    this[`event${name}`].emit(this.field);
   }
 
-  setClassName() {
-    const value = this.fieldConfig.value ? "has-value" : "is-empty";
-    const error = this.errorMessage ? "has-error" : "is-valid";
-
-    this.className = `input ${value} ${error}`;
-  }
-
-  setValue(event) {
-    this.fieldConfig.value = event.target.value;
-
-    this.callEvent("onInput", event);
-    this.checkValidation();
-    this.setClassName();
-  }
-
-  callEvent(eventName: string, event) {
-    // inputCtl.callEvent(eventName, event, this);
-  }
-
-  checkValidation() {
-    // inputCtl.checkValidation(this);
+  setValue(value: any) {
+    this.field.value = value;
+    this.field = { ...this.field };
   }
 
   render() {
+    const { render, value } = this.field;
+
     return (
-      <div class="input-wrapper">
+      <div
+        class={`input-wrapper ${
+          render.classes?.label ? render.classes?.label : ""
+        }`}
+      >
+        <label
+          class={`input-label ${
+            render.classes?.label ? render.classes?.label : ""
+          }`}
+        >
+          {render.label}
+        </label>
+
         <input
           autoComplete="on"
-          class={this.className}
-          id={this.fieldConfig.options.id}
-          name={this.fieldConfig.options.id}
-          type={this.fieldConfig.options.type}
-          required={this.fieldConfig.options.required}
-          disabled={this.fieldConfig.options.disabled}
-          value={this.fieldConfig.value}
-          onInput={(event) => this.setValue(event)}
-          onInvalid={(event) => this.callEvent("onInvalid", event)}
-          onChange={(event) => this.callEvent("onChange", event)}
-          onClick={(event) => this.callEvent("onClick", event)}
-          onFocus={(event) => this.callEvent("onFocus", event)}
-          onBlur={(event) => this.callEvent("onBlur", event)}
+          class={render.classes?.field}
+          id={render.id}
+          name={render.id}
+          type={render.type}
+          required={render.required}
+          disabled={render.disabled}
+          value={value}
+          onInput={(event) => this.callEvent("input", event)}
+          onInvalid={(event) => this.callEvent("invalid", event)}
+          onChange={(event) => this.callEvent("change", event)}
+          onClick={(event) => this.callEvent("click", event)}
+          onFocus={(event) => this.callEvent("focus", event)}
+          onBlur={(event) => this.callEvent("blur", event)}
         />
-        <label class="input-label">{this.fieldConfig.options.label}</label>
-        <div class="input-error">{this.errorMessage}</div>
+        {/* <div class="input-error">{this.errorMessage}</div> */}
       </div>
     );
   }
