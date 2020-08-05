@@ -1,7 +1,7 @@
 import { Component, h, Prop, Event, EventEmitter, State } from "@stencil/core";
-import { InputProperty } from "./types/input-property";
-import { callEvent } from "field/utils/events";
-import { setValue } from "field/utils/controller";
+import { InputProperty } from "./types";
+import { setMeta, setValue } from "field/controller";
+import { callEvent } from "field/events";
 
 @Component({
   tag: "vf-input",
@@ -16,12 +16,17 @@ export class ComponentInput {
   @Event() eventBlur: EventEmitter<InputProperty>;
   @Event() eventInvalid: EventEmitter<InputProperty>;
 
+  @State() setMeta: Function = setMeta.bind(this);
   @State() setValue: Function = setValue.bind(this);
   @State() callEvent: Function = callEvent.bind(this);
 
+  componentWillLoad() {
+    this.setMeta("field");
+  }
+
   event(name: string, event: any) {
     this.setValue("field", event.target.value);
-    this.callEvent(name, event);
+    this.callEvent("field", name);
   }
 
   render() {

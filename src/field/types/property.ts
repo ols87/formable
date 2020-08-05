@@ -1,9 +1,8 @@
-import { FieldEvents } from "./events";
-import { FieldRender } from "./render";
+import { FieldRender, FieldEvents } from "./";
 
 export interface FieldProperty {
   render: FieldRender;
   events?: FieldEvents;
-  controller?: any;
+  meta?: any;
   value?: any;
 }

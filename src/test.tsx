@@ -1,6 +1,6 @@
 import { Component, h, Prop, State } from "@stencil/core";
-import { InputProperty } from "@components/input/types/input-property";
-import { setValue } from "field/utils/controller";
+import { InputProperty } from "components/input/types";
+import { setValue } from "field/controller";
 
 @Component({
   tag: "vf-test",
@@ -41,7 +41,7 @@ export class ComponentInput {
         <vf-input
           field={this.bar}
           onEventInput={(event: CustomEvent) =>
-            this.setValue("bar", event.detail.value)
+            this.setValue("foo", event.detail.value)
           }
         ></vf-input>
 

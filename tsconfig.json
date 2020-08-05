@@ -13,11 +13,7 @@
     "jsx": "react",
     "jsxFactory": "h",
     "baseUrl": "src",
-    "paths": {
-      "@components/*": ["components/*"],
-      "@type/*": ["types/*"],
-      "@utils/*": ["utils/*"]
-    }
+    "paths": {}
   },
   "include": ["src", "types/jsx.d.ts"],
   "exclude": ["node_modules"]

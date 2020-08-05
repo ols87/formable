@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { InputProperty } from "./components/input/types/input-property";
-import { InputProperty as InputProperty1 } from "@components/input/types/input-property";
+import { InputProperty } from "./components/input/types";
+import { InputProperty as InputProperty1 } from "components/input/types";
 export namespace Components {
     interface VfInput {
         "field": InputProperty;
