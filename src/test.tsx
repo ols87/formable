@@ -1,5 +1,6 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, State } from "@stencil/core";
 import { InputProperty } from "@components/input/types/input-property";
+import { setValue } from "field/utils/controller";
 
 @Component({
   tag: "vf-test",
@@ -12,11 +13,6 @@ export class ComponentInput {
       type: "text",
       required: false,
     },
-    events: {
-      onClick: () => {
-        this.setValue("foo", "yeahhhhh");
-      },
-    },
   };
 
   @Prop() bar: InputProperty = {
@@ -28,10 +24,7 @@ export class ComponentInput {
     },
   };
 
-  setValue(key: string, value: any) {
-    this[key].value = value;
-    this[key] = { ...this[key] };
-  }
+  @State() setValue: Function = setValue.bind(this);
 
   render() {
     return (

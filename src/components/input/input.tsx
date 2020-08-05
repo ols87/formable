@@ -1,5 +1,7 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import { Component, h, Prop, Event, EventEmitter, State } from "@stencil/core";
 import { InputProperty } from "./types/input-property";
+import { callEvent } from "field/utils/events";
+import { setValue } from "field/utils/controller";
 
 @Component({
   tag: "vf-input",
@@ -7,28 +9,19 @@ import { InputProperty } from "./types/input-property";
 export class ComponentInput {
   @Prop() field: InputProperty;
 
-  @Event() eventInput: EventEmitter<InputProperty>;
-  @Event() eventInvalid: EventEmitter<InputProperty>;
-  @Event() eventChange: EventEmitter<InputProperty>;
   @Event() eventClick: EventEmitter<InputProperty>;
   @Event() eventFocus: EventEmitter<InputProperty>;
+  @Event() eventInput: EventEmitter<InputProperty>;
+  @Event() eventChange: EventEmitter<InputProperty>;
   @Event() eventBlur: EventEmitter<InputProperty>;
+  @Event() eventInvalid: EventEmitter<InputProperty>;
 
-  callEvent(name: string, event: any) {
-    name = name.charAt(0).toUpperCase() + name.slice(1);
+  @State() setValue: Function = setValue.bind(this);
+  @State() callEvent: Function = callEvent.bind(this);
 
-    this.setValue(event.target.value);
-
-    if (this.field.events?.hasOwnProperty(`on${name}`)) {
-      this.field.events[`on${name}`](this.field);
-    }
-
-    this[`event${name}`].emit(this.field);
-  }
-
-  setValue(value: any) {
-    this.field.value = value;
-    this.field = { ...this.field };
+  event(name: string, event: any) {
+    this.setValue("field", event.target.value);
+    this.callEvent(name, event);
   }
 
   render() {
@@ -37,7 +30,7 @@ export class ComponentInput {
     return (
       <div
         class={`input-wrapper ${
-          render.classes?.label ? render.classes?.label : ""
+          render.classes?.wrapper ? render.classes?.wrapper : ""
         }`}
       >
         <label
@@ -57,14 +50,14 @@ export class ComponentInput {
           required={render.required}
           disabled={render.disabled}
           value={value}
-          onInput={(event) => this.callEvent("input", event)}
-          onInvalid={(event) => this.callEvent("invalid", event)}
-          onChange={(event) => this.callEvent("change", event)}
-          onClick={(event) => this.callEvent("click", event)}
-          onFocus={(event) => this.callEvent("focus", event)}
-          onBlur={(event) => this.callEvent("blur", event)}
+          onClick={(event) => this.event("click", event)}
+          onFocus={(event) => this.event("focus", event)}
+          onInput={(event) => this.event("input", event)}
+          onChange={(event) => this.event("change", event)}
+          onBlur={(event) => this.event("blur", event)}
+          onInvalid={(event) => this.event("invalid", event)}
         />
-        {/* <div class="input-error">{this.errorMessage}</div> */}
+        <div class="input-error">{render.error}</div>
       </div>
     );
   }

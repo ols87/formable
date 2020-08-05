@@ -9,4 +9,5 @@ export interface FieldRender {
     label?: string;
     field?: string;
   };
+  error?: string;
 }
