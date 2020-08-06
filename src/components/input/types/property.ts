@@ -1,10 +1,9 @@
 import { FieldProperty } from "field/types";
 import { InputEvents } from "./";
+import { InputView } from "./view";
 
 interface InputProp {
-  render: {
-    type: string;
-  };
+  view: InputView;
   events?: InputEvents;
 }
 

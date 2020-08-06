@@ -1,5 +1,5 @@
 export interface FieldMeta {
-  touched?: boolean;
-  pristine?: boolean;
-  valid?: boolean;
+  touched: boolean;
+  pristine: boolean;
+  valid: boolean;
 }

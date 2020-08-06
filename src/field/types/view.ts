@@ -1,4 +1,4 @@
-export interface FieldRender {
+export interface FieldView {
   id: string;
   name?: string;
   label?: string;

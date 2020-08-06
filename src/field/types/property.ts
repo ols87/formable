@@ -1,8 +1,12 @@
-import { FieldRender, FieldEvents } from "./";
+import { FieldView, FieldEvents } from ".";
+import { FieldMeta } from "./meta";
+import { FieldController } from "./controller";
 
 export interface FieldProperty {
-  render: FieldRender;
+  view: FieldView;
   events?: FieldEvents;
-  meta?: any;
+  meta?: FieldMeta;
+  validators?: any;
   value?: any;
+  controller?: FieldController;
 }

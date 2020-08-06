@@ -1,48 +1,44 @@
-import { Component, h, Prop, State } from "@stencil/core";
-import { InputProperty } from "components/input/types";
-import { setValue } from "field/controller";
+import { Component, h, Prop } from "@stencil/core";
+import { Formable } from "formable";
+import { FormField } from "field/field";
 
 @Component({
   tag: "vf-test",
 })
 export class ComponentInput {
-  @Prop() foo: InputProperty = {
-    render: {
+  @Prop() foo: FormField = Formable.field({
+    view: {
       id: "foo",
       label: "foo",
       type: "text",
       required: false,
     },
-  };
+  });
 
-  @Prop() bar: InputProperty = {
-    render: {
+  @Prop() bar: FormField = Formable.field({
+    view: {
       id: "bar",
       label: "bar",
       type: "text",
       required: false,
     },
-  };
+  });
 
-  @State() setValue: Function = setValue.bind(this);
+  setValue = () => (this.foo = this.foo.controller.render());
 
   render() {
     return (
       <div>
         <vf-input
           field={this.foo}
-          onEventInput={(event: CustomEvent) =>
-            this.setValue("foo", event.detail.value)
-          }
+          onEventInput={() => this.setValue()}
         ></vf-input>
 
         {this.foo.value}
 
         <vf-input
           field={this.bar}
-          onEventInput={(event: CustomEvent) =>
-            this.setValue("foo", event.detail.value)
-          }
+          onEventInput={() => this.setValue()}
         ></vf-input>
 
         {this.bar.value}
