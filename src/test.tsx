@@ -1,12 +1,14 @@
 import { Component, h, Prop } from "@stencil/core";
+
 import { Formable } from "formable";
-import { FormField } from "field/field";
+
+import { InputProperty } from "components/input/types";
 
 @Component({
   tag: "vf-test",
 })
 export class ComponentInput {
-  @Prop() foo: FormField = Formable.field({
+  @Prop() foo: InputProperty = Formable.field({
     view: {
       id: "foo",
       label: "foo",
@@ -15,7 +17,7 @@ export class ComponentInput {
     },
   });
 
-  @Prop() bar: FormField = Formable.field({
+  @Prop() bar: InputProperty = Formable.field({
     view: {
       id: "bar",
       label: "bar",

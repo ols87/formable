@@ -1,14 +1,16 @@
 import { InputView, InputProperty, InputEvents } from "components/input/types";
 
-import { FieldMeta, FieldController } from "field/types";
+import { FieldController, FieldProperty } from "field/types";
+import { InputMeta } from "components/input/types/meta";
 
 type FormFieldView = InputView;
 type FormFieldEvents = InputEvents;
-type FormFieldMeta = FieldMeta;
+type FormFieldMeta = InputMeta;
+type FormFieldProperty = InputProperty;
 
-export type FormField = InputProperty & Partial<FieldController>;
+export type FormField = FormFieldProperty & Partial<FieldController>;
 
-type FormFieldClass = InputProperty & FieldController;
+type FormFieldClass = FieldProperty & FieldController;
 
 export class Field implements FormFieldClass {
   public view: FormFieldView;

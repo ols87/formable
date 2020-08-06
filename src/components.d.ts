@@ -5,16 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { FormField } from "field";
 import { InputProperty } from "./components/input/types";
-import { FormField as FormField1 } from "field/field";
+import { InputProperty as InputProperty1 } from "components/input/types";
 export namespace Components {
     interface VfInput {
-        "field": FormField;
+        "field": InputProperty;
     }
     interface VfTest {
-        "bar": FormField;
-        "foo": FormField;
+        "bar": InputProperty;
+        "foo": InputProperty;
     }
 }
 declare global {
@@ -37,7 +36,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface VfInput {
-        "field"?: FormField;
+        "field"?: InputProperty;
         "onEventBlur"?: (event: CustomEvent<InputProperty>) => void;
         "onEventChange"?: (event: CustomEvent<InputProperty>) => void;
         "onEventClick"?: (event: CustomEvent<InputProperty>) => void;
@@ -46,8 +45,8 @@ declare namespace LocalJSX {
         "onEventInvalid"?: (event: CustomEvent<InputProperty>) => void;
     }
     interface VfTest {
-        "bar"?: FormField;
-        "foo"?: FormField;
+        "bar"?: InputProperty;
+        "foo"?: InputProperty;
     }
     interface IntrinsicElements {
         "vf-input": VfInput;

@@ -1,12 +1,10 @@
 import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
 import { InputProperty } from "./types";
-import { FormField } from "field";
-
 @Component({
   tag: "vf-input",
 })
 export class ComponentInput {
-  @Prop() field: FormField;
+  @Prop() field: InputProperty;
 
   @Event() eventClick: EventEmitter<InputProperty>;
   @Event() eventFocus: EventEmitter<InputProperty>;
