@@ -2,7 +2,8 @@ import { Field, FormField } from "field";
 
 export const Formable = {
   field(options: FormField) {
-    return new Field(options);
+    const field = new Field(options);
+    return { ...field };
   },
 };
 

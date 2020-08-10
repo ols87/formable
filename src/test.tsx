@@ -13,8 +13,15 @@ export class ComponentInput {
       id: "foo",
       label: "foo",
       type: "text",
-      required: false,
+      required: true,
     },
+    validators: [
+      "date",
+      {
+        match: /00\/00\/0000/g,
+        message: "must be 00/00/0000",
+      },
+    ],
   });
 
   @Prop() bar: InputProperty = Formable.field({
@@ -26,7 +33,13 @@ export class ComponentInput {
     },
   });
 
-  setValue = () => (this.foo = this.foo.controller.render());
+  componentWillLoad() {
+    console.log(this.foo);
+  }
+
+  setValue = () => {
+    this.foo = this.foo.controller.render();
+  };
 
   render() {
     return (

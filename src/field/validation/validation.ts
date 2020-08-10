@@ -1,102 +1,60 @@
-// import { ValidatorType } from "@utils/validation/types";
-// import { FormFieldConfigType } from "@type/.";
+import { FieldProperty } from "field/types";
+import { Validator } from "field/types/validation";
+import { regexDate } from "./regex";
 
-// import { FieldProperty } from "field/types";
+const validators = {
+  date: {
+    match: regexDate,
+    message: "Invalid Date",
+  },
+};
 
-// export class Validation {
-//   public field: FieldProperty;
+export class Validation {
+  public field: FieldProperty;
 
-//   constructor() {}
+  constructor(field: FieldProperty) {
+    this.field = field;
+  }
 
-//   public async check(): Promise<boolean> {
-//     if (!this.field.meta.touched) return false;
+  public check(): boolean {
+    if (!this.field.meta.touched) return true;
 
-//     if (this.field.view.required) return this.required();
-//   }
+    if (this.field.view.required) return this.required();
 
-//   public async required(): Promise<boolean> {
-//     return true;
-//   }
-// }
+    return true;
+  }
 
-// export function checkValidation(requiredMessage?: string) {
-//   if (!this.meta.touched) {
-//     return;
-//   }
+  public required(): boolean {
+    if (!this.field.value) {
+      this.field.view.error = "This field is required";
+      this.field.meta.valid = false;
+      return false;
+    }
 
-//   if (this.view.required) {
-//     if (this.checkRequired) {
-//       this.checkRequired(requiredMessage);
-//     } else {
-//       checkRequired(requiredMessage);
-//     }
+    if (this.field.validators) return this.validators();
 
-//     if (!this.meta.valid) {
-//       return;
-//     }
-//   }
+    this.field.view.error = null;
+    this.field.meta.valid = true;
 
-//   if (this.checkValidators) {
-//     this.checkValidators();
-//     return;
-//   }
+    return true;
+  }
 
-//   checkValidators();
-// }
+  public validators(): boolean {
+    let valid = true;
 
-// export function checkRequired(requiredMessage?: string) {
-//   this.meta.error = {
-//     ...this.meta.error,
-//     required: !this.fieldConfig.value,
-//   };
+    this.field.validators.forEach((validator: string | Validator) => {
+      const tester: Validator =
+        typeof validator === "string" ? validators[validator] : validator;
 
-//   if (!this.fieldConfig.value) {
-//     this.errorMessage = requiredMessage || "This field is required";
-//     this.meta.valid = false;
-//     return;
-//   }
+      const isMatch = tester.match.test(this.field.value);
 
-//   this.errorMessage = undefined;
-//   this.meta.valid = true;
-//   delete this.meta.error.required;
-// }
+      this.field.view.error = !isMatch ? tester.message : null;
 
-// export function checkValidators() {
-//   for (const key in this.fieldConfig.validators) {
-//     if (this.fieldConfig.validators.hasOwnProperty(key)) {
-//       const validator = this.fieldConfig.validators[key];
+      this.field.meta.valid = isMatch ? true : false;
 
-//       this.meta.error = {
-//         ...this.meta.error,
-//         [key]: !checkValidateExpression(validator, this.fieldConfig),
-//       };
+      valid = this.field.meta.valid;
+    });
 
-//       if (this.meta.error[key]) {
-//         this.meta.valid = false;
-//         this.errorMessage = getValidateMessage(validator, this.fieldConfig);
-//         return;
-//       }
-
-//       this.meta.valid = true;
-//       delete this.meta.error[key];
-//     }
-//   }
-// }
-
-// export function checkValidateExpression(
-//   validator: ValidatorType,
-//   fieldConfig: FormFieldConfigType
-// ) {
-//   return validator.expression(fieldConfig.value, fieldConfig.formControl);
-// }
-
-// export function getValidateMessage(
-//   validator: ValidatorType,
-//   fieldConfig: FormFieldConfigType
-// ) {
-//   if (typeof validator.message === "string") {
-//     return validator.message;
-//   }
-
-//   return validator.message(fieldConfig.value, fieldConfig.formControl);
-// }
+    return valid;
+  }
+}
