@@ -54,7 +54,9 @@ export class ComponentInput {
           onBlur={(event) => this.event("blur", event)}
           onInvalid={(event) => this.event("invalid", event)}
         />
-        <div class="input-error">{view.error}</div>
+        {view.errors?.map((error: string) => (
+          <div class="input-error">{error}</div>
+        ))}
       </div>
     );
   }

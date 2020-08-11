@@ -2,7 +2,7 @@ import { InputView, InputProperty, InputEvents } from "components/input/types";
 
 import { FieldController, FieldProperty } from "field/types";
 import { InputMeta } from "components/input/types/meta";
-import { Validation } from "./validation/validation";
+import { Validation } from "./validation";
 
 type FormFieldView = InputView;
 type FormFieldEvents = InputEvents;
@@ -34,6 +34,7 @@ export class Field implements FormFieldClass {
     this.meta = {
       touched: false,
       pristine: true,
+      submitted: false,
       valid: this.view.required ? false : true,
     };
 
@@ -99,7 +100,6 @@ export class Field implements FormFieldClass {
 
   validate(): boolean {
     const validation = new Validation(this);
-    console.log(validation.check());
-    return true;
+    return validation.check();
   }
 }

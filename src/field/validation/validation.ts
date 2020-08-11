@@ -1,8 +1,8 @@
 import { FieldProperty } from "field/types";
-import { Validator } from "field/types/validation";
+import { Validator } from "field/types";
 import { regexDate } from "./regex";
 
-const validators = {
+export const validators = {
   date: {
     match: regexDate,
     message: "Invalid Date",
@@ -17,6 +17,10 @@ export class Validation {
   }
 
   public check(): boolean {
+    this.field.view.errors = [];
+
+    if (!this.field.value && !this.field.meta.submitted) return true;
+
     if (!this.field.meta.touched) return true;
 
     if (this.field.view.required) return this.required();
@@ -26,14 +30,14 @@ export class Validation {
 
   public required(): boolean {
     if (!this.field.value) {
-      this.field.view.error = "This field is required";
+      this.field.view.errors.push("This field is required");
       this.field.meta.valid = false;
       return false;
     }
 
     if (this.field.validators) return this.validators();
 
-    this.field.view.error = null;
+    this.field.view.errors = [];
     this.field.meta.valid = true;
 
     return true;
@@ -42,13 +46,10 @@ export class Validation {
   public validators(): boolean {
     let valid = true;
 
-    this.field.validators.forEach((validator: string | Validator) => {
-      const tester: Validator =
-        typeof validator === "string" ? validators[validator] : validator;
+    this.field.validators.forEach((validator: Validator) => {
+      const isMatch = validator.match.test(this.field.value);
 
-      const isMatch = tester.match.test(this.field.value);
-
-      this.field.view.error = !isMatch ? tester.message : null;
+      if (!isMatch) this.field.view.errors.push(validator.message);
 
       this.field.meta.valid = isMatch ? true : false;
 

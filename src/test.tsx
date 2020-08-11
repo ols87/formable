@@ -3,6 +3,7 @@ import { Component, h, Prop } from "@stencil/core";
 import { Formable } from "formable";
 
 import { InputProperty } from "components/input/types";
+import { validators } from "field/validation";
 
 @Component({
   tag: "vf-test",
@@ -16,9 +17,9 @@ export class ComponentInput {
       required: true,
     },
     validators: [
-      "date",
+      validators.date,
       {
-        match: /00\/00\/0000/g,
+        match: /^(0{2}\/0{2}\/0{4})$/,
         message: "must be 00/00/0000",
       },
     ],
@@ -46,17 +47,10 @@ export class ComponentInput {
       <div>
         <vf-input
           field={this.foo}
-          onEventInput={() => this.setValue()}
+          onEventInput={() => (this.foo = this.foo.controller.render())}
         ></vf-input>
 
         {this.foo.value}
-
-        <vf-input
-          field={this.bar}
-          onEventInput={() => this.setValue()}
-        ></vf-input>
-
-        {this.bar.value}
       </div>
     );
   }

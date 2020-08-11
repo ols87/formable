@@ -3,3 +3,4 @@ export * from "./meta";
 export * from "./events";
 export * from "./view";
 export * from "./controller";
+export * from "./validation";

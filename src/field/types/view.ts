@@ -9,5 +9,5 @@ export interface FieldView {
     label?: string;
     field?: string;
   };
-  error?: string;
+  errors?: Array<string>;
 }
