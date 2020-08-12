@@ -1,24 +1,20 @@
-import { InputView, InputProperty, InputEvents } from "components/input/types";
+import {
+  FieldView,
+  FieldController,
+  FieldMeta,
+  FieldEvents,
+  FieldClass,
+  FieldProperty,
+} from "./types";
 
-import { FieldController, FieldProperty } from "field/types";
-import { InputMeta } from "components/input/types/meta";
-import { Validation } from "./validation";
+import { Validation } from "validation";
 
-type FormFieldView = InputView;
-type FormFieldEvents = InputEvents;
-type FormFieldMeta = InputMeta;
-type FormFieldProperty = InputProperty;
+export class Field implements FieldClass {
+  public view: FieldView;
 
-export type FormField = FormFieldProperty & Partial<FieldController>;
+  public events: FieldEvents;
 
-type FormFieldClass = FieldProperty & FieldController;
-
-export class Field implements FormFieldClass {
-  public view: FormFieldView;
-
-  public events: FormFieldEvents;
-
-  public meta: FormFieldMeta;
+  public meta: FieldMeta;
 
   public validators: any;
 
@@ -26,17 +22,19 @@ export class Field implements FormFieldClass {
 
   public value: any;
 
-  constructor(options: FormField) {
+  constructor(options: FieldProperty) {
     this.view = options.view;
 
     this.events = options.events || {};
 
-    this.meta = {
+    this.meta = options.meta || {
       touched: false,
       pristine: true,
       submitted: false,
       valid: this.view.required ? false : true,
     };
+
+    this.validators = options.validators || {};
 
     this.controller = {
       set: this.set.bind(this),
@@ -49,7 +47,7 @@ export class Field implements FormFieldClass {
       validate: this.validate.bind(this),
     };
 
-    this.validators = options.validators || {};
+    this.value = options.value;
   }
 
   set(value: any) {

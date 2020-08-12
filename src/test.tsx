@@ -3,13 +3,13 @@ import { Component, h, Prop } from "@stencil/core";
 import { Formable } from "formable";
 
 import { InputProperty } from "components/input/types";
-import { validators } from "field/validation";
+import { validators } from "validation";
 
 @Component({
   tag: "vf-test",
 })
 export class ComponentInput {
-  @Prop() foo: InputProperty = Formable.field({
+  @Prop() foo: InputProperty = Formable.input({
     view: {
       id: "foo",
       label: "foo",
@@ -23,9 +23,10 @@ export class ComponentInput {
         message: "must be 00/00/0000",
       },
     ],
+    value: "abc",
   });
 
-  @Prop() bar: InputProperty = Formable.field({
+  @Prop() bar: InputProperty = Formable.input({
     view: {
       id: "bar",
       label: "bar",
