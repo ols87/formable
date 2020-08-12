@@ -14,9 +14,9 @@ export class ComponentInput {
   @Event() eventInvalid: EventEmitter<InputProperty>;
 
   event(name: string, event: any) {
-    this.field = this.field.controller.set(event.target.value);
+    this.field = this.field.set(event.target.value);
 
-    name = this.field.controller.on(name);
+    name = this.field.on(name);
 
     this[`event${name}`].emit(this.field);
   }
@@ -26,12 +26,12 @@ export class ComponentInput {
 
     return (
       <div
-        class={`input-wrapper ${
+        class={`vf-field-wrapper vf-input-wrapper ${
           view.classes?.wrapper ? view.classes?.wrapper : ""
         }`}
       >
         <label
-          class={`input-label ${
+          class={`vf-field-label vf-input-label ${
             view.classes?.label ? view.classes?.label : ""
           }`}
         >
@@ -54,9 +54,12 @@ export class ComponentInput {
           onBlur={(event) => this.event("blur", event)}
           onInvalid={(event) => this.event("invalid", event)}
         />
-        {view.errors?.map((error: string) => (
-          <div class="input-error">{error}</div>
-        ))}
+
+        <div class="vf-field-errors vf-input-errors">
+          {view.errors?.map((error: string) => (
+            <div class="vf-field-error vf-input-error">{error}</div>
+          ))}
+        </div>
       </div>
     );
   }

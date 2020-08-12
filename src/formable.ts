@@ -1,18 +1,7 @@
-import { Field, FieldProperty } from "field";
-
-import { InputProperty } from "components/input/types";
-import { InputField } from "components/input/input-base";
+import { InputField, InputProperty } from "components/input";
 
 export const Formable = {
-  field(options: FieldProperty) {
-    const field = new Field(options);
-    return { ...field };
-  },
-
   input(options: InputProperty) {
-    const input = new InputField(options);
-    return { ...input };
+    return new InputField(options);
   },
 };
-
-export * from "./field";

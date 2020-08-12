@@ -1,6 +1,5 @@
 import {
   FieldView,
-  FieldController,
   FieldMeta,
   FieldEvents,
   FieldClass,
@@ -18,8 +17,6 @@ export class Field implements FieldClass {
 
   public validators: any;
 
-  public controller: FieldController;
-
   public value: any;
 
   constructor(options: FieldProperty) {
@@ -35,17 +32,6 @@ export class Field implements FieldClass {
     };
 
     this.validators = options.validators || {};
-
-    this.controller = {
-      set: this.set.bind(this),
-      get: this.get.bind(this),
-      touch: this.touch.bind(this),
-      unTouch: this.unTouch.bind(this),
-      clear: this.clear.bind(this),
-      render: this.render.bind(this),
-      on: this.on.bind(this),
-      validate: this.validate.bind(this),
-    };
 
     this.value = options.value;
   }
@@ -83,7 +69,7 @@ export class Field implements FieldClass {
   }
 
   render(): any {
-    return { ...this };
+    return new Field(this);
   }
 
   on(name: string): string {

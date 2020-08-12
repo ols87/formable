@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { InputProperty } from "./components/input/types";
-import { InputProperty as InputProperty1 } from "components/input/types";
+import { InputProperty as InputProperty1 } from "components/input";
 export namespace Components {
     interface VfInput {
         "field": InputProperty;

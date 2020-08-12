@@ -2,7 +2,8 @@ import { Component, h, Prop } from "@stencil/core";
 
 import { Formable } from "formable";
 
-import { InputProperty } from "components/input/types";
+import { InputProperty } from "components/input";
+
 import { validators } from "validation";
 
 @Component({
@@ -39,16 +40,12 @@ export class ComponentInput {
     console.log(this.foo);
   }
 
-  setValue = () => {
-    this.foo = this.foo.controller.render();
-  };
-
   render() {
     return (
       <div>
         <vf-input
           field={this.foo}
-          onEventInput={() => (this.foo = this.foo.controller.render())}
+          onEventInput={() => (this.foo = this.foo.render())}
         ></vf-input>
 
         {this.foo.value}
