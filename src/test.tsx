@@ -5,6 +5,7 @@ import { Formable } from "formable";
 import { InputProperty } from "components/input";
 
 import { validators } from "validation";
+import { SelectProperty } from "components/select";
 
 @Component({
   tag: "vf-test",
@@ -27,12 +28,15 @@ export class ComponentInput {
     value: "abc",
   });
 
-  @Prop() bar: InputProperty = Formable.input({
+  @Prop() bar: SelectProperty = Formable.select({
     view: {
       id: "bar",
       label: "bar",
-      type: "text",
-      required: false,
+      required: true,
+      options: [
+        { value: 1, label: "One"},
+        { value: 2, label: "Two"},
+      ]
     },
   });
 
@@ -48,7 +52,14 @@ export class ComponentInput {
           onEventInput={() => (this.foo = this.foo.render())}
         ></vf-input>
 
+        <vf-select
+          field={this.bar}
+          onEventChange={() => (this.bar = this.bar.render())}
+        ></vf-select>
+
         {this.foo.value}
+        <br/>
+        {this.bar.value}
       </div>
     );
   }

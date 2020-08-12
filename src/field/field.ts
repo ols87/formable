@@ -31,7 +31,7 @@ export class Field implements FieldClass {
       valid: this.view.required ? false : true,
     };
 
-    this.validators = options.validators || {};
+    this.validators = options.validators || null;
 
     this.value = options.value;
   }

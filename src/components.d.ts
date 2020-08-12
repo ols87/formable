@@ -6,13 +6,18 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { InputProperty } from "./components/input/types";
+import { SelectProperty } from "./components/select/types";
 import { InputProperty as InputProperty1 } from "components/input";
+import { SelectProperty as SelectProperty1 } from "components/select";
 export namespace Components {
     interface VfInput {
         "field": InputProperty;
     }
+    interface VfSelect {
+        "field": SelectProperty;
+    }
     interface VfTest {
-        "bar": InputProperty;
+        "bar": SelectProperty;
         "foo": InputProperty;
     }
 }
@@ -23,6 +28,12 @@ declare global {
         prototype: HTMLVfInputElement;
         new (): HTMLVfInputElement;
     };
+    interface HTMLVfSelectElement extends Components.VfSelect, HTMLStencilElement {
+    }
+    var HTMLVfSelectElement: {
+        prototype: HTMLVfSelectElement;
+        new (): HTMLVfSelectElement;
+    };
     interface HTMLVfTestElement extends Components.VfTest, HTMLStencilElement {
     }
     var HTMLVfTestElement: {
@@ -31,6 +42,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "vf-input": HTMLVfInputElement;
+        "vf-select": HTMLVfSelectElement;
         "vf-test": HTMLVfTestElement;
     }
 }
@@ -44,12 +56,19 @@ declare namespace LocalJSX {
         "onEventInput"?: (event: CustomEvent<InputProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<InputProperty>) => void;
     }
+    interface VfSelect {
+        "field"?: SelectProperty;
+        "onEventChange"?: (event: CustomEvent<SelectProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<SelectProperty>) => void;
+        "onEventInvalid"?: (event: CustomEvent<SelectProperty>) => void;
+    }
     interface VfTest {
-        "bar"?: InputProperty;
+        "bar"?: SelectProperty;
         "foo"?: InputProperty;
     }
     interface IntrinsicElements {
         "vf-input": VfInput;
+        "vf-select": VfSelect;
         "vf-test": VfTest;
     }
 }
@@ -58,6 +77,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "vf-input": LocalJSX.VfInput & JSXBase.HTMLAttributes<HTMLVfInputElement>;
+            "vf-select": LocalJSX.VfSelect & JSXBase.HTMLAttributes<HTMLVfSelectElement>;
             "vf-test": LocalJSX.VfTest & JSXBase.HTMLAttributes<HTMLVfTestElement>;
         }
     }
