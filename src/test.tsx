@@ -6,6 +6,7 @@ import { InputProperty } from "components/input";
 
 import { validators } from "validation";
 import { SelectProperty } from "components/select";
+import { EditorProperty } from "components/editor";
 
 @Component({
   tag: "vf-test",
@@ -40,6 +41,14 @@ export class ComponentInput {
     },
   });
 
+  @Prop() editor: EditorProperty = Formable.editor({
+    view: {
+      id: "editor",
+      label: "editor",
+      required: true,
+    },
+  });
+
   componentWillLoad() {
     console.log(this.foo);
   }
@@ -57,9 +66,16 @@ export class ComponentInput {
           onEventChange={() => (this.bar = this.bar.render())}
         ></vf-select>
 
+        <vf-editor
+          field={this.editor}
+          onEventChange={() => (this.editor = this.editor.render())}
+        ></vf-editor>
+
         {this.foo.value}
         <br/>
         {this.bar.value}
+        <br/>
+        {this.editor.value}
       </div>
     );
   }

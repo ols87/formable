@@ -5,11 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { EditorProperty } from "./components/editor/types";
 import { InputProperty } from "./components/input/types";
 import { SelectProperty } from "./components/select/types";
 import { InputProperty as InputProperty1 } from "components/input";
 import { SelectProperty as SelectProperty1 } from "components/select";
+import { EditorProperty as EditorProperty1 } from "components/editor";
 export namespace Components {
+    interface VfEditor {
+        "field": EditorProperty;
+    }
     interface VfInput {
         "field": InputProperty;
     }
@@ -18,10 +23,17 @@ export namespace Components {
     }
     interface VfTest {
         "bar": SelectProperty;
+        "editor": EditorProperty;
         "foo": InputProperty;
     }
 }
 declare global {
+    interface HTMLVfEditorElement extends Components.VfEditor, HTMLStencilElement {
+    }
+    var HTMLVfEditorElement: {
+        prototype: HTMLVfEditorElement;
+        new (): HTMLVfEditorElement;
+    };
     interface HTMLVfInputElement extends Components.VfInput, HTMLStencilElement {
     }
     var HTMLVfInputElement: {
@@ -41,12 +53,20 @@ declare global {
         new (): HTMLVfTestElement;
     };
     interface HTMLElementTagNameMap {
+        "vf-editor": HTMLVfEditorElement;
         "vf-input": HTMLVfInputElement;
         "vf-select": HTMLVfSelectElement;
         "vf-test": HTMLVfTestElement;
     }
 }
 declare namespace LocalJSX {
+    interface VfEditor {
+        "field"?: EditorProperty;
+        "onEventBlur"?: (event: CustomEvent<EditorProperty>) => void;
+        "onEventChange"?: (event: CustomEvent<EditorProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<EditorProperty>) => void;
+        "onEventFocus"?: (event: CustomEvent<EditorProperty>) => void;
+    }
     interface VfInput {
         "field"?: InputProperty;
         "onEventBlur"?: (event: CustomEvent<InputProperty>) => void;
@@ -64,9 +84,11 @@ declare namespace LocalJSX {
     }
     interface VfTest {
         "bar"?: SelectProperty;
+        "editor"?: EditorProperty;
         "foo"?: InputProperty;
     }
     interface IntrinsicElements {
+        "vf-editor": VfEditor;
         "vf-input": VfInput;
         "vf-select": VfSelect;
         "vf-test": VfTest;
@@ -76,6 +98,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "vf-editor": LocalJSX.VfEditor & JSXBase.HTMLAttributes<HTMLVfEditorElement>;
             "vf-input": LocalJSX.VfInput & JSXBase.HTMLAttributes<HTMLVfInputElement>;
             "vf-select": LocalJSX.VfSelect & JSXBase.HTMLAttributes<HTMLVfSelectElement>;
             "vf-test": LocalJSX.VfTest & JSXBase.HTMLAttributes<HTMLVfTestElement>;
