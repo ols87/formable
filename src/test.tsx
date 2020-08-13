@@ -37,7 +37,7 @@ export class ComponentInput {
 
         this.input.value = data.title;
 
-        this.input.render();
+        this.input = this.input.render();
       },
     },
   });
