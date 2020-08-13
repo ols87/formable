@@ -1,4 +1,4 @@
-import { FieldView } from "field/types";
+import { FieldView } from "field";
 
 interface SelectOption {
   value: any;

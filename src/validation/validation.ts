@@ -1,4 +1,4 @@
-import { FieldProperty } from "field/types";
+import { FieldProperty } from "field";
 import { Validator } from "validation";
 import { regexDate } from "./regex";
 

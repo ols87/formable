@@ -3,9 +3,9 @@ import { Component, h, Prop } from "@stencil/core";
 import { Formable } from "formable";
 
 import { InputProperty } from "components/input";
+import { SelectProperty } from "components/select";
 
 import { validators } from "validation";
-import { SelectProperty } from "components/select";
 
 @Component({
   tag: "vf-test",
@@ -25,6 +25,21 @@ export class ComponentInput {
         message: "must be 00/00/0000",
       },
     ],
+    lifecycle: {
+      componentDidLoad: async () => {
+        console.log(1);
+      },
+      componentWillLoad: async () => {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/todos/1"
+        );
+        const data = await response.json();
+
+        this.input.value = data.title;
+
+        this.input.render();
+      },
+    },
   });
 
   @Prop() select: SelectProperty = Formable.select({
@@ -38,10 +53,6 @@ export class ComponentInput {
       ],
     },
   });
-
-  componentWillLoad() {
-    console.log(this.input);
-  }
 
   render() {
     return (

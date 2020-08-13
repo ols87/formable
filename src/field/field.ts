@@ -5,9 +5,10 @@ import {
   FieldClass,
   FieldProperty,
   FieldEventOptions,
+  FieldLifecycle,
 } from "./types";
 
-import { Validation } from "validation";
+import { Validation, Validator } from "validation";
 
 export class Field implements FieldClass {
   public view: FieldView;
@@ -16,7 +17,9 @@ export class Field implements FieldClass {
 
   public meta: FieldMeta;
 
-  public validators: any;
+  public lifecycle: FieldLifecycle;
+
+  public validators: Array<Validator>;
 
   public value: any;
 
@@ -33,6 +36,8 @@ export class Field implements FieldClass {
     };
 
     this.validators = options.validators || null;
+
+    this.lifecycle = options.lifecycle;
 
     this.value = options.value;
   }
