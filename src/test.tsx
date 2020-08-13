@@ -35,9 +35,7 @@ export class ComponentInput {
         );
         const data = await response.json();
 
-        this.input.value = data.title;
-
-        this.input = this.input.render();
+        this.input = this.input.set(data.title);
       },
     },
   });
