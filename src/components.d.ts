@@ -17,8 +17,8 @@ export namespace Components {
         "field": SelectProperty;
     }
     interface VfTest {
-        "bar": SelectProperty;
-        "foo": InputProperty;
+        "input": InputProperty;
+        "select": SelectProperty;
     }
 }
 declare global {
@@ -63,8 +63,8 @@ declare namespace LocalJSX {
         "onEventInvalid"?: (event: CustomEvent<SelectProperty>) => void;
     }
     interface VfTest {
-        "bar"?: SelectProperty;
-        "foo"?: InputProperty;
+        "input"?: InputProperty;
+        "select"?: SelectProperty;
     }
     interface IntrinsicElements {
         "vf-input": VfInput;

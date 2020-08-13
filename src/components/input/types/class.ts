@@ -1,4 +1,3 @@
-import { InputProperty } from "./property";
-import { InputController } from "./controller";
+import { InputProperty, InputController } from "./";
 
 export type InputClass = InputProperty & InputController;

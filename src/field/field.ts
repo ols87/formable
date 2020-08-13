@@ -4,6 +4,7 @@ import {
   FieldEvents,
   FieldClass,
   FieldProperty,
+  FieldEventOptions,
 } from "./types";
 
 import { Validation } from "validation";
@@ -72,14 +73,17 @@ export class Field implements FieldClass {
     return new Field(this);
   }
 
-  on(name: string): string {
-    name = name.charAt(0).toUpperCase() + name.slice(1);
+  on(options: FieldEventOptions) {
+    const { value, component } = options;
 
-    if (this.events?.hasOwnProperty(`on${name}`)) {
+    const name = options.name.charAt(0).toUpperCase() + options.name.slice(1);
+
+    this.set(value);
+
+    if (this.events?.hasOwnProperty(`on${name}`))
       this.events[`on${name}`](this);
-    }
 
-    return name;
+    component[`event${name}`].emit(this);
   }
 
   validate(): boolean {

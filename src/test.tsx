@@ -11,10 +11,10 @@ import { SelectProperty } from "components/select";
   tag: "vf-test",
 })
 export class ComponentInput {
-  @Prop() foo: InputProperty = Formable.input({
+  @Prop() input: InputProperty = Formable.input({
     view: {
-      id: "foo",
-      label: "foo",
+      id: "input",
+      label: "input",
       type: "text",
       required: true,
     },
@@ -25,41 +25,43 @@ export class ComponentInput {
         message: "must be 00/00/0000",
       },
     ],
-    value: "abc",
   });
 
-  @Prop() bar: SelectProperty = Formable.select({
+  @Prop() select: SelectProperty = Formable.select({
     view: {
-      id: "bar",
-      label: "bar",
+      id: "select",
+      label: "select",
       required: true,
       options: [
-        { value: 1, label: "One"},
-        { value: 2, label: "Two"},
-      ]
+        { value: 1, label: "One" },
+        { value: 2, label: "Two" },
+      ],
     },
   });
 
   componentWillLoad() {
-    console.log(this.foo);
+    console.log(this.input);
   }
 
   render() {
     return (
       <div>
         <vf-input
-          field={this.foo}
-          onEventInput={() => (this.foo = this.foo.render())}
+          field={this.input}
+          onEventInput={() => (this.input = this.input.render())}
         ></vf-input>
 
+        {this.input.value}
+
+        <hr />
+
         <vf-select
-          field={this.bar}
-          onEventChange={() => (this.bar = this.bar.render())}
+          field={this.select}
+          onEventChange={() => (this.select = this.select.render())}
         ></vf-select>
 
-        {this.foo.value}
-        <br/>
-        {this.bar.value}
+        {this.select.value}
+        <hr />
       </div>
     );
   }

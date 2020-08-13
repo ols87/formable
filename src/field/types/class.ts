@@ -1,4 +1,3 @@
-import { FieldProperty } from "./property";
-import { FieldController } from "./controller";
+import { FieldProperty, FieldController } from "./";
 
 export type FieldClass = FieldProperty & FieldController;

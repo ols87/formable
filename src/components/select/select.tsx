@@ -1,9 +1,17 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+} from "@stencil/core";
 import { SelectProperty } from "./types";
+import { FieldEventOptions } from "field";
 @Component({
   tag: "vf-select",
 })
-export class ComponentSelect {
+export class ComponentSelect implements ComponentInterface {
   @Prop() field: SelectProperty;
 
   @Event() eventClick: EventEmitter<SelectProperty>;
@@ -11,11 +19,13 @@ export class ComponentSelect {
   @Event() eventInvalid: EventEmitter<SelectProperty>;
 
   event(name: string, event: any) {
-    this.field.set(event.target.value);
+    const eventOptions: FieldEventOptions = {
+      name,
+      value: event.target.value,
+      component: this,
+    };
 
-    name = this.field.on(name);
-
-    this[`event${name}`].emit(this.field);
+    this.field.on(eventOptions);
   }
 
   render() {
@@ -23,12 +33,12 @@ export class ComponentSelect {
 
     return (
       <div
-        class={`vf-field-wrapper vf-input-wrapper ${
+        class={`vf-field-wrapper vf-select-wrapper ${
           view.classes?.wrapper ? view.classes?.wrapper : ""
         }`}
       >
         <label
-          class={`vf-field-label vf-input-label ${
+          class={`vf-field-label vf-select-label ${
             view.classes?.label ? view.classes?.label : ""
           }`}
         >
@@ -47,15 +57,18 @@ export class ComponentSelect {
         >
           <option selected label={view.placeholder ?? "Please select"}></option>
 
-          {view.options.map(item => 
-            <option value={item.value} selected={value == item.value} label={item.label}>
-            </option>
-          )}
+          {view.options.map((item) => (
+            <option
+              value={item.value}
+              selected={value == item.value}
+              label={item.label}
+            ></option>
+          ))}
         </select>
 
-        <div class="vf-field-errors vf-input-errors">
+        <div class="vf-field-errors vf-select-errors">
           {view.errors?.map((error: string) => (
-            <div class="vf-field-error vf-input-error">{error}</div>
+            <div class="vf-field-error vf-select-error">{error}</div>
           ))}
         </div>
       </div>

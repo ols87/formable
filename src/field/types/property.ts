@@ -1,7 +1,5 @@
-import { FieldView, FieldEvents } from ".";
-import { FieldMeta } from "./meta";
-import { Validator } from "./validation";
-import { FieldClass } from "./class";
+import { FieldView, FieldEvents, FieldMeta, FieldClass } from ".";
+import { Validator } from "validation";
 
 export interface FieldProperty extends Partial<FieldClass> {
   view: FieldView;

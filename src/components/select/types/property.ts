@@ -1,6 +1,5 @@
 import { FieldProperty } from "field/types";
-import { SelectEvents } from "./";
-import { SelectView } from "./view";
+import { SelectView, SelectEvents } from "./";
 
 export interface SelectProperty extends FieldProperty {
   view: SelectView;

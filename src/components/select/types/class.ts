@@ -1,4 +1,3 @@
-import { SelectProperty } from "./property";
-import { SelectController } from "./controller";
+import { SelectProperty, SelectController } from "./";
 
 export type SelectClass = SelectProperty & SelectController;

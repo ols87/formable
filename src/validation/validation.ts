@@ -1,5 +1,5 @@
 import { FieldProperty } from "field/types";
-import { Validator } from "field/types";
+import { Validator } from "validation";
 import { regexDate } from "./regex";
 
 export const validators = {
@@ -45,6 +45,8 @@ export class Validation {
 
   public validators(): boolean {
     let valid = true;
+
+    if (this.field?.validators.length < 1) return valid;
 
     this.field.validators.forEach((validator: Validator) => {
       const isMatch = validator.match.test(this.field.value);

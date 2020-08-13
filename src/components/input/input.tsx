@@ -1,9 +1,17 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+} from "@stencil/core";
 import { InputProperty } from "./types";
+import { FieldEventOptions } from "field";
 @Component({
   tag: "vf-input",
 })
-export class ComponentInput {
+export class ComponentInput implements ComponentInterface {
   @Prop() field: InputProperty;
 
   @Event() eventClick: EventEmitter<InputProperty>;
@@ -14,11 +22,13 @@ export class ComponentInput {
   @Event() eventInvalid: EventEmitter<InputProperty>;
 
   event(name: string, event: any) {
-    this.field = this.field.set(event.target.value);
+    const eventOptions: FieldEventOptions = {
+      name,
+      value: event.target.value,
+      component: this,
+    };
 
-    name = this.field.on(name);
-
-    this[`event${name}`].emit(this.field);
+    this.field.on(eventOptions);
   }
 
   render() {
