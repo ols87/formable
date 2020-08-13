@@ -79,13 +79,11 @@ export class ComponentSelect implements ComponentInterface {
     return (
       <div
         class={`vf-field-wrapper vf-select-wrapper ${
-          view.classes?.wrapper ? view.classes?.wrapper : ""
+          view.classes?.wrapper ?? ""
         }`}
       >
         <label
-          class={`vf-field-label vf-select-label ${
-            view.classes?.label ? view.classes?.label : ""
-          }`}
+          class={`vf-field-label vf-select-label ${view.classes?.label ?? ""}`}
         >
           {view.label}
         </label>
