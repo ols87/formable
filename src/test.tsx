@@ -7,6 +7,7 @@ import { InputProperty } from "components/input";
 import { validators } from "validation";
 import { SelectProperty } from "components/select";
 import { EditorProperty } from "components/editor";
+import { CheckboxProperty } from "components/checkbox";
 
 @Component({
   tag: "vf-test",
@@ -49,6 +50,14 @@ export class ComponentInput {
     },
   });
 
+  @Prop() checkbox: CheckboxProperty = Formable.checkbox({
+    view: {
+      id: "checkbox",
+      label: "checkbox",
+      required: true,
+    },
+  });
+
   componentWillLoad() {
     console.log(this.foo);
   }
@@ -66,6 +75,11 @@ export class ComponentInput {
           onEventChange={() => (this.bar = this.bar.render())}
         ></vf-select>
 
+        <vf-checkbox
+          field={this.checkbox}
+          onEventChange={() => (this.checkbox = this.checkbox.render())}
+        ></vf-checkbox>
+
         <vf-editor
           field={this.editor}
           onEventChange={() => (this.editor = this.editor.render())}
@@ -76,6 +90,8 @@ export class ComponentInput {
         {this.bar.value}
         <br/>
         {this.editor.value}
+        <br/>
+        {this.checkbox.value}
       </div>
     );
   }

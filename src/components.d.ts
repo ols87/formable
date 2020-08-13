@@ -5,13 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CheckboxProperty } from "./components/checkbox/types";
 import { EditorProperty } from "./components/editor/types";
 import { InputProperty } from "./components/input/types";
 import { SelectProperty } from "./components/select/types";
 import { InputProperty as InputProperty1 } from "components/input";
 import { SelectProperty as SelectProperty1 } from "components/select";
 import { EditorProperty as EditorProperty1 } from "components/editor";
+import { CheckboxProperty as CheckboxProperty1 } from "components/checkbox";
 export namespace Components {
+    interface VfCheckbox {
+        "field": CheckboxProperty;
+    }
     interface VfEditor {
         "field": EditorProperty;
     }
@@ -23,11 +28,18 @@ export namespace Components {
     }
     interface VfTest {
         "bar": SelectProperty;
+        "checkbox": CheckboxProperty;
         "editor": EditorProperty;
         "foo": InputProperty;
     }
 }
 declare global {
+    interface HTMLVfCheckboxElement extends Components.VfCheckbox, HTMLStencilElement {
+    }
+    var HTMLVfCheckboxElement: {
+        prototype: HTMLVfCheckboxElement;
+        new (): HTMLVfCheckboxElement;
+    };
     interface HTMLVfEditorElement extends Components.VfEditor, HTMLStencilElement {
     }
     var HTMLVfEditorElement: {
@@ -53,6 +65,7 @@ declare global {
         new (): HTMLVfTestElement;
     };
     interface HTMLElementTagNameMap {
+        "vf-checkbox": HTMLVfCheckboxElement;
         "vf-editor": HTMLVfEditorElement;
         "vf-input": HTMLVfInputElement;
         "vf-select": HTMLVfSelectElement;
@@ -60,6 +73,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface VfCheckbox {
+        "field"?: CheckboxProperty;
+        "onEventChange"?: (event: CustomEvent<CheckboxProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<CheckboxProperty>) => void;
+        "onEventInvalid"?: (event: CustomEvent<CheckboxProperty>) => void;
+    }
     interface VfEditor {
         "field"?: EditorProperty;
         "onEventBlur"?: (event: CustomEvent<EditorProperty>) => void;
@@ -84,10 +103,12 @@ declare namespace LocalJSX {
     }
     interface VfTest {
         "bar"?: SelectProperty;
+        "checkbox"?: CheckboxProperty;
         "editor"?: EditorProperty;
         "foo"?: InputProperty;
     }
     interface IntrinsicElements {
+        "vf-checkbox": VfCheckbox;
         "vf-editor": VfEditor;
         "vf-input": VfInput;
         "vf-select": VfSelect;
@@ -98,6 +119,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "vf-checkbox": LocalJSX.VfCheckbox & JSXBase.HTMLAttributes<HTMLVfCheckboxElement>;
             "vf-editor": LocalJSX.VfEditor & JSXBase.HTMLAttributes<HTMLVfEditorElement>;
             "vf-input": LocalJSX.VfInput & JSXBase.HTMLAttributes<HTMLVfInputElement>;
             "vf-select": LocalJSX.VfSelect & JSXBase.HTMLAttributes<HTMLVfSelectElement>;
