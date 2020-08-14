@@ -8,6 +8,7 @@ import { validators } from "validation";
 import { SelectProperty } from "components/select";
 import { EditorProperty } from "components/editor";
 import { CheckboxProperty } from "components/checkbox";
+import { RadioProperty } from "components/radio";
 
 @Component({
   tag: "vf-test",
@@ -58,8 +59,25 @@ export class ComponentInput {
     },
   });
 
+  @Prop() radio: RadioProperty = Formable.radio({
+    view: {
+      id: "radio",
+      label: "radio",
+      required: true,
+      options: [
+        { value: "m", label: "Male" },
+        { value: "f", label: "Female" },
+        { value: "other", label: "Other" },
+      ]
+    },
+    value: "m"
+  });
+
   componentWillLoad() {
     console.log(this.foo);
+    setTimeout(() => {
+      this.radio.set(true);
+    }, 3000);
   }
 
   render() {
@@ -80,18 +98,25 @@ export class ComponentInput {
           onEventChange={() => (this.checkbox = this.checkbox.render())}
         ></vf-checkbox>
 
+        <vf-radio
+          field={this.radio}
+          onEventChange={() => (this.radio = this.radio.render())}
+        ></vf-radio>
+
         <vf-editor
           field={this.editor}
           onEventChange={() => (this.editor = this.editor.render())}
         ></vf-editor>
 
-        {this.foo.value}
+        Input: {this.foo.value}
         <br/>
-        {this.bar.value}
+        Select: {this.bar.value}
         <br/>
-        {this.editor.value}
+        Editor: {this.editor.value}
         <br/>
-        {this.checkbox.value}
+        Checkbox: {this.checkbox.value ? "true" : "false"}
+        <br/>
+        Radio: {this.radio.value}
       </div>
     );
   }

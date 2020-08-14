@@ -1,0 +1,8 @@
+.radio-group {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.radio-group .radio-option input {
+    margin-right: 0.5rem;
+}

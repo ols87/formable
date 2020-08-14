@@ -28,15 +28,6 @@ export class ComponentCheckbox {
     this[`event${name}`].emit(this.field, event);
   }
 
-  onLabelClick(event: any) {
-    if (this.field.view.disabled) {
-      return;
-    }
-
-    this.event("click", event);
-    this.event("change", event);
-  }
-
   render() {
     const { view } = this.field;
 
@@ -64,7 +55,6 @@ export class ComponentCheckbox {
           class={`vf-field-label vf-input-label ${
             view.classes?.label ? view.classes?.label : ""
           }`}
-          onClick={(event) => this.onLabelClick(event)}
         >
           {view.label}
         </label>
