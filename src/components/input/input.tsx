@@ -41,6 +41,7 @@ export class ComponentInput implements ComponentInterface {
         }`}
       >
         <label
+          htmlFor={view.id}
           class={`vf-field-label vf-input-label ${
             view.classes?.label ? view.classes?.label : ""
           }`}
