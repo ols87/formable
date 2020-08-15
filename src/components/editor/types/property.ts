@@ -1,10 +1,8 @@
 import { FieldProperty } from "field";
-import { EditorClass, EditorEvents, EditorView } from "./";
+import { EditorEvents, EditorView } from "./";
 import Quill from "quill";
 
-type EditorProp = FieldProperty & Partial<EditorClass>;
-
-export interface EditorProperty extends EditorProp {
+export interface EditorProperty extends FieldProperty {
   view: EditorView;
   events?: EditorEvents;
   editor?: Quill;
