@@ -4,22 +4,26 @@ import {
   Prop,
   Event,
   EventEmitter,
-  ComponentInterface,
+  Element,
 } from "@stencil/core";
-import { InputProperty } from "./types";
-import { FieldEventOptions } from "field";
-@Component({
-  tag: "vf-input",
-})
-export class ComponentInput implements ComponentInterface {
-  @Prop() field: InputProperty;
 
-  @Event() eventClick: EventEmitter<InputProperty>;
-  @Event() eventFocus: EventEmitter<InputProperty>;
-  @Event() eventInput: EventEmitter<InputProperty>;
-  @Event() eventChange: EventEmitter<InputProperty>;
-  @Event() eventBlur: EventEmitter<InputProperty>;
-  @Event() eventInvalid: EventEmitter<InputProperty>;
+import { EditorProperty } from "./types";
+import { FieldEventOptions } from "field";
+import { initEditor } from "./init";
+
+@Component({
+  tag: "vf-editor",
+  styleUrl: "../../../node_modules/quill/dist/quill.snow.css",
+})
+export class ComponentEditor {
+  @Prop() field: EditorProperty;
+
+  @Element() editorElement: HTMLElement;
+
+  @Event() eventClick: EventEmitter<EditorProperty>;
+  @Event() eventFocus: EventEmitter<EditorProperty>;
+  @Event() eventChange: EventEmitter<EditorProperty>;
+  @Event() eventBlur: EventEmitter<EditorProperty>;
 
   async connectedCallback() {
     if (this.field.lifecycle?.connectedCallback)
@@ -37,6 +41,8 @@ export class ComponentInput implements ComponentInterface {
   }
 
   async componentDidLoad() {
+    initEditor.bind(this)();
+
     if (this.field.lifecycle?.componentDidLoad)
       await this.field.lifecycle.componentDidLoad();
   }
@@ -67,9 +73,13 @@ export class ComponentInput implements ComponentInterface {
   }
 
   event(name: string, event: any) {
+    let eventValue = name === "change" ? event : event.target.innerHTML;
+
+    this.field.set(eventValue);
+
     const eventOptions: FieldEventOptions = {
       name,
-      value: event.target.value,
+      value: eventValue,
       component: this,
     };
 
@@ -77,41 +87,34 @@ export class ComponentInput implements ComponentInterface {
   }
 
   render() {
-    const { view, value } = this.field;
+    const { view } = this.field;
 
     return (
       <div
-        class={`vf-field-wrapper vf-input-wrapper ${
-          view.classes?.wrapper ?? ""
+        class={`vf-field-wrapper vf-editor-wrapper ${
+          view.classes?.wrapper ? view.classes?.wrapper : ""
         }`}
       >
         <label
-          class={`vf-field-label vf-input-label ${view.classes?.label ?? ""}`}
           htmlFor={view.id}
+          class={`vf-field-label vf-editor-label ${
+            view.classes?.label ? view.classes?.label : ""
+          }`}
         >
           {view.label}
         </label>
 
-        <input
-          autoComplete="on"
-          class={view.classes?.field}
-          id={view.id}
-          name={view.id}
-          type={view.type}
-          required={view.required}
-          disabled={view.disabled}
-          value={value}
-          onClick={(event) => this.event("click", event)}
-          onFocus={(event) => this.event("focus", event)}
-          onInput={(event) => this.event("input", event)}
-          onChange={(event) => this.event("change", event)}
-          onBlur={(event) => this.event("blur", event)}
-          onInvalid={(event) => this.event("invalid", event)}
-        />
+        <div class={view.classes?.field}>
+          <div
+            class="vf-editor-container"
+            id={view.id}
+            style={view.style}
+          ></div>
+        </div>
 
-        <div class="vf-field-errors vf-input-errors">
+        <div class="vf-field-errors vf-editor-errors">
           {view.errors?.map((error: string) => (
-            <div class="vf-field-error vf-input-error">{error}</div>
+            <div class="vf-field-error vf-editor-error">{error}</div>
           ))}
         </div>
       </div>

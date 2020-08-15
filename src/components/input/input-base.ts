@@ -21,4 +21,8 @@ export class InputField extends Field implements InputClass {
   constructor(options: InputProperty) {
     super(options);
   }
+
+  render(): InputField {
+    return new InputField(this);
+  }
 }

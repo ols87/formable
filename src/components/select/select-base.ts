@@ -21,4 +21,8 @@ export class SelectField extends Field implements SelectClass {
   constructor(options: SelectProperty) {
     super(options);
   }
+
+  render(): SelectField {
+    return new SelectField(this);
+  }
 }

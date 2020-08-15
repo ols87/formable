@@ -5,28 +5,64 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CheckboxProperty } from "./components/checkbox/types";
+import { EditorProperty } from "./components/editor/types";
 import { InputProperty } from "./components/input/types";
+import { RadioProperty } from "./components/radio/types";
 import { SelectProperty } from "./components/select/types";
 import { InputProperty as InputProperty1 } from "components/input";
 import { SelectProperty as SelectProperty1 } from "components/select";
+import { EditorProperty as EditorProperty1 } from "components/editor";
+import { CheckboxProperty as CheckboxProperty1 } from "components/checkbox";
+import { RadioProperty as RadioProperty1 } from "components/radio";
 export namespace Components {
+    interface VfCheckbox {
+        "field": CheckboxProperty;
+    }
+    interface VfEditor {
+        "field": EditorProperty;
+    }
     interface VfInput {
         "field": InputProperty;
+    }
+    interface VfRadio {
+        "field": RadioProperty;
     }
     interface VfSelect {
         "field": SelectProperty;
     }
     interface VfTest {
+        "checkbox": CheckboxProperty;
+        "editor": EditorProperty;
         "input": InputProperty;
+        "radio": RadioProperty;
         "select": SelectProperty;
     }
 }
 declare global {
+    interface HTMLVfCheckboxElement extends Components.VfCheckbox, HTMLStencilElement {
+    }
+    var HTMLVfCheckboxElement: {
+        prototype: HTMLVfCheckboxElement;
+        new (): HTMLVfCheckboxElement;
+    };
+    interface HTMLVfEditorElement extends Components.VfEditor, HTMLStencilElement {
+    }
+    var HTMLVfEditorElement: {
+        prototype: HTMLVfEditorElement;
+        new (): HTMLVfEditorElement;
+    };
     interface HTMLVfInputElement extends Components.VfInput, HTMLStencilElement {
     }
     var HTMLVfInputElement: {
         prototype: HTMLVfInputElement;
         new (): HTMLVfInputElement;
+    };
+    interface HTMLVfRadioElement extends Components.VfRadio, HTMLStencilElement {
+    }
+    var HTMLVfRadioElement: {
+        prototype: HTMLVfRadioElement;
+        new (): HTMLVfRadioElement;
     };
     interface HTMLVfSelectElement extends Components.VfSelect, HTMLStencilElement {
     }
@@ -41,12 +77,28 @@ declare global {
         new (): HTMLVfTestElement;
     };
     interface HTMLElementTagNameMap {
+        "vf-checkbox": HTMLVfCheckboxElement;
+        "vf-editor": HTMLVfEditorElement;
         "vf-input": HTMLVfInputElement;
+        "vf-radio": HTMLVfRadioElement;
         "vf-select": HTMLVfSelectElement;
         "vf-test": HTMLVfTestElement;
     }
 }
 declare namespace LocalJSX {
+    interface VfCheckbox {
+        "field"?: CheckboxProperty;
+        "onEventChange"?: (event: CustomEvent<CheckboxProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<CheckboxProperty>) => void;
+        "onEventInvalid"?: (event: CustomEvent<CheckboxProperty>) => void;
+    }
+    interface VfEditor {
+        "field"?: EditorProperty;
+        "onEventBlur"?: (event: CustomEvent<EditorProperty>) => void;
+        "onEventChange"?: (event: CustomEvent<EditorProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<EditorProperty>) => void;
+        "onEventFocus"?: (event: CustomEvent<EditorProperty>) => void;
+    }
     interface VfInput {
         "field"?: InputProperty;
         "onEventBlur"?: (event: CustomEvent<InputProperty>) => void;
@@ -56,6 +108,12 @@ declare namespace LocalJSX {
         "onEventInput"?: (event: CustomEvent<InputProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<InputProperty>) => void;
     }
+    interface VfRadio {
+        "field"?: RadioProperty;
+        "onEventChange"?: (event: CustomEvent<RadioProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<RadioProperty>) => void;
+        "onEventInvalid"?: (event: CustomEvent<RadioProperty>) => void;
+    }
     interface VfSelect {
         "field"?: SelectProperty;
         "onEventChange"?: (event: CustomEvent<SelectProperty>) => void;
@@ -63,11 +121,17 @@ declare namespace LocalJSX {
         "onEventInvalid"?: (event: CustomEvent<SelectProperty>) => void;
     }
     interface VfTest {
+        "checkbox"?: CheckboxProperty;
+        "editor"?: EditorProperty;
         "input"?: InputProperty;
+        "radio"?: RadioProperty;
         "select"?: SelectProperty;
     }
     interface IntrinsicElements {
+        "vf-checkbox": VfCheckbox;
+        "vf-editor": VfEditor;
         "vf-input": VfInput;
+        "vf-radio": VfRadio;
         "vf-select": VfSelect;
         "vf-test": VfTest;
     }
@@ -76,7 +140,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "vf-checkbox": LocalJSX.VfCheckbox & JSXBase.HTMLAttributes<HTMLVfCheckboxElement>;
+            "vf-editor": LocalJSX.VfEditor & JSXBase.HTMLAttributes<HTMLVfEditorElement>;
             "vf-input": LocalJSX.VfInput & JSXBase.HTMLAttributes<HTMLVfInputElement>;
+            "vf-radio": LocalJSX.VfRadio & JSXBase.HTMLAttributes<HTMLVfRadioElement>;
             "vf-select": LocalJSX.VfSelect & JSXBase.HTMLAttributes<HTMLVfSelectElement>;
             "vf-test": LocalJSX.VfTest & JSXBase.HTMLAttributes<HTMLVfTestElement>;
         }

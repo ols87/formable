@@ -74,7 +74,7 @@ export class Field implements FieldClass {
     this.validate();
   }
 
-  render(): any {
+  render(): Field {
     return new Field(this);
   }
 

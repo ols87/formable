@@ -4,6 +4,9 @@ import { Formable } from "formable";
 
 import { InputProperty } from "components/input";
 import { SelectProperty } from "components/select";
+import { EditorProperty } from "components/editor";
+import { CheckboxProperty } from "components/checkbox";
+import { RadioProperty } from "components/radio";
 
 import { validators } from "validation";
 
@@ -26,9 +29,6 @@ export class ComponentInput {
       },
     ],
     lifecycle: {
-      componentDidLoad: async () => {
-        console.log(1);
-      },
       componentWillLoad: async () => {
         const response = await fetch(
           "https://jsonplaceholder.typicode.com/todos/1"
@@ -52,6 +52,36 @@ export class ComponentInput {
     },
   });
 
+  @Prop() editor: EditorProperty = Formable.editor({
+    view: {
+      id: "editor",
+      label: "editor",
+      required: true,
+    },
+  });
+
+  @Prop() checkbox: CheckboxProperty = Formable.checkbox({
+    view: {
+      id: "checkbox",
+      label: "checkbox",
+      required: true,
+    },
+  });
+
+  @Prop() radio: RadioProperty = Formable.radio({
+    view: {
+      id: "radio",
+      label: "radio",
+      required: true,
+      options: [
+        { value: "m", label: "Male" },
+        { value: "f", label: "Female" },
+        { value: "other", label: "Other" },
+      ],
+    },
+    value: "m",
+  });
+
   render() {
     return (
       <div>
@@ -59,18 +89,31 @@ export class ComponentInput {
           field={this.input}
           onEventInput={() => (this.input = this.input.render())}
         ></vf-input>
-
-        {this.input.value}
-
-        <hr />
-
         <vf-select
           field={this.select}
           onEventChange={() => (this.select = this.select.render())}
         ></vf-select>
-
-        {this.select.value}
-        <hr />
+        <vf-checkbox
+          field={this.checkbox}
+          onEventChange={() => (this.checkbox = this.checkbox.render())}
+        ></vf-checkbox>
+        <vf-radio
+          field={this.radio}
+          onEventChange={() => (this.radio = this.radio.render())}
+        ></vf-radio>
+        <vf-editor
+          field={this.editor}
+          onEventChange={() => (this.editor = this.editor.render())}
+        ></vf-editor>
+        Input: {this.input.value}
+        <br />
+        Select: {this.select.value}
+        <br />
+        Checkbox: {this.checkbox.value ? "true" : "false"}
+        <br />
+        Radio: {this.radio.value}
+        <br />
+        Editor: {this.editor.value}
       </div>
     );
   }
