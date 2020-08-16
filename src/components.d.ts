@@ -14,7 +14,9 @@ import { InputProperty as InputProperty1 } from "components/input";
 import { SelectProperty as SelectProperty1 } from "components/select";
 import { EditorProperty as EditorProperty1 } from "components/editor";
 import { CheckboxProperty as CheckboxProperty1 } from "components/checkbox";
+import { ToggleProperty } from "components/toggle";
 import { RadioProperty as RadioProperty1 } from "components/radio";
+import { ToggleProperty as ToggleProperty1 } from "./components/toggle/types";
 export namespace Components {
     interface VfCheckbox {
         "field": CheckboxProperty;
@@ -37,6 +39,10 @@ export namespace Components {
         "input": InputProperty;
         "radio": RadioProperty;
         "select": SelectProperty;
+        "toggle": ToggleProperty;
+    }
+    interface VfToggle {
+        "field": ToggleProperty;
     }
 }
 declare global {
@@ -76,6 +82,12 @@ declare global {
         prototype: HTMLVfTestElement;
         new (): HTMLVfTestElement;
     };
+    interface HTMLVfToggleElement extends Components.VfToggle, HTMLStencilElement {
+    }
+    var HTMLVfToggleElement: {
+        prototype: HTMLVfToggleElement;
+        new (): HTMLVfToggleElement;
+    };
     interface HTMLElementTagNameMap {
         "vf-checkbox": HTMLVfCheckboxElement;
         "vf-editor": HTMLVfEditorElement;
@@ -83,6 +95,7 @@ declare global {
         "vf-radio": HTMLVfRadioElement;
         "vf-select": HTMLVfSelectElement;
         "vf-test": HTMLVfTestElement;
+        "vf-toggle": HTMLVfToggleElement;
     }
 }
 declare namespace LocalJSX {
@@ -126,6 +139,13 @@ declare namespace LocalJSX {
         "input"?: InputProperty;
         "radio"?: RadioProperty;
         "select"?: SelectProperty;
+        "toggle"?: ToggleProperty;
+    }
+    interface VfToggle {
+        "field"?: ToggleProperty;
+        "onEventChange"?: (event: CustomEvent<ToggleProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<ToggleProperty>) => void;
+        "onEventInvalid"?: (event: CustomEvent<ToggleProperty>) => void;
     }
     interface IntrinsicElements {
         "vf-checkbox": VfCheckbox;
@@ -134,6 +154,7 @@ declare namespace LocalJSX {
         "vf-radio": VfRadio;
         "vf-select": VfSelect;
         "vf-test": VfTest;
+        "vf-toggle": VfToggle;
     }
 }
 export { LocalJSX as JSX };
@@ -146,6 +167,7 @@ declare module "@stencil/core" {
             "vf-radio": LocalJSX.VfRadio & JSXBase.HTMLAttributes<HTMLVfRadioElement>;
             "vf-select": LocalJSX.VfSelect & JSXBase.HTMLAttributes<HTMLVfSelectElement>;
             "vf-test": LocalJSX.VfTest & JSXBase.HTMLAttributes<HTMLVfTestElement>;
+            "vf-toggle": LocalJSX.VfToggle & JSXBase.HTMLAttributes<HTMLVfToggleElement>;
         }
     }
 }

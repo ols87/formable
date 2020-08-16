@@ -9,6 +9,7 @@ import { SelectProperty } from "components/select";
 import { EditorProperty } from "components/editor";
 import { CheckboxProperty } from "components/checkbox";
 import { RadioProperty } from "components/radio";
+import { ToggleProperty } from "components/toggle";
 
 @Component({
   tag: "vf-test",
@@ -53,15 +54,24 @@ export class ComponentInput {
   @Prop() checkbox: CheckboxProperty = Formable.checkbox({
     view: {
       id: "checkbox",
-      label: "checkbox",
+      label: "Checkbox",
       required: true,
     },
+  });
+
+  @Prop() toggle: ToggleProperty = Formable.toggle({
+    view: {
+      id: "toggle",
+      label: "Toggle",
+      required: true,
+    },
+    value: true
   });
 
   @Prop() radio: RadioProperty = Formable.radio({
     view: {
       id: "radio",
-      label: "radio",
+      label: "Radio",
       required: true,
       options: [
         { value: "m", label: "Male" },
@@ -87,6 +97,10 @@ export class ComponentInput {
           field={this.checkbox}
           onEventChange={() => (this.checkbox = this.checkbox.render())}
         ></vf-checkbox>
+        <vf-toggle
+          field={this.toggle}
+          onEventChange={() => (this.toggle = this.toggle.render())}
+        ></vf-toggle>
         <vf-radio
           field={this.radio}
           onEventChange={() => (this.radio = this.radio.render())}
@@ -104,6 +118,8 @@ export class ComponentInput {
         Checkbox: {this.checkbox.value ? "true" : "false"}
         <br />
         Radio: {this.radio.value}
+        <br/>
+        Toggle: {this.toggle.value ? "true" : "false"}
       </div>
     );
   }
