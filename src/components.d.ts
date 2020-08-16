@@ -42,6 +42,7 @@ export namespace Components {
         "toggle": ToggleProperty;
     }
     interface VfToggle {
+        "checked": boolean;
         "field": ToggleProperty;
     }
 }
@@ -142,6 +143,7 @@ declare namespace LocalJSX {
         "toggle"?: ToggleProperty;
     }
     interface VfToggle {
+        "checked"?: boolean;
         "field"?: ToggleProperty;
         "onEventChange"?: (event: CustomEvent<ToggleProperty>) => void;
         "onEventClick"?: (event: CustomEvent<ToggleProperty>) => void;

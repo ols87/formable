@@ -1,12 +1,13 @@
-import { Component, h, State, Prop, Event, EventEmitter } from "@stencil/core";
+import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
 import { ToggleProperty } from "./types";
+import { FieldEventOptions } from "field";
 
 @Component({
   tag: "vf-toggle",
   styleUrl: "toggle.css",
 })
 export class ComponentToggle {
-  @State() checked: boolean;
+  @Prop() checked: boolean;
 
   @Prop() field: ToggleProperty;
 
@@ -18,15 +19,18 @@ export class ComponentToggle {
     this.checked = this.field.value ? true : false;
   }
 
-  event(name: string, event: any) {
+  event(name: string, value: any) {
     if (name === "change") {
-      this.checked = !this.checked;
-      this.field.set(this.checked);
+      this.checked = value;
     }
 
-    name = this.field.on(name);
+    const eventOptions: FieldEventOptions = {
+      name,
+      value: this.checked,
+      component: this,
+    };
 
-    this[`event${name}`].emit(this.field, event);
+    this.field.on(eventOptions);
   }
 
   onToggle(event: any) {
@@ -34,8 +38,8 @@ export class ComponentToggle {
       return;
     }
 
-    this.event("click", event);
-    this.event("change", event);
+    this.event("click", event.target.value);
+    this.event("change", !this.checked);
   }
 
   render() {
