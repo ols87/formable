@@ -11,6 +11,7 @@ import { CheckboxProperty } from "components/checkbox";
 import { RadioProperty } from "components/radio";
 import { ToggleProperty } from "components/toggle";
 import { TextareaProperty } from "components/textarea";
+import { DatepickerProperty } from "components/datepicker";
 
 @Component({
   tag: "vf-test",
@@ -92,6 +93,15 @@ export class ComponentInput {
     },
   });
 
+  @Prop() datepicker: DatepickerProperty = Formable.datepicker({
+    view: {
+      id: "datepicker",
+      label: "Datepicker",
+      required: true,
+      format: "DD/MM/YYYY"
+    },
+  });
+
   render() {
     return (
       <div>
@@ -123,6 +133,10 @@ export class ComponentInput {
           field={this.textarea}
           onEventChange={() => (this.textarea = this.textarea.render())}
         ></vf-textarea>
+        <vf-datepicker
+          field={this.datepicker}
+          onEventChange={() => (this.datepicker = this.datepicker.render())}
+        ></vf-datepicker>
         <br/>
         Input: {this.input.value}
         <br />
@@ -137,6 +151,8 @@ export class ComponentInput {
         Toggle: {this.toggle.value ? "true" : "false"}
         <br/>
         Textarea: {this.textarea.value}
+        <br/>
+        Datepicker: {this.datepicker.value}
       </div>
     );
   }

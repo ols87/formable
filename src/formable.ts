@@ -5,10 +5,14 @@ import { CheckboxField, CheckboxProperty } from "components/checkbox";
 import { RadioProperty, RadioField } from "components/radio";
 import { ToggleProperty, ToggleField } from "components/toggle";
 import { TextareaProperty, TextareaField } from "components/textarea";
+import { DatepickerProperty, DatepickerField } from "components/datepicker";
 
 export const Formable = {
   checkbox(options: CheckboxProperty) {
     return new CheckboxField(options);
+  },
+  datepicker(options: DatepickerProperty) {
+    return new DatepickerField(options);
   },
   editor(options: EditorProperty) {
     return new EditorField(options);
