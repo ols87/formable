@@ -1,0 +1,45 @@
+.vf-toggle-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-itrems: center;
+}
+
+.vf-toggle-label {
+  margin-left: 0.5rem;
+}
+
+.vf-field-errors {
+  flex: 2;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+.switch {
+  display: inline-block;
+  font-size: 20px;
+  height: 1.25rem;
+  width: 2.5rem;
+  background: #ccc;
+  border-radius: 1rem;
+  transition: all 300ms;
+
+  &.checked {
+    background: #2196f3;
+  }
+}
+
+.switch div {
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.3);
+  transition: all 300ms;
+}
+
+.switch input:checked + div {
+  transform: translate3d(100%, 0, 0);
+}

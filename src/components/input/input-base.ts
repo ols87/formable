@@ -7,7 +7,7 @@ import {
   InputMeta,
   InputClass,
   InputProperty,
-} from "./types";
+} from "./";
 
 export class InputField extends Field implements InputClass {
   public view: InputView;

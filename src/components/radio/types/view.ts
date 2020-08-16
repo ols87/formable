@@ -7,4 +7,5 @@ export interface RadioOption {
 
 export interface RadioView extends FieldView {
   options: RadioOption[];
+  value?: string;
 }

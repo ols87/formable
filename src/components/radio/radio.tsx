@@ -1,6 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
-import { RadioProperty } from "./types";
-import { FieldEventOptions } from "field";
+import { RadioProperty } from "./";
 
 @Component({
   tag: "vf-radio",
@@ -12,59 +11,10 @@ export class ComponentRadio {
   @Event() eventChange: EventEmitter<RadioProperty>;
   @Event() eventInvalid: EventEmitter<RadioProperty>;
 
-  async connectedCallback() {
-    if (this.field.lifecycle?.connectedCallback)
-      await this.field.lifecycle.connectedCallback();
-  }
-
-  async disconnectedCallback() {
-    if (this.field.lifecycle?.disconnectedCallback)
-      await this.field.lifecycle.disconnectedCallback();
-  }
-
-  async componentWillLoad() {
-    if (this.field.lifecycle?.componentWillLoad)
-      await this.field.lifecycle.componentWillLoad();
-  }
-
-  async componentDidLoad() {
-    if (this.field.lifecycle?.componentDidLoad)
-      await this.field.lifecycle.componentDidLoad();
-  }
-
-  componentShouldUpdate(newVal: any, oldVal: any, propName: string) {
-    if (this.field.lifecycle?.componentShouldUpdate)
-      this.field.lifecycle.componentShouldUpdate(newVal, oldVal, propName);
-  }
-
-  async componentWillRender() {
-    if (this.field.lifecycle?.componentWillRender)
-      await this.field.lifecycle.componentWillRender();
-  }
-
-  async componentDidRender() {
-    if (this.field.lifecycle?.componentDidRender)
-      await this.field.lifecycle.componentDidRender();
-  }
-
-  async componentWillUpdate() {
-    if (this.field.lifecycle?.componentWillUpdate)
-      await this.field.lifecycle.componentWillUpdate();
-  }
-
-  async componentDidUpdate() {
-    if (this.field.lifecycle?.componentDidUpdate)
-      await this.field.lifecycle.componentDidUpdate();
-  }
-
   event(name: string, value: string) {
-    const eventOptions: FieldEventOptions = {
-      name,
-      value,
-      component: this,
-    };
+    const handle = this.field.on(name, value);
 
-    this.field.on(eventOptions);
+    this[`event${handle}`].emit(this.field);
   }
 
   labelClick(value: string) {
@@ -124,5 +74,50 @@ export class ComponentRadio {
         </div>
       </div>
     );
+  }
+
+  async connectedCallback() {
+    if (this.field.lifecycle?.connectedCallback)
+      await this.field.lifecycle.connectedCallback();
+  }
+
+  async disconnectedCallback() {
+    if (this.field.lifecycle?.disconnectedCallback)
+      await this.field.lifecycle.disconnectedCallback();
+  }
+
+  async componentWillLoad() {
+    if (this.field.lifecycle?.componentWillLoad)
+      await this.field.lifecycle.componentWillLoad();
+  }
+
+  async componentDidLoad() {
+    if (this.field.lifecycle?.componentDidLoad)
+      await this.field.lifecycle.componentDidLoad();
+  }
+
+  componentShouldUpdate(newVal: any, oldVal: any, propName: string) {
+    if (this.field.lifecycle?.componentShouldUpdate)
+      this.field.lifecycle.componentShouldUpdate(newVal, oldVal, propName);
+  }
+
+  async componentWillRender() {
+    if (this.field.lifecycle?.componentWillRender)
+      await this.field.lifecycle.componentWillRender();
+  }
+
+  async componentDidRender() {
+    if (this.field.lifecycle?.componentDidRender)
+      await this.field.lifecycle.componentDidRender();
+  }
+
+  async componentWillUpdate() {
+    if (this.field.lifecycle?.componentWillUpdate)
+      await this.field.lifecycle.componentWillUpdate();
+  }
+
+  async componentDidUpdate() {
+    if (this.field.lifecycle?.componentDidUpdate)
+      await this.field.lifecycle.componentDidUpdate();
   }
 }

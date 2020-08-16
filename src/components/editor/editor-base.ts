@@ -7,7 +7,7 @@ import {
   EditorMeta,
   EditorClass,
   EditorProperty,
-} from "./types";
+} from "./";
 
 import Quill from "quill";
 

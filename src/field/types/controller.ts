@@ -1,5 +1,3 @@
-import { FieldEventOptions } from "./";
-
 export interface FieldController {
   set: (value: any) => any;
   get: Function;
@@ -7,6 +5,6 @@ export interface FieldController {
   unTouch: Function;
   clear: Function;
   render: Function;
-  on: (options: FieldEventOptions) => void;
+  on: (name: string, value: any) => string;
   validate: () => boolean;
 }

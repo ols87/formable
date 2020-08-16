@@ -7,6 +7,7 @@ import { SelectProperty } from "components/select";
 import { EditorProperty } from "components/editor";
 import { CheckboxProperty } from "components/checkbox";
 import { RadioProperty } from "components/radio";
+import { ToggleProperty } from "components/toggle";
 
 import { validators } from "validation";
 
@@ -63,15 +64,24 @@ export class ComponentInput {
   @Prop() checkbox: CheckboxProperty = Formable.checkbox({
     view: {
       id: "checkbox",
-      label: "checkbox",
+      label: "Checkbox",
       required: true,
     },
+  });
+
+  @Prop() toggle: ToggleProperty = Formable.toggle({
+    view: {
+      id: "toggle",
+      label: "Toggle",
+      required: true,
+    },
+    value: true,
   });
 
   @Prop() radio: RadioProperty = Formable.radio({
     view: {
       id: "radio",
-      label: "radio",
+      label: "Radio",
       required: true,
       options: [
         { value: "m", label: "Male" },
@@ -89,22 +99,32 @@ export class ComponentInput {
           field={this.input}
           onEventInput={() => (this.input = this.input.render())}
         ></vf-input>
+        <hr />
         <vf-select
           field={this.select}
           onEventChange={() => (this.select = this.select.render())}
         ></vf-select>
+        <hr />
         <vf-checkbox
           field={this.checkbox}
           onEventChange={() => (this.checkbox = this.checkbox.render())}
         ></vf-checkbox>
+        <hr />
         <vf-radio
           field={this.radio}
           onEventChange={() => (this.radio = this.radio.render())}
         ></vf-radio>
+        <hr />
         <vf-editor
           field={this.editor}
           onEventChange={() => (this.editor = this.editor.render())}
         ></vf-editor>
+        <hr />
+        <vf-toggle
+          field={this.toggle}
+          onEventChange={() => (this.toggle = this.toggle.render())}
+        ></vf-toggle>
+        <hr />
         Input: {this.input.value}
         <br />
         Select: {this.select.value}
@@ -114,6 +134,8 @@ export class ComponentInput {
         Radio: {this.radio.value}
         <br />
         Editor: {this.editor.value}
+        <br />
+        Toggle: {this.toggle.value ? "true" : "false"}
       </div>
     );
   }

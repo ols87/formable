@@ -7,7 +7,7 @@ import {
   SelectMeta,
   SelectClass,
   SelectProperty,
-} from "./types";
+} from "./";
 
 export class SelectField extends Field implements SelectClass {
   public view: SelectView;

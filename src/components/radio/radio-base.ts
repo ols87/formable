@@ -7,7 +7,7 @@ import {
   RadioMeta,
   RadioClass,
   RadioProperty,
-} from "./types";
+} from "./";
 
 export class RadioField extends Field implements RadioClass {
   public view: RadioView;

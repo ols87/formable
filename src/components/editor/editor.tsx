@@ -7,8 +7,7 @@ import {
   Element,
 } from "@stencil/core";
 
-import { EditorProperty } from "./types";
-import { FieldEventOptions } from "field";
+import { EditorProperty } from "./";
 import { initEditor } from "./init";
 
 @Component({
@@ -24,6 +23,49 @@ export class ComponentEditor {
   @Event() eventFocus: EventEmitter<EditorProperty>;
   @Event() eventChange: EventEmitter<EditorProperty>;
   @Event() eventBlur: EventEmitter<EditorProperty>;
+
+  event(name: string, event: any) {
+    const eventValue = name === "change" ? event : event.target.innerHTML;
+
+    const handle = this.field.on(name, eventValue);
+
+    this[`event${handle}`].emit(this.field);
+  }
+
+  render() {
+    const { view } = this.field;
+
+    return (
+      <div
+        class={`vf-field-wrapper vf-editor-wrapper ${
+          view.classes?.wrapper ? view.classes?.wrapper : ""
+        }`}
+      >
+        <label
+          htmlFor={view.id}
+          class={`vf-field-label vf-editor-label ${
+            view.classes?.label ? view.classes?.label : ""
+          }`}
+        >
+          {view.label}
+        </label>
+
+        <div class={view.classes?.field}>
+          <div
+            class="vf-editor-container"
+            id={view.id}
+            style={view.style}
+          ></div>
+        </div>
+
+        <div class="vf-field-errors vf-editor-errors">
+          {view.errors?.map((error: string) => (
+            <div class="vf-field-error vf-editor-error">{error}</div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   async connectedCallback() {
     if (this.field.lifecycle?.connectedCallback)
@@ -70,54 +112,5 @@ export class ComponentEditor {
   async componentDidUpdate() {
     if (this.field.lifecycle?.componentDidUpdate)
       await this.field.lifecycle.componentDidUpdate();
-  }
-
-  event(name: string, event: any) {
-    let eventValue = name === "change" ? event : event.target.innerHTML;
-
-    this.field.set(eventValue);
-
-    const eventOptions: FieldEventOptions = {
-      name,
-      value: eventValue,
-      component: this,
-    };
-
-    this.field.on(eventOptions);
-  }
-
-  render() {
-    const { view } = this.field;
-
-    return (
-      <div
-        class={`vf-field-wrapper vf-editor-wrapper ${
-          view.classes?.wrapper ? view.classes?.wrapper : ""
-        }`}
-      >
-        <label
-          htmlFor={view.id}
-          class={`vf-field-label vf-editor-label ${
-            view.classes?.label ? view.classes?.label : ""
-          }`}
-        >
-          {view.label}
-        </label>
-
-        <div class={view.classes?.field}>
-          <div
-            class="vf-editor-container"
-            id={view.id}
-            style={view.style}
-          ></div>
-        </div>
-
-        <div class="vf-field-errors vf-editor-errors">
-          {view.errors?.map((error: string) => (
-            <div class="vf-field-error vf-editor-error">{error}</div>
-          ))}
-        </div>
-      </div>
-    );
   }
 }

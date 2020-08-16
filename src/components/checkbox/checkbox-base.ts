@@ -7,7 +7,7 @@ import {
   CheckboxMeta,
   CheckboxClass,
   CheckboxProperty,
-} from "./types";
+} from "./";
 
 export class CheckboxField extends Field implements CheckboxClass {
   public view: CheckboxView;
