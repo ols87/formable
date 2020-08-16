@@ -47,7 +47,7 @@ export class ComponentToggle {
 
     return (
       <div
-        class={`vf-field-wrapper vf-input-wrapper ${
+        class={`vf-field-wrapper vf-toggle-wrapper ${
           view.classes?.wrapper ? view.classes?.wrapper : ""
         }`}
       >
@@ -64,16 +64,16 @@ export class ComponentToggle {
         </div>
 
         <label
-          class={`vf-field-label vf-input-label ${
+          class={`vf-field-label vf-toggle-label ${
             view.classes?.label ? view.classes?.label : ""
           }`}
         >
           {view.label}
         </label>
 
-        <div class="vf-field-errors vf-input-errors">
+        <div class="vf-field-errors vf-toggle-errors">
           {view.errors?.map((error: string) => (
-            <div class="vf-field-error vf-input-error">{error}</div>
+            <div class="vf-field-error vf-toggle-error">{error}</div>
           ))}
         </div>
       </div>

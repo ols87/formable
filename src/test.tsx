@@ -10,6 +10,7 @@ import { EditorProperty } from "components/editor";
 import { CheckboxProperty } from "components/checkbox";
 import { RadioProperty } from "components/radio";
 import { ToggleProperty } from "components/toggle";
+import { TextareaProperty } from "components/textarea";
 
 @Component({
   tag: "vf-test",
@@ -82,6 +83,15 @@ export class ComponentInput {
     value: "m",
   });
 
+  @Prop() textarea: TextareaProperty = Formable.textarea({
+    view: {
+      id: "textarea",
+      label: "Textarea",
+      required: true,
+      rows: 3,
+    },
+  });
+
   render() {
     return (
       <div>
@@ -109,6 +119,11 @@ export class ComponentInput {
           field={this.editor}
           onEventChange={() => (this.editor = this.editor.render())}
         ></vf-editor>
+        <vf-textarea
+          field={this.textarea}
+          onEventChange={() => (this.textarea = this.textarea.render())}
+        ></vf-textarea>
+        <br/>
         Input: {this.input.value}
         <br />
         Select: {this.select.value}
@@ -120,6 +135,8 @@ export class ComponentInput {
         Radio: {this.radio.value}
         <br/>
         Toggle: {this.toggle.value ? "true" : "false"}
+        <br/>
+        Textarea: {this.textarea.value}
       </div>
     );
   }

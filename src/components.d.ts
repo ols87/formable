@@ -16,6 +16,8 @@ import { EditorProperty as EditorProperty1 } from "components/editor";
 import { CheckboxProperty as CheckboxProperty1 } from "components/checkbox";
 import { ToggleProperty } from "components/toggle";
 import { RadioProperty as RadioProperty1 } from "components/radio";
+import { TextareaProperty } from "components/textarea";
+import { TextareaProperty as TextareaProperty1 } from "./components/textarea/types";
 import { ToggleProperty as ToggleProperty1 } from "./components/toggle/types";
 export namespace Components {
     interface VfCheckbox {
@@ -39,7 +41,11 @@ export namespace Components {
         "input": InputProperty;
         "radio": RadioProperty;
         "select": SelectProperty;
+        "textarea": TextareaProperty;
         "toggle": ToggleProperty;
+    }
+    interface VfTextarea {
+        "field": TextareaProperty;
     }
     interface VfToggle {
         "checked": boolean;
@@ -83,6 +89,12 @@ declare global {
         prototype: HTMLVfTestElement;
         new (): HTMLVfTestElement;
     };
+    interface HTMLVfTextareaElement extends Components.VfTextarea, HTMLStencilElement {
+    }
+    var HTMLVfTextareaElement: {
+        prototype: HTMLVfTextareaElement;
+        new (): HTMLVfTextareaElement;
+    };
     interface HTMLVfToggleElement extends Components.VfToggle, HTMLStencilElement {
     }
     var HTMLVfToggleElement: {
@@ -96,6 +108,7 @@ declare global {
         "vf-radio": HTMLVfRadioElement;
         "vf-select": HTMLVfSelectElement;
         "vf-test": HTMLVfTestElement;
+        "vf-textarea": HTMLVfTextareaElement;
         "vf-toggle": HTMLVfToggleElement;
     }
 }
@@ -140,7 +153,17 @@ declare namespace LocalJSX {
         "input"?: InputProperty;
         "radio"?: RadioProperty;
         "select"?: SelectProperty;
+        "textarea"?: TextareaProperty;
         "toggle"?: ToggleProperty;
+    }
+    interface VfTextarea {
+        "field"?: TextareaProperty;
+        "onEventBlur"?: (event: CustomEvent<TextareaProperty>) => void;
+        "onEventChange"?: (event: CustomEvent<TextareaProperty>) => void;
+        "onEventClick"?: (event: CustomEvent<TextareaProperty>) => void;
+        "onEventFocus"?: (event: CustomEvent<TextareaProperty>) => void;
+        "onEventInput"?: (event: CustomEvent<TextareaProperty>) => void;
+        "onEventInvalid"?: (event: CustomEvent<TextareaProperty>) => void;
     }
     interface VfToggle {
         "checked"?: boolean;
@@ -156,6 +179,7 @@ declare namespace LocalJSX {
         "vf-radio": VfRadio;
         "vf-select": VfSelect;
         "vf-test": VfTest;
+        "vf-textarea": VfTextarea;
         "vf-toggle": VfToggle;
     }
 }
@@ -169,6 +193,7 @@ declare module "@stencil/core" {
             "vf-radio": LocalJSX.VfRadio & JSXBase.HTMLAttributes<HTMLVfRadioElement>;
             "vf-select": LocalJSX.VfSelect & JSXBase.HTMLAttributes<HTMLVfSelectElement>;
             "vf-test": LocalJSX.VfTest & JSXBase.HTMLAttributes<HTMLVfTestElement>;
+            "vf-textarea": LocalJSX.VfTextarea & JSXBase.HTMLAttributes<HTMLVfTextareaElement>;
             "vf-toggle": LocalJSX.VfToggle & JSXBase.HTMLAttributes<HTMLVfToggleElement>;
         }
     }

@@ -4,6 +4,7 @@ import { EditorProperty, EditorField } from "components/editor";
 import { CheckboxField, CheckboxProperty } from "components/checkbox";
 import { RadioProperty, RadioField } from "components/radio";
 import { ToggleProperty, ToggleField } from "components/toggle";
+import { TextareaProperty, TextareaField } from "components/textarea";
 
 export const Formable = {
   checkbox(options: CheckboxProperty) {
@@ -20,6 +21,9 @@ export const Formable = {
   },
   select(options: SelectProperty) {
     return new SelectField(options);
+  },
+  textarea(options: TextareaProperty) {
+    return new TextareaField(options);
   },
   toggle(options: ToggleProperty) {
     return new ToggleField(options);
