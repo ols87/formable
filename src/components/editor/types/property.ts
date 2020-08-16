@@ -6,4 +6,6 @@ export interface EditorProperty extends FieldProperty {
   view: EditorView;
   events?: EditorEvents;
   editor?: Quill;
+  init?: Function;
+  reset?: Function;
 }

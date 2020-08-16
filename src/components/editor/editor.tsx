@@ -8,7 +8,6 @@ import {
 } from "@stencil/core";
 
 import { EditorProperty } from "./";
-import { initEditor } from "./init";
 
 @Component({
   tag: "vf-editor",
@@ -23,6 +22,22 @@ export class ComponentEditor {
   @Event() eventFocus: EventEmitter<EditorProperty>;
   @Event() eventChange: EventEmitter<EditorProperty>;
   @Event() eventBlur: EventEmitter<EditorProperty>;
+
+  init() {
+    this.field.init(this.editorElement);
+
+    const editor = this.field.editor;
+
+    editor.on("text-change", () => {
+      this.event("change", editor.getLength() > 1 ? editor.root.innerHTML : "");
+    });
+
+    ["blur", "focus", "click"].forEach((handle) => {
+      editor.root.addEventListener(handle, (event) => {
+        this.event(handle, event);
+      });
+    });
+  }
 
   event(name: string, event: any) {
     const eventValue = name === "change" ? event : event.target.innerHTML;
@@ -83,7 +98,7 @@ export class ComponentEditor {
   }
 
   async componentDidLoad() {
-    initEditor.bind(this)();
+    this.init();
 
     if (this.field.lifecycle?.componentDidLoad)
       await this.field.lifecycle.componentDidLoad();
