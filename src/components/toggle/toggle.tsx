@@ -52,12 +52,57 @@ export class ComponentToggle {
           {view.label}
         </label>
 
-        <div class="vf-field-errors vf-checkbox-errors">
+        <div class="vf-field-errors vf-toggle-errors">
           {view.errors?.map((error: string) => (
-            <div class="vf-field-error vf-checkbox-error">{error}</div>
+            <div class="vf-field-error vf-toggle-error">{error}</div>
           ))}
         </div>
       </div>
     );
+  }
+
+  async connectedCallback() {
+    if (this.field.lifecycle?.connectedCallback)
+      await this.field.lifecycle.connectedCallback();
+  }
+
+  async disconnectedCallback() {
+    if (this.field.lifecycle?.disconnectedCallback)
+      await this.field.lifecycle.disconnectedCallback();
+  }
+
+  async componentWillLoad() {
+    if (this.field.lifecycle?.componentWillLoad)
+      await this.field.lifecycle.componentWillLoad();
+  }
+
+  async componentDidLoad() {
+    if (this.field.lifecycle?.componentDidLoad)
+      await this.field.lifecycle.componentDidLoad();
+  }
+
+  componentShouldUpdate(newVal: any, oldVal: any, propName: string) {
+    if (this.field.lifecycle?.componentShouldUpdate)
+      this.field.lifecycle.componentShouldUpdate(newVal, oldVal, propName);
+  }
+
+  async componentWillRender() {
+    if (this.field.lifecycle?.componentWillRender)
+      await this.field.lifecycle.componentWillRender();
+  }
+
+  async componentDidRender() {
+    if (this.field.lifecycle?.componentDidRender)
+      await this.field.lifecycle.componentDidRender();
+  }
+
+  async componentWillUpdate() {
+    if (this.field.lifecycle?.componentWillUpdate)
+      await this.field.lifecycle.componentWillUpdate();
+  }
+
+  async componentDidUpdate() {
+    if (this.field.lifecycle?.componentDidUpdate)
+      await this.field.lifecycle.componentDidUpdate();
   }
 }

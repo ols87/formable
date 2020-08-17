@@ -62,14 +62,18 @@ export class EditorField extends Field implements EditorClass {
     editor.pasteHTML(this.value ?? "");
 
     this.editor = editor;
-
-    console.log(this);
   }
 
-  reset() {
+  content(): string {
+    return this.editor.getLength() > 1 ? this.editor.root.innerHTML : "";
+  }
+
+  clear() {
     this.editor.setText("");
+
     this.editor.blur();
-    this.clear();
+
+    super.clear();
   }
 
   render(): EditorField {
