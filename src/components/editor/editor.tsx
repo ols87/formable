@@ -24,7 +24,22 @@ export class ComponentEditor {
   @Event() eventBlur: EventEmitter<EditorProperty>;
 
   init() {
-    this.field.init(this.editorElement, this.event);
+    this.field.init(this.editorElement);
+
+    this.field.editor.on("text-change", () => {
+      this.event(
+        "change",
+        this.field.editor.getLength() > 1
+          ? this.field.editor.root.innerHTML
+          : ""
+      );
+    });
+
+    ["blur", "focus", "click"].forEach((handle) => {
+      this.field.editor.root.addEventListener(handle, (event) => {
+        this.event(handle, event);
+      });
+    });
   }
 
   event(name: string, event: any) {
