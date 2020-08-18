@@ -1,4 +1,4 @@
-import { FieldProperty } from "field/types";
+import { FieldProperty } from "field";
 import { TextareaView, TextareaEvents } from "./";
 
 export interface TextareaProperty extends FieldProperty {

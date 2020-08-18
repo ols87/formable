@@ -1,4 +1,4 @@
-import { FieldEvents } from "field/types";
+import { FieldEvents } from "field";
 
 export interface ToggleEvents extends FieldEvents {
   onInvalid?: Function;

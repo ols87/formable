@@ -1,4 +1,4 @@
-import { FieldProperty } from "field/types";
+import { FieldProperty } from "field";
 import { RadioEvents } from "./";
 import { RadioView } from "./view";
 

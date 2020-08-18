@@ -112,11 +112,7 @@ export class ComponentInput {
     },
   });
 
-  componentDidLoad() {
-    setTimeout(() => {
-      this.editor.clear();
-    }, 3000);
-  }
+  componentDidLoad() {}
 
   render() {
     return (
