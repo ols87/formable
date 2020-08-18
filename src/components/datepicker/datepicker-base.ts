@@ -29,7 +29,10 @@ export class DatepickerField extends Field implements DatepickerClass {
     this.picker = options.picker ? options.picker : null;
   }
 
-  init(datepickerElement: HTMLElement, events) {
+  init(
+    datepickerElement: HTMLElement,
+    events: { [key: string]: () => Function }
+  ) {
     const options: Pikaday.PikadayOptions = {
       field: datepickerElement.getElementsByClassName(
         "vf-datepicker-container"

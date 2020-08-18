@@ -8,7 +8,7 @@ import {
   ComponentInterface,
 } from "@stencil/core";
 
-import { DatepickerProperty } from "./";
+import { DatepickerProperty, PikadyEvents } from "./";
 @Component({
   tag: "vf-datepicker",
   styleUrl: "../../../node_modules/pikaday/css/pikaday.css",
@@ -29,7 +29,7 @@ export class ComponentDatepicker implements ComponentInterface {
   @Event() eventDraw: EventEmitter<DatepickerProperty>;
 
   load() {
-    const events = {
+    const events: PikadyEvents = {
       onSelect: () => this.event("change", this.toString()),
       onOpen: () => this.event("open", this.toString()),
       onClose: () => this.event("close", this.toString()),

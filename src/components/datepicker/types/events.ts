@@ -9,3 +9,9 @@ export interface DatepickerEvents extends FieldEvents {
   onClose?: Function;
   onDraw?: Function;
 }
+
+type PikadayMethods = "onSelect" | "onOpen" | "onClose" | "onDraw";
+
+export type PikadyEvents = {
+  [key in PikadayMethods]: (name: string, event: () => string) => void;
+};
