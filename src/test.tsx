@@ -1,6 +1,6 @@
 import { Component, h, Prop } from "@stencil/core";
 
-import { Formable } from "formable";
+import { Formable } from "./formable";
 
 import { InputProperty } from "./components/input";
 import { SelectProperty } from "./components/select";
@@ -11,7 +11,7 @@ import { ToggleProperty } from "./components/toggle";
 import { TextareaProperty } from "./components/textarea";
 import { DatepickerProperty } from "./components/datepicker";
 
-import { validators } from "validation";
+import { validators } from "./validation";
 
 @Component({
   tag: "vf-test",
