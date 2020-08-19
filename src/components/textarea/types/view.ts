@@ -1,4 +1,4 @@
-import { FieldView } from "field";
+import { FieldView } from "./";
 
 export interface TextareaView extends FieldView {
   rows?: number;

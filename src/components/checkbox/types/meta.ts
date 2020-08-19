@@ -1,3 +1,3 @@
-import { FieldMeta } from "field";
+import { FieldMeta } from "./";
 
 export interface CheckboxMeta extends FieldMeta {}

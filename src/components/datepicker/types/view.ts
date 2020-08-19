@@ -1,4 +1,4 @@
-import { FieldView } from "field";
+import { FieldView } from "./";
 
 export interface DatepickerView extends FieldView {
   format?: string;

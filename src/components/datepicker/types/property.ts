@@ -1,5 +1,6 @@
-import { FieldProperty } from "field";
+import { FieldProperty } from "./";
 import { DatepickerView, DatepickerEvents } from "./";
+import Pikaday from "pikaday";
 
 export interface DatepickerProperty extends FieldProperty {
   view: DatepickerView;

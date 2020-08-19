@@ -1,13 +1,12 @@
-import { Field } from "field";
-
 import {
+  Field,
   DatepickerController,
   DatepickerView,
   DatepickerEvents,
   DatepickerMeta,
   DatepickerClass,
   DatepickerProperty,
-} from "./types";
+} from "./";
 
 import Pikaday from "pikaday";
 import moment from "moment";

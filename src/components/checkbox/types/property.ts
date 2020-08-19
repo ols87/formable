@@ -1,4 +1,4 @@
-import { FieldProperty } from "field";
+import { FieldProperty } from "./";
 import { CheckboxEvents, CheckboxView } from "./";
 
 export interface CheckboxProperty extends FieldProperty {

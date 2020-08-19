@@ -1,6 +1,4 @@
-import { FieldProperty } from "../field";
-import { Validator } from "validation";
-import { regexDate } from "./regex";
+import { FieldProperty, Validator, regexDate } from "./";
 
 export const validators = {
   date: {

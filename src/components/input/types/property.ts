@@ -1,4 +1,4 @@
-import { FieldProperty } from "field";
+import { FieldProperty } from "./";
 import { InputView, InputEvents } from "./";
 
 export interface InputProperty extends FieldProperty {

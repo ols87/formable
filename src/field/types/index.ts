@@ -5,3 +5,4 @@ export * from "./meta";
 export * from "./lifecycle";
 export * from "./property";
 export * from "./view";
+export * from "../../validation";

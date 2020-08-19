@@ -1,11 +1,11 @@
-import { InputField, InputProperty } from "components/input";
-import { SelectProperty, SelectField } from "components/select";
-import { EditorProperty, EditorField } from "components/editor";
-import { CheckboxField, CheckboxProperty } from "components/checkbox";
-import { RadioProperty, RadioField } from "components/radio";
-import { ToggleProperty, ToggleField } from "components/toggle";
-import { TextareaProperty, TextareaField } from "components/textarea";
-import { DatepickerProperty, DatepickerField } from "components/datepicker";
+import { InputField, InputProperty } from "./components/input";
+import { SelectProperty, SelectField } from "./components/select";
+import { EditorProperty, EditorField } from "./components/editor";
+import { CheckboxField, CheckboxProperty } from "./components/checkbox";
+import { RadioProperty, RadioField } from "./components/radio";
+import { ToggleProperty, ToggleField } from "./components/toggle";
+import { TextareaProperty, TextareaField } from "./components/textarea";
+import { DatepickerProperty, DatepickerField } from "./components/datepicker";
 
 export const Formable = {
   checkbox(options: CheckboxProperty) {

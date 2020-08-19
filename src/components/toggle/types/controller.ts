@@ -1,3 +1,3 @@
-import { FieldController } from "field";
+import { FieldController } from "./";
 
 export interface ToggleController extends FieldController {}

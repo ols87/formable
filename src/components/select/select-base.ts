@@ -1,6 +1,5 @@
-import { Field } from "field";
-
 import {
+  Field,
   SelectController,
   SelectView,
   SelectEvents,

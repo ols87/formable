@@ -1,4 +1,4 @@
-import { FieldEvents } from "field";
+import { FieldEvents } from "./";
 
 export interface TextareaEvents extends FieldEvents {
   onFocus?: Function;

@@ -1,13 +1,12 @@
-import { Field } from "field";
-
 import {
+  Field,
   TextareaController,
   TextareaView,
   TextareaEvents,
   TextareaMeta,
   TextareaClass,
   TextareaProperty,
-} from "./types";
+} from "./";
 
 export class TextareaField extends Field implements TextareaClass {
   public view: TextareaView;

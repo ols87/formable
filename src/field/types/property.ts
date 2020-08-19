@@ -4,9 +4,8 @@ import {
   FieldMeta,
   FieldClass,
   FieldLifecycle,
+  Validator,
 } from ".";
-
-import { Validator } from "validation";
 
 export interface FieldProperty extends Partial<FieldClass> {
   view: FieldView;

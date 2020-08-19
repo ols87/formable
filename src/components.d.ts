@@ -11,16 +11,8 @@ import { EditorProperty } from "./components/editor";
 import { InputProperty } from "./components/input";
 import { RadioProperty } from "./components/radio";
 import { SelectProperty } from "./components/select";
-import { InputProperty as InputProperty1 } from "components/input";
-import { SelectProperty as SelectProperty1 } from "components/select";
-import { EditorProperty as EditorProperty1 } from "components/editor";
-import { CheckboxProperty as CheckboxProperty1 } from "components/checkbox";
-import { ToggleProperty } from "components/toggle";
-import { RadioProperty as RadioProperty1 } from "components/radio";
-import { TextareaProperty } from "components/textarea";
-import { DatepickerProperty as DatepickerProperty1 } from "components/datepicker";
-import { TextareaProperty as TextareaProperty1 } from "./components/textarea";
-import { ToggleProperty as ToggleProperty1 } from "./components/toggle";
+import { ToggleProperty } from "./components/toggle";
+import { TextareaProperty } from "./components/textarea";
 export namespace Components {
     interface VfCheckbox {
         "field": CheckboxProperty;

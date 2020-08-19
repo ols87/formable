@@ -1,4 +1,4 @@
-import { FieldView } from "field";
+import { FieldView } from "./";
 
 export interface InputView extends FieldView {
   type: string;

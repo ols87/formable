@@ -1,4 +1,4 @@
-import { FieldProperty } from "field";
+import { FieldProperty } from "./";
 import { ToggleEvents } from "./";
 import { ToggleView } from "./view";
 
