@@ -1,4 +1,4 @@
-export interface FieldController {
+export declare interface FieldController {
   set: (value: any) => any;
   get: Function;
   touch: Function;

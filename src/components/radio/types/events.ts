@@ -1,5 +1,5 @@
 import { FieldEvents } from "../../../field";
 
-export interface RadioEvents extends FieldEvents {
+export declare interface RadioEvents extends FieldEvents {
   onInvalid?: Function;
 }

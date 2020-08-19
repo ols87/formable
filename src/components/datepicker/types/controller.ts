@@ -1,3 +1,3 @@
 import { FieldController } from "../../../field";
 
-export interface DatepickerController extends FieldController {}
+export declare interface DatepickerController extends FieldController {}

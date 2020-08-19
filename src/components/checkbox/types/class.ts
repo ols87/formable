@@ -1,3 +1,3 @@
-import { CheckboxProperty, CheckboxController } from "./";
+import { CheckboxProperty, CheckboxController } from ".";
 
-export type CheckboxClass = CheckboxProperty & CheckboxController;
+export declare type CheckboxClass = CheckboxProperty & CheckboxController;

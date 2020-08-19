@@ -1,3 +1,3 @@
 import { FieldProperty, FieldController } from "./";
 
-export type FieldClass = FieldProperty & FieldController;
+export declare type FieldClass = FieldProperty & FieldController;

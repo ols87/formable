@@ -11,8 +11,8 @@ import { EditorProperty } from "./components/editor";
 import { InputProperty } from "./components/input";
 import { RadioProperty } from "./components/radio";
 import { SelectProperty } from "./components/select";
-import { ToggleProperty } from "./components/toggle";
 import { TextareaProperty } from "./components/textarea";
+import { ToggleProperty } from "./components/toggle";
 export namespace Components {
     interface VfCheckbox {
         "field": CheckboxProperty;
@@ -31,16 +31,6 @@ export namespace Components {
     }
     interface VfSelect {
         "field": SelectProperty;
-    }
-    interface VfTest {
-        "checkbox": CheckboxProperty;
-        "datepicker": DatepickerProperty;
-        "editor": EditorProperty;
-        "input": InputProperty;
-        "radio": RadioProperty;
-        "select": SelectProperty;
-        "textarea": TextareaProperty;
-        "toggle": ToggleProperty;
     }
     interface VfTextarea {
         "field": TextareaProperty;
@@ -86,12 +76,6 @@ declare global {
         prototype: HTMLVfSelectElement;
         new (): HTMLVfSelectElement;
     };
-    interface HTMLVfTestElement extends Components.VfTest, HTMLStencilElement {
-    }
-    var HTMLVfTestElement: {
-        prototype: HTMLVfTestElement;
-        new (): HTMLVfTestElement;
-    };
     interface HTMLVfTextareaElement extends Components.VfTextarea, HTMLStencilElement {
     }
     var HTMLVfTextareaElement: {
@@ -111,7 +95,6 @@ declare global {
         "vf-input": HTMLVfInputElement;
         "vf-radio": HTMLVfRadioElement;
         "vf-select": HTMLVfSelectElement;
-        "vf-test": HTMLVfTestElement;
         "vf-textarea": HTMLVfTextareaElement;
         "vf-toggle": HTMLVfToggleElement;
     }
@@ -163,16 +146,6 @@ declare namespace LocalJSX {
         "onEventClick"?: (event: CustomEvent<SelectProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<SelectProperty>) => void;
     }
-    interface VfTest {
-        "checkbox"?: CheckboxProperty;
-        "datepicker"?: DatepickerProperty;
-        "editor"?: EditorProperty;
-        "input"?: InputProperty;
-        "radio"?: RadioProperty;
-        "select"?: SelectProperty;
-        "textarea"?: TextareaProperty;
-        "toggle"?: ToggleProperty;
-    }
     interface VfTextarea {
         "field"?: TextareaProperty;
         "onEventBlur"?: (event: CustomEvent<TextareaProperty>) => void;
@@ -193,7 +166,6 @@ declare namespace LocalJSX {
         "vf-input": VfInput;
         "vf-radio": VfRadio;
         "vf-select": VfSelect;
-        "vf-test": VfTest;
         "vf-textarea": VfTextarea;
         "vf-toggle": VfToggle;
     }
@@ -208,7 +180,6 @@ declare module "@stencil/core" {
             "vf-input": LocalJSX.VfInput & JSXBase.HTMLAttributes<HTMLVfInputElement>;
             "vf-radio": LocalJSX.VfRadio & JSXBase.HTMLAttributes<HTMLVfRadioElement>;
             "vf-select": LocalJSX.VfSelect & JSXBase.HTMLAttributes<HTMLVfSelectElement>;
-            "vf-test": LocalJSX.VfTest & JSXBase.HTMLAttributes<HTMLVfTestElement>;
             "vf-textarea": LocalJSX.VfTextarea & JSXBase.HTMLAttributes<HTMLVfTextareaElement>;
             "vf-toggle": LocalJSX.VfToggle & JSXBase.HTMLAttributes<HTMLVfToggleElement>;
         }

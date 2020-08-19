@@ -1,5 +1,5 @@
 import { FieldView } from "../../../field";
 
-export interface CheckboxView extends FieldView {
+export declare interface CheckboxView extends FieldView {
   value?: boolean;
 }

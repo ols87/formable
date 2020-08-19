@@ -1,6 +1,6 @@
 import { FieldEvents } from "../../../field";
 
-export interface InputEvents extends FieldEvents {
+export declare interface InputEvents extends FieldEvents {
   onFocus?: Function;
   onInput?: Function;
   onBlur?: Function;

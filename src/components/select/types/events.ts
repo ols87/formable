@@ -1,5 +1,5 @@
 import { FieldEvents } from "../../../field";
 
-export interface SelectEvents extends FieldEvents {
+export declare interface SelectEvents extends FieldEvents {
   onInvalid?: Function;
 }

@@ -9,8 +9,9 @@ import { DatepickerProperty, DatepickerField } from "./components/datepicker";
 
 export * from "./field";
 export * from "./validation";
+export * from "./components";
 
-export interface Formable {
+export declare interface Formable {
   checkbox: (options: CheckboxProperty) => CheckboxField;
   datepicker: (options: DatepickerProperty) => DatepickerField;
   editor: (options: EditorProperty) => EditorField;

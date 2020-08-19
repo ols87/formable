@@ -1,13 +1,6 @@
 import { FieldProperty } from "../field";
 
-import { Validator, regexDate } from "./";
-
-export const validators = {
-  date: {
-    match: regexDate,
-    message: "Invalid Date",
-  },
-};
+import { Validator } from "./";
 
 export class Validation {
   public field: FieldProperty;

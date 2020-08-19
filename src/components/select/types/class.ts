@@ -1,3 +1,3 @@
 import { SelectProperty, SelectController } from "./";
 
-export type SelectClass = SelectProperty & SelectController;
+export declare type SelectClass = SelectProperty & SelectController;

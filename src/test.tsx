@@ -11,8 +11,6 @@ import { ToggleProperty } from "./components/toggle";
 import { TextareaProperty } from "./components/textarea";
 import { DatepickerProperty } from "./components/datepicker";
 
-import { validators } from "./validation";
-
 @Component({
   tag: "vf-test",
 })
@@ -25,7 +23,6 @@ export class ComponentInput {
       required: true,
     },
     validators: [
-      validators.date,
       {
         match: /^(0{2}\/0{2}\/0{4})$/,
         message: "must be 00/00/0000",

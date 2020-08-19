@@ -1,5 +1,5 @@
 import { FieldEvents } from "../../../field";
 
-export interface CheckboxEvents extends FieldEvents {
+export declare interface CheckboxEvents extends FieldEvents {
   onInvalid?: Function;
 }

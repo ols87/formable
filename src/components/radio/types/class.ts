@@ -1,4 +1,4 @@
 import { RadioProperty } from "./property";
 import { RadioController } from "./controller";
 
-export type RadioClass = RadioProperty & RadioController;
+export declare type RadioClass = RadioProperty & RadioController;

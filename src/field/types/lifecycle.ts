@@ -1,4 +1,4 @@
-export interface FieldLifecycle {
+export declare interface FieldLifecycle {
   connectedCallback?: () => Promise<any> | any;
   disconnectedCallback?: () => Promise<any> | any;
   componentWillLoad?: () => Promise<any> | any;

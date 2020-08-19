@@ -2,7 +2,7 @@ import { FieldProperty } from "../../../field";
 import { DatepickerView, DatepickerEvents } from "./";
 import Pikaday from "pikaday";
 
-export interface DatepickerProperty extends FieldProperty {
+export declare interface DatepickerProperty extends FieldProperty {
   view: DatepickerView;
   events?: DatepickerEvents;
   picker?: Pikaday;

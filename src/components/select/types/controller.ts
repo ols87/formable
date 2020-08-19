@@ -1,3 +1,3 @@
 import { FieldController } from "../../../field";
 
-export interface SelectController extends FieldController {}
+export declare interface SelectController extends FieldController {}

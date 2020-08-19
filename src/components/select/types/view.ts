@@ -5,7 +5,7 @@ interface SelectOption {
   label: string;
 }
 
-export interface SelectView extends FieldView {
+export declare interface SelectView extends FieldView {
   options: SelectOption[];
   placeholder?: string;
   value?: string;

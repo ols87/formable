@@ -21,19 +21,6 @@
 | `eventInvalid` |             | `CustomEvent<CheckboxProperty>` |
 
 
-## Dependencies
-
-### Used by
-
- - [vf-test](../..)
-
-### Graph
-```mermaid
-graph TD;
-  vf-test --> vf-checkbox
-  style vf-checkbox fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

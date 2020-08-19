@@ -1,3 +1,3 @@
 import { TextareaProperty, TextareaController } from "./";
 
-export type TextareaClass = TextareaProperty & TextareaController;
+export declare type TextareaClass = TextareaProperty & TextareaController;

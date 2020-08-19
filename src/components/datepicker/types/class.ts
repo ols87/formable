@@ -1,3 +1,3 @@
 import { DatepickerProperty, DatepickerController } from "./";
 
-export type DatepickerClass = DatepickerProperty & DatepickerController;
+export declare type DatepickerClass = DatepickerProperty & DatepickerController;

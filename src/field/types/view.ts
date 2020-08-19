@@ -1,4 +1,4 @@
-export interface FieldView {
+export declare interface FieldView {
   id: string;
   name?: string;
   label?: string;

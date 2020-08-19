@@ -8,7 +8,7 @@ import {
 
 import { Validator } from "../../validation";
 
-export interface FieldProperty extends Partial<FieldClass> {
+export declare interface FieldProperty extends Partial<FieldClass> {
   view: FieldView;
   events?: FieldEvents;
   meta?: FieldMeta;

@@ -1,3 +1,3 @@
 import { InputProperty, InputController } from "./";
 
-export type InputClass = InputProperty & InputController;
+export declare type InputClass = InputProperty & InputController;

@@ -1,6 +1,6 @@
 import { FieldView } from "../../../field";
 
-export interface TextareaView extends FieldView {
+export declare interface TextareaView extends FieldView {
   rows?: number;
   cols?: number;
 }
