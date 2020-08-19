@@ -5,9 +5,9 @@ import {
   FieldClass,
   FieldProperty,
   FieldLifecycle,
-  Validation,
-  Validator,
 } from "./";
+
+import { Validation, Validator } from "../validation";
 
 export class Field implements FieldClass {
   public view: FieldView;

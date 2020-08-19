@@ -7,7 +7,21 @@ import { ToggleProperty, ToggleField } from "./components/toggle";
 import { TextareaProperty, TextareaField } from "./components/textarea";
 import { DatepickerProperty, DatepickerField } from "./components/datepicker";
 
-export const Formable = {
+export * from "./field";
+export * from "./validation";
+
+export interface Formable {
+  checkbox: (options: CheckboxProperty) => CheckboxField;
+  datepicker: (options: DatepickerProperty) => DatepickerField;
+  editor: (options: EditorProperty) => EditorField;
+  input: (options: InputProperty) => InputField;
+  radio: (options: RadioProperty) => RadioField;
+  select: (options: SelectProperty) => SelectField;
+  textarea: (options: TextareaProperty) => TextareaField;
+  toggle: (options: ToggleProperty) => ToggleField;
+}
+
+export const Formable: Formable = {
   checkbox(options: CheckboxProperty) {
     return new CheckboxField(options);
   },

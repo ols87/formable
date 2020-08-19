@@ -1,5 +1,6 @@
+import { Field } from "../../field";
+
 import {
-  Field,
   CheckboxController,
   CheckboxView,
   CheckboxEvents,

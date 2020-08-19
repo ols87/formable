@@ -1,4 +1,4 @@
-import { FieldProperty } from "./";
+import { FieldProperty } from "../../../field";
 import { EditorEvents, EditorView } from "./";
 import Quill from "quill";
 

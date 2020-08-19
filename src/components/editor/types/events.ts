@@ -1,4 +1,4 @@
-import { FieldEvents } from "./";
+import { FieldEvents } from "../../../field";
 
 export interface EditorEvents extends FieldEvents {
   onFocus?: Function;

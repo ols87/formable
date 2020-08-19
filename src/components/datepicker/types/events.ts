@@ -1,4 +1,4 @@
-import { FieldEvents } from "./";
+import { FieldEvents } from "../../../field";
 
 export interface DatepickerEvents extends FieldEvents {
   onFocus?: Function;

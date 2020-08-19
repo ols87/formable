@@ -1,4 +1,4 @@
-import { FieldProperty } from "./";
+import { FieldProperty } from "../../../field";
 import { DatepickerView, DatepickerEvents } from "./";
 import Pikaday from "pikaday";
 

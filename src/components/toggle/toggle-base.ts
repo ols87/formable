@@ -1,5 +1,6 @@
+import { Field } from "../../field";
+
 import {
-  Field,
   ToggleController,
   ToggleView,
   ToggleEvents,

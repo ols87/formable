@@ -1,4 +1,4 @@
-import { FieldView } from "./";
+import { FieldView } from "../../../field";
 
 export interface RadioOption {
   value: any;
