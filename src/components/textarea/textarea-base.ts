@@ -21,4 +21,8 @@ export class TextareaField extends Field implements TextareaClass {
   constructor(options: TextareaProperty) {
     super(options);
   }
+
+  render(): TextareaField {
+    return new TextareaField(this);
+  }
 }

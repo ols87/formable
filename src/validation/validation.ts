@@ -28,7 +28,7 @@ export class Validation {
     return true;
   }
 
-  public required(): boolean {
+  public required(): boolean {    
     if (!this.field.value) {
       this.field.view.errors.push("This field is required");
       this.field.meta.valid = false;
