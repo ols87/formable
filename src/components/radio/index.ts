@@ -10,6 +10,8 @@ import {
 } from "./types";
 
 export class RadioField extends Field implements RadioClass {
+  protected type: string = "radio";
+
   public view: RadioView;
 
   public events: RadioEvents;

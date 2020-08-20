@@ -12,8 +12,8 @@ import { FormProperty } from "./components/form/types/property";
 import { InputProperty } from "./components/input/types";
 import { RadioProperty } from "./components/radio/types";
 import { SelectProperty } from "./components/select/types";
-import { CheckboxProperty as CheckboxProperty1, EditorProperty as EditorProperty1, InputProperty as InputProperty1, RadioProperty as RadioProperty1, SelectProperty as SelectProperty1, ToggleProperty } from "./components/types";
-import { TextareaProperty } from "./components/textarea/types";
+import { CheckboxProperty as CheckboxProperty1, DatepickerProperty as DatepickerProperty1, EditorProperty as EditorProperty1, InputProperty as InputProperty1, RadioProperty as RadioProperty1, SelectProperty as SelectProperty1, TextareaProperty, ToggleProperty } from "./components/types";
+import { TextareaProperty as TextareaProperty1 } from "./components/textarea/types";
 import { ToggleProperty as ToggleProperty1 } from "./components/toggle/types";
 export namespace Components {
     interface VfCheckbox {
@@ -26,10 +26,7 @@ export namespace Components {
         "field": EditorProperty;
     }
     interface VfForm {
-        "autoRender": boolean;
         "fields": FormProperty;
-        "reset": any;
-        "submit": any;
     }
     interface VfInput {
         "field": InputProperty;
@@ -42,11 +39,13 @@ export namespace Components {
     }
     interface VfTest {
         "checkbox": CheckboxProperty;
+        "datepicker": DatepickerProperty;
         "editor": EditorProperty;
         "formFields": FormProperty;
         "input": InputProperty;
         "radio": RadioProperty;
         "select": SelectProperty;
+        "textarea": TextareaProperty;
         "toggle": ToggleProperty;
     }
     interface VfTextarea {
@@ -157,10 +156,10 @@ declare namespace LocalJSX {
         "onEventFocus"?: (event: CustomEvent<EditorProperty>) => void;
     }
     interface VfForm {
-        "autoRender"?: boolean;
         "fields"?: FormProperty;
-        "reset"?: any;
-        "submit"?: any;
+        "onEventChange"?: (event: CustomEvent<Partial<FormProperty>>) => void;
+        "onEventReset"?: (event: CustomEvent<any>) => void;
+        "onEventSubmit"?: (event: CustomEvent<Partial<boolean>>) => void;
     }
     interface VfInput {
         "field"?: InputProperty;
@@ -185,12 +184,14 @@ declare namespace LocalJSX {
     }
     interface VfTest {
         "checkbox"?: CheckboxProperty;
+        "datepicker"?: DatepickerProperty;
         "editor"?: EditorProperty;
         "formFields"?: FormProperty;
         "input"?: InputProperty;
         "onFormSubmit"?: (event: CustomEvent<any>) => void;
         "radio"?: RadioProperty;
         "select"?: SelectProperty;
+        "textarea"?: TextareaProperty;
         "toggle"?: ToggleProperty;
     }
     interface VfTextarea {

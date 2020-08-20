@@ -13,6 +13,8 @@ import Pikaday from "pikaday";
 import moment from "moment";
 
 export class DatepickerField extends Field implements DatepickerClass {
+  protected type: string = "datepicker";
+
   public view: DatepickerView;
 
   public picker: Pikaday;

@@ -12,6 +12,8 @@ import {
 export { SelectProperty } from "./types";
 
 export class SelectField extends Field implements SelectClass {
+  protected type: string = "select";
+
   public view: SelectView;
 
   public events: SelectEvents;

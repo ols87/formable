@@ -88,7 +88,7 @@ export class ComponentDatepicker implements ComponentInterface {
             name={view.id}
             required={view.required}
             disabled={view.disabled}
-            value={value}
+            value={...value}
             onInput={(event) => this.event("input", event)}
             onClick={(event) => this.event("click", event)}
             onFocus={(event) => this.event("focus", event)}

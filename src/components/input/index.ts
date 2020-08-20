@@ -10,6 +10,8 @@ import {
 } from "./types";
 
 export class InputField extends Field implements InputClass {
+  protected type: string = "input";
+
   public view: InputView;
 
   public events: InputEvents;

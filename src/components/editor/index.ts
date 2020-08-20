@@ -22,6 +22,8 @@ const DefaultToolbarOptions: any[] = [
 ];
 
 export class EditorField extends Field implements EditorClass {
+  protected type: string = "editor";
+
   public view: EditorView;
 
   public editor: Quill;

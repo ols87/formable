@@ -5,6 +5,7 @@ import {
   Event,
   EventEmitter,
   Element,
+  ComponentInterface,
 } from "@stencil/core";
 
 import { EditorProperty } from "./types";
@@ -13,7 +14,7 @@ import { EditorProperty } from "./types";
   tag: "vf-editor",
   styleUrl: "../../../node_modules/quill/dist/quill.snow.css",
 })
-export class ComponentEditor {
+export class ComponentEditor implements ComponentInterface {
   @Prop() field: EditorProperty;
 
   @Element() editorElement: HTMLElement;

@@ -1,10 +1,18 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+} from "@stencil/core";
+
 import { RadioProperty } from "./types";
 
 @Component({
   tag: "vf-radio",
 })
-export class ComponentRadio {
+export class ComponentRadio implements ComponentInterface {
   @Prop() field: RadioProperty;
 
   @Event() eventClick: EventEmitter<RadioProperty>;

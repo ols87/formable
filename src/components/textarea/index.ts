@@ -10,6 +10,8 @@ import {
 } from "./types";
 
 export class TextareaField extends Field implements TextareaClass {
+  protected type: string = "textarea";
+
   public view: TextareaView;
 
   public events: TextareaEvents;
@@ -20,5 +22,9 @@ export class TextareaField extends Field implements TextareaClass {
 
   constructor(options: TextareaProperty) {
     super(options);
+  }
+
+  render(): any {
+    return new TextareaField(this);
   }
 }

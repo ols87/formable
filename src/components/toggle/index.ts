@@ -10,6 +10,8 @@ import {
 } from "./types";
 
 export class ToggleField extends Field implements ToggleClass {
+  protected type: string = "toggle";
+
   public view: ToggleView;
 
   public events: ToggleEvents;
@@ -20,5 +22,9 @@ export class ToggleField extends Field implements ToggleClass {
 
   constructor(options: ToggleProperty) {
     super(options);
+  }
+
+  render(): any {
+    return new ToggleField(this);
   }
 }

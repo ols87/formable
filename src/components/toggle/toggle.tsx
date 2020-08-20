@@ -1,11 +1,19 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+} from "@stencil/core";
+
 import { ToggleProperty } from "./types";
 
 @Component({
   tag: "vf-toggle",
   styleUrl: "toggle.css",
 })
-export class ComponentToggle {
+export class ComponentToggle implements ComponentInterface {
   @Prop() field: ToggleProperty;
 
   @Event() eventChange: EventEmitter<ToggleProperty>;

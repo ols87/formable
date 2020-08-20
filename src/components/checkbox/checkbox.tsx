@@ -1,10 +1,18 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  ComponentInterface,
+} from "@stencil/core";
+
 import { CheckboxProperty } from "./types";
 
 @Component({
   tag: "vf-checkbox",
 })
-export class ComponentCheckbox {
+export class ComponentCheckbox implements ComponentInterface {
   @Prop() field: CheckboxProperty;
 
   @Event() eventClick: EventEmitter<CheckboxProperty>;

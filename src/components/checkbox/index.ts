@@ -10,6 +10,8 @@ import {
 } from "./types";
 
 export class CheckboxField extends Field implements CheckboxClass {
+  protected type: string = "checkbox";
+
   public view: CheckboxView;
 
   public events: CheckboxEvents;
