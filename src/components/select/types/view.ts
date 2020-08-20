@@ -6,7 +6,7 @@ interface SelectOption {
 }
 
 export interface SelectView extends FieldView {
-  options: SelectOption[];
+  options?: SelectOption[];
   placeholder?: string;
   value?: string;
 }

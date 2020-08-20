@@ -16,5 +16,5 @@
     "paths": {}
   },
   "include": ["src", "types/jsx.d.ts"],
-  "exclude": ["node_modules", "src/test.tsx"]
+  "exclude": ["node_modules"]
 }
