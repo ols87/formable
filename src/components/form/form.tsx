@@ -84,7 +84,6 @@ export class FormableForm implements ComponentInterface {
   }
 
   render() {
-    console.log(this.fields);
     return (
       <form
         noValidate
