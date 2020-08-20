@@ -9,7 +9,7 @@ import {
   SelectProperty,
 } from "./types";
 
-export * from "./types";
+export { SelectProperty } from "./types";
 
 export class SelectField extends Field implements SelectClass {
   public view: SelectView;

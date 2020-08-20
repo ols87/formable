@@ -9,8 +9,6 @@ import {
   ToggleProperty,
 } from "./types";
 
-export * from "./types";
-
 export class ToggleField extends Field implements ToggleClass {
   public view: ToggleView;
 

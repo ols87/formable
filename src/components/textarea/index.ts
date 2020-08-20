@@ -9,8 +9,6 @@ import {
   TextareaProperty,
 } from "./types";
 
-export * from "./types";
-
 export class TextareaField extends Field implements TextareaClass {
   public view: TextareaView;
 

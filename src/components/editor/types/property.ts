@@ -1,8 +1,8 @@
-import { FieldProperty } from "../../../field";
+import { FieldProperty } from "../../../field/types";
 import { EditorEvents, EditorView } from "./";
 import Quill from "quill";
 
-export declare interface EditorProperty extends FieldProperty {
+export interface EditorProperty extends FieldProperty {
   view: EditorView;
   events?: EditorEvents;
   editor?: Quill;

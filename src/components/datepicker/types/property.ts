@@ -1,8 +1,8 @@
-import { FieldProperty } from "../../../field";
+import { FieldProperty } from "../../../field/types";
 import { DatepickerView, DatepickerEvents } from "./";
 import Pikaday from "pikaday";
 
-export declare interface DatepickerProperty extends FieldProperty {
+export interface DatepickerProperty extends FieldProperty {
   view: DatepickerView;
   events?: DatepickerEvents;
   picker?: Pikaday;

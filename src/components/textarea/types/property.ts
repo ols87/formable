@@ -1,7 +1,7 @@
-import { FieldProperty } from "../../../field";
+import { FieldProperty } from "../../../field/types";
 import { TextareaView, TextareaEvents } from "./";
 
-export declare interface TextareaProperty extends FieldProperty {
+export interface TextareaProperty extends FieldProperty {
   view: TextareaView;
   events?: TextareaEvents;
 }

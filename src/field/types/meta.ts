@@ -1,4 +1,4 @@
-export declare interface FieldMeta {
+export interface FieldMeta {
   touched: boolean;
   pristine: boolean;
   submitted: boolean;

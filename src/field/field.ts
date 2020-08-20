@@ -5,9 +5,11 @@ import {
   FieldClass,
   FieldProperty,
   FieldLifecycle,
-} from "./";
+} from "./types";
 
-import { Validation, Validator } from "../validation";
+import { Validation } from "../validation";
+
+import { Validator } from "../validation/types";
 
 export class Field implements FieldClass {
   public view: FieldView;

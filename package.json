@@ -1,6 +1,6 @@
 {
   "name": "@vudo/formable",
-  "version": "0.1.24",
+  "version": "0.1.27",
   "description": "Vudo Form Components",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -12,7 +12,6 @@
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/formable/formable.js",
   "files": [
-    "./",
     "dist/",
     "loader/"
   ],

@@ -8,7 +8,7 @@ import {
   ComponentInterface,
 } from "@stencil/core";
 
-import { DatepickerProperty, PikadyEvents } from "./";
+import { DatepickerProperty, PikadyEvents } from "./types";
 @Component({
   tag: "vf-datepicker",
   styleUrl: "../../../node_modules/pikaday/css/pikaday.css",

@@ -9,8 +9,6 @@ import {
   InputProperty,
 } from "./types";
 
-export * from "./types";
-
 export class InputField extends Field implements InputClass {
   public view: InputView;
 

@@ -1,6 +1,6 @@
-import { FieldEvents } from "../../../field";
+import { FieldEvents } from "../../../field/types";
 
-export declare interface TextareaEvents extends FieldEvents {
+export interface TextareaEvents extends FieldEvents {
   onFocus?: Function;
   onInput?: Function;
   onBlur?: Function;

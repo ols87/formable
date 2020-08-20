@@ -1,3 +1,3 @@
-import { FieldController } from "../../../field";
+import { FieldController } from "../../../field/types";
 
-export declare interface TextareaController extends FieldController {}
+export interface TextareaController extends FieldController {}

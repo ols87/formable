@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
-import { CheckboxProperty } from "./";
+import { CheckboxProperty } from "./types";
 
 @Component({
   tag: "vf-checkbox",

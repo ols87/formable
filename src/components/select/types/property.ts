@@ -1,7 +1,7 @@
-import { FieldProperty } from "../../../field";
+import { FieldProperty } from "../../../field/types";
 import { SelectView, SelectEvents } from "./";
 
-export declare interface SelectProperty extends FieldProperty {
+export interface SelectProperty extends FieldProperty {
   view: SelectView;
   events?: SelectEvents;
 }

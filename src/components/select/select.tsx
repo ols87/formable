@@ -7,7 +7,7 @@ import {
   ComponentInterface,
 } from "@stencil/core";
 
-import { SelectProperty } from "./";
+import { SelectProperty } from "./types";
 
 @Component({
   tag: "vf-select",

@@ -1,6 +1,6 @@
-import { FieldView } from "../../../field";
+import { FieldView } from "../../../field/types";
 
-export declare interface InputView extends FieldView {
+export interface InputView extends FieldView {
   type: string;
   value?: string;
 }

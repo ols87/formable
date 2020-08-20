@@ -6,7 +6,7 @@ import {
   EventEmitter,
   ComponentInterface,
 } from "@stencil/core";
-import { TextareaProperty } from "./";
+import { TextareaProperty } from "./types";
 
 @Component({
   tag: "vf-textarea",

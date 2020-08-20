@@ -1,4 +1,4 @@
-export declare interface FieldEvents {
+export interface FieldEvents {
   onClick?: Function;
   onChange?: Function;
 }

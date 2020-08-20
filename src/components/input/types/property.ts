@@ -1,7 +1,7 @@
-import { FieldProperty } from "../../../field";
+import { FieldProperty } from "../../../field/types";
 import { InputView, InputEvents } from "./";
 
-export declare interface InputProperty extends FieldProperty {
+export interface InputProperty extends FieldProperty {
   view: InputView;
   events?: InputEvents;
 }

@@ -1,4 +1,4 @@
 import { ToggleProperty } from "./property";
 import { ToggleController } from "./controller";
 
-export declare type ToggleClass = ToggleProperty & ToggleController;
+export type ToggleClass = ToggleProperty & ToggleController;

@@ -1,6 +1,6 @@
-import { FieldView } from "../../../field";
+import { FieldView } from "../../../field/types";
 
-export declare interface DatepickerView extends FieldView {
+export interface DatepickerView extends FieldView {
   format?: string;
   minDate?: any;
   maxDate?: any;

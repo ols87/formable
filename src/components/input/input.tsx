@@ -7,7 +7,7 @@ import {
   ComponentInterface,
 } from "@stencil/core";
 
-import { InputProperty } from "./";
+import { InputProperty } from "./types";
 @Component({
   tag: "vf-input",
 })

@@ -1,11 +1,11 @@
-import { FieldView } from "../../../field";
+import { FieldView } from "../../../field/types";
 
-export declare interface RadioOption {
+export interface RadioOption {
   value: any;
   label: any;
 }
 
-export declare interface RadioView extends FieldView {
+export interface RadioView extends FieldView {
   options: RadioOption[];
   value?: string;
 }

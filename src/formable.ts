@@ -1,17 +1,26 @@
-import { InputField, InputProperty } from "./components/input";
-import { SelectProperty, SelectField } from "./components/select";
-import { EditorProperty, EditorField } from "./components/editor";
-import { CheckboxField, CheckboxProperty } from "./components/checkbox";
-import { RadioProperty, RadioField } from "./components/radio";
-import { ToggleProperty, ToggleField } from "./components/toggle";
-import { TextareaProperty, TextareaField } from "./components/textarea";
-import { DatepickerProperty, DatepickerField } from "./components/datepicker";
+import {
+  InputField,
+  SelectField,
+  EditorField,
+  CheckboxField,
+  RadioField,
+  ToggleField,
+  TextareaField,
+  DatepickerField,
+} from "./components/index";
 
-export * from "./field";
-export * from "./validation";
-export * from "./components";
+import {
+  InputProperty,
+  SelectProperty,
+  EditorProperty,
+  CheckboxProperty,
+  RadioProperty,
+  ToggleProperty,
+  TextareaProperty,
+  DatepickerProperty,
+} from "./components/types";
 
-export declare interface Formable {
+export interface Formable {
   checkbox: (options: CheckboxProperty) => CheckboxField;
   datepicker: (options: DatepickerProperty) => DatepickerField;
   editor: (options: EditorProperty) => EditorField;

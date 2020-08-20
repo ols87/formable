@@ -1,6 +1,6 @@
-import { FieldView } from "../../../field";
+import { FieldView } from "../../../field/types";
 
-export declare interface EditorView extends FieldView {
+export interface EditorView extends FieldView {
   style?: any;
   toolbarOptions?: any;
   placeholder?: string;

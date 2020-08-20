@@ -1,8 +1,8 @@
-import { FieldProperty } from "../../../field";
+import { FieldProperty } from "../../../field/types";
 import { RadioEvents } from "./";
 import { RadioView } from "./view";
 
-export declare interface RadioProperty extends FieldProperty {
+export interface RadioProperty extends FieldProperty {
   view: RadioView;
   events?: RadioEvents;
 }

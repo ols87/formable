@@ -1,5 +1,5 @@
-import { FieldView } from "../../../field";
+import { FieldView } from "../../../field/types";
 
-export declare interface ToggleView extends FieldView {
+export interface ToggleView extends FieldView {
   value?: boolean;
 }

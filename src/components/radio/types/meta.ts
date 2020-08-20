@@ -1,3 +1,3 @@
-import { FieldMeta } from "../../../field";
+import { FieldMeta } from "../../../field/types";
 
-export declare interface RadioMeta extends FieldMeta {}
+export interface RadioMeta extends FieldMeta {}

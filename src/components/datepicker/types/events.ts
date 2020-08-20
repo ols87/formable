@@ -1,6 +1,6 @@
-import { FieldEvents } from "../../../field";
+import { FieldEvents } from "../../../field/types";
 
-export declare interface DatepickerEvents extends FieldEvents {
+export interface DatepickerEvents extends FieldEvents {
   onFocus?: Function;
   onBlur?: Function;
   onInput?: Function;
@@ -12,6 +12,6 @@ export declare interface DatepickerEvents extends FieldEvents {
 
 type PikadayMethods = "onSelect" | "onOpen" | "onClose" | "onDraw";
 
-export declare type PikadyEvents = {
+export type PikadyEvents = {
   [key in PikadayMethods]: (name: string, event: () => string) => void;
 };

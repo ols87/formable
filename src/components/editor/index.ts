@@ -9,8 +9,6 @@ import {
   EditorProperty,
 } from "./types";
 
-export * from "./types";
-
 import Quill from "quill";
 
 const DefaultToolbarOptions: any[] = [

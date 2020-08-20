@@ -4,11 +4,11 @@ import {
   FieldMeta,
   FieldClass,
   FieldLifecycle,
-} from ".";
+} from "./";
 
-import { Validator } from "../../validation";
+import { Validator } from "../../validation/types";
 
-export declare interface FieldProperty extends Partial<FieldClass> {
+export interface FieldProperty extends Partial<FieldClass> {
   view: FieldView;
   events?: FieldEvents;
   meta?: FieldMeta;

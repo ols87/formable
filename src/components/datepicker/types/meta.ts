@@ -1,3 +1,3 @@
-import { FieldMeta } from "../../../field";
+import { FieldMeta } from "../../../field/types";
 
-export declare interface DatepickerMeta extends FieldMeta {}
+export interface DatepickerMeta extends FieldMeta {}

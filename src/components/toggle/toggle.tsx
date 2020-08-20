@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
-import { ToggleProperty } from "./";
+import { ToggleProperty } from "./types";
 
 @Component({
   tag: "vf-toggle",

@@ -1,6 +1,6 @@
-import { FieldProperty } from "../field";
+import { FieldProperty } from "../field/types";
 
-import { Validator } from "./";
+import { Validator } from "./types";
 
 export class Validation {
   public field: FieldProperty;

@@ -7,7 +7,7 @@ import {
   Element,
 } from "@stencil/core";
 
-import { EditorProperty } from "./";
+import { EditorProperty } from "./types";
 
 @Component({
   tag: "vf-editor",

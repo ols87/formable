@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
-import { RadioProperty } from "./";
+import { RadioProperty } from "./types";
 
 @Component({
   tag: "vf-radio",

@@ -1,3 +1,3 @@
-import { FieldController } from "../../../field";
+import { FieldController } from "../../../field/types";
 
-export declare interface CheckboxController extends FieldController {}
+export interface CheckboxController extends FieldController {}

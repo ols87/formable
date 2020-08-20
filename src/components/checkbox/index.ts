@@ -9,8 +9,6 @@ import {
   CheckboxProperty,
 } from "./types";
 
-export * from "./types";
-
 export class CheckboxField extends Field implements CheckboxClass {
   public view: CheckboxView;
 

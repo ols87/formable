@@ -1,4 +1,4 @@
-export declare interface Validator {
+export interface Validator {
   match: RegExp;
   message: string;
 }

@@ -5,14 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CheckboxProperty } from "./components/checkbox";
-import { DatepickerProperty } from "./components/datepicker";
-import { EditorProperty } from "./components/editor";
-import { InputProperty } from "./components/input";
-import { RadioProperty } from "./components/radio";
-import { SelectProperty } from "./components/select";
-import { TextareaProperty } from "./components/textarea";
-import { ToggleProperty } from "./components/toggle";
+import { CheckboxProperty } from "./components/checkbox/types";
+import { DatepickerProperty } from "./components/datepicker/types";
+import { EditorProperty } from "./components/editor/types";
+import { InputProperty } from "./components/input/types";
+import { RadioProperty } from "./components/radio/types";
+import { SelectProperty } from "./components/select/types";
+import { TextareaProperty } from "./components/textarea/types";
+import { ToggleProperty } from "./components/toggle/types";
 export namespace Components {
     interface VfCheckbox {
         "field": CheckboxProperty;

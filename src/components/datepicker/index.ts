@@ -12,8 +12,6 @@ import {
 import Pikaday from "pikaday";
 import moment from "moment";
 
-export * from "./types";
-
 export class DatepickerField extends Field implements DatepickerClass {
   public view: DatepickerView;
 

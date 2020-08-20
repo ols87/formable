@@ -1,3 +1,3 @@
-import { FieldMeta } from "../../../field";
+import { FieldMeta } from "../../../field/types";
 
-export declare interface CheckboxMeta extends FieldMeta {}
+export interface CheckboxMeta extends FieldMeta {}
