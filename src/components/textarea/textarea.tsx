@@ -33,8 +33,8 @@ export class ComponentTextarea implements ComponentInterface {
     return (
       <div
         class={`vf-field-wrapper vf-textarea-wrapper ${
-          view.classes?.wrapper ? view.classes?.wrapper : ""
-        }`}
+          view.classes?.wrapper ?? ""
+        }  ${this.field.classes()}`}
       >
         <label
           htmlFor={view.id}

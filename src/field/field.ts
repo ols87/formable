@@ -31,7 +31,6 @@ export class Field implements FieldClass {
 
     this.meta = options.meta || {
       touched: false,
-      pristine: true,
       submitted: false,
       valid: this.view.required ? false : true,
     };
@@ -73,6 +72,26 @@ export class Field implements FieldClass {
     this.set(undefined);
 
     this.validate();
+  }
+
+  submit() {
+    this.meta.submitted = true;
+
+    this.touch();
+
+    this.validate();
+
+    return this.render();
+  }
+
+  classes(): string {
+    const touched = this.meta.touched ? "touched" : "untouched";
+
+    const submitted = this.meta.submitted ? "submitted" : "unsubmitted";
+
+    const error = this.view.errors?.length > 0 ? "error" : "valid";
+
+    return `${touched} ${submitted} ${error}`;
   }
 
   render(): Field {

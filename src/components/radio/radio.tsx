@@ -37,8 +37,8 @@ export class ComponentRadio implements ComponentInterface {
     return (
       <div
         class={`vf-field-wrapper vf-radio-wrapper ${
-          view.classes?.wrapper ? view.classes?.wrapper : ""
-        }`}
+          view.classes?.wrapper ?? ""
+        }  ${this.field.classes()}`}
       >
         <label
           class={`vf-field-label vf-radio-label ${

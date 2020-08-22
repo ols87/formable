@@ -130,10 +130,10 @@ export class ComponentInput {
         rows: 3,
       },
     }),
-    editor: Formable.editor({
+    editor: Formable.datepicker({
       view: {
-        id: "editor",
-        label: "Editor",
+        id: "datepicker",
+        label: "Datepicker",
         required: true,
       },
     }),

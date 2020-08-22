@@ -32,7 +32,7 @@ export class ComponentSelect implements ComponentInterface {
       <div
         class={`vf-field-wrapper vf-select-wrapper ${
           view.classes?.wrapper ?? ""
-        }`}
+        }  ${this.field.classes()}`}
       >
         <label
           class={`vf-field-label vf-select-label ${view.classes?.label ?? ""}`}

@@ -35,7 +35,7 @@ export class ComponentToggle implements ComponentInterface {
       <div
         class={`vf-field-wrapper vf-toggle-wrapper ${
           view.classes?.wrapper ?? ""
-        }`}
+        }  ${this.field.classes()}`}
       >
         <label
           class={`switch ${this.field.value ? "checked" : ""}`}

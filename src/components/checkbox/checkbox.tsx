@@ -31,8 +31,8 @@ export class ComponentCheckbox implements ComponentInterface {
     return (
       <div
         class={`vf-field-wrapper vf-checkbox-wrapper ${
-          view.classes?.wrapper ? view.classes?.wrapper : ""
-        }`}
+          view.classes?.wrapper ?? ""
+        }  ${this.field.classes()}`}
       >
         <label
           htmlFor={view.id}

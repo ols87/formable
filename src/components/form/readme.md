@@ -7,12 +7,18 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type           | Default    |
-| ------------ | ------------- | ----------- | -------------- | ---------- |
-| `autoRender` | `auto-render` |             | `boolean`      | `false`    |
-| `fields`     | --            |             | `FormProperty` | `{}`       |
-| `reset`      | `reset`       |             | `any`          | `() => {}` |
-| `submit`     | `submit`      |             | `any`          | `() => {}` |
+| Property | Attribute | Description | Type           | Default |
+| -------- | --------- | ----------- | -------------- | ------- |
+| `fields` | --        |             | `FormProperty` | `{}`    |
+
+
+## Events
+
+| Event         | Description | Type                                                                 |
+| ------------- | ----------- | -------------------------------------------------------------------- |
+| `eventChange` |             | `CustomEvent<{ [x: string]: FieldProperty & DynamicFormProperty; }>` |
+| `eventReset`  |             | `CustomEvent<any>`                                                   |
+| `eventSubmit` |             | `CustomEvent<boolean>`                                               |
 
 
 ## Dependencies
@@ -23,26 +29,26 @@
 
 ### Depends on
 
-- [vf-input](../input)
-- [vf-textarea](../textarea)
-- [vf-select](../select)
 - [vf-checkbox](../checkbox)
-- [vf-radio](../radio)
-- [vf-toggle](../toggle)
-- [vf-editor](../editor)
 - [vf-datepicker](../datepicker)
+- [vf-editor](../editor)
+- [vf-input](../input)
+- [vf-radio](../radio)
+- [vf-select](../select)
+- [vf-textarea](../textarea)
+- [vf-toggle](../toggle)
 
 ### Graph
 ```mermaid
 graph TD;
-  vf-form --> vf-input
-  vf-form --> vf-textarea
-  vf-form --> vf-select
   vf-form --> vf-checkbox
-  vf-form --> vf-radio
-  vf-form --> vf-toggle
-  vf-form --> vf-editor
   vf-form --> vf-datepicker
+  vf-form --> vf-editor
+  vf-form --> vf-input
+  vf-form --> vf-radio
+  vf-form --> vf-select
+  vf-form --> vf-textarea
+  vf-form --> vf-toggle
   vf-test --> vf-form
   style vf-form fill:#f9f,stroke:#333,stroke-width:4px
 ```

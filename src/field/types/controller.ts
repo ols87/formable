@@ -5,6 +5,8 @@ export interface FieldController {
   unTouch: Function;
   clear: Function;
   render: Function;
+  submit: Function;
+  classes: () => string;
   on: (name: string, value: any) => string;
   validate: () => boolean;
 }

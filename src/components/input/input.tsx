@@ -34,7 +34,7 @@ export class ComponentInput implements ComponentInterface {
       <div
         class={`vf-field-wrapper vf-input-wrapper ${
           view.classes?.wrapper ?? ""
-        }`}
+        }  ${this.field.classes()}`}
       >
         <label
           class={`vf-field-label vf-input-label ${view.classes?.label ?? ""}`}

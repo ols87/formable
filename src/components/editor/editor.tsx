@@ -57,8 +57,8 @@ export class ComponentEditor implements ComponentInterface {
     return (
       <div
         class={`vf-field-wrapper vf-editor-wrapper ${
-          view.classes?.wrapper ? view.classes?.wrapper : ""
-        }`}
+          view.classes?.wrapper ?? ""
+        }  ${this.field.classes()}`}
       >
         <label
           htmlFor={view.id}
