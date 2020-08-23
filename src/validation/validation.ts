@@ -12,26 +12,26 @@ export class Validation {
   public check(): boolean {
     this.field.view.errors = [];
 
-    if (!this.field.value && !this.field.meta.submitted) return true;
+    if (!this.field.value && !this.field.submitted) return true;
 
-    if (!this.field.meta.touched) return true;
+    if (!this.field.touched) return true;
 
     if (this.field.view.required) return this.required();
 
     return true;
   }
 
-  public required(): boolean {    
+  public required(): boolean {
     if (!this.field.value) {
       this.field.view.errors.push("This field is required");
-      this.field.meta.valid = false;
+      this.field.valid = false;
       return false;
     }
 
     if (this.field.validators) return this.validators();
 
     this.field.view.errors = [];
-    this.field.meta.valid = true;
+    this.field.valid = true;
 
     return true;
   }
@@ -46,9 +46,9 @@ export class Validation {
 
       if (!isMatch) this.field.view.errors.push(validator.message);
 
-      this.field.meta.valid = isMatch ? true : false;
+      this.field.valid = isMatch ? true : false;
 
-      valid = this.field.meta.valid;
+      valid = this.field.valid;
     });
 
     return valid;

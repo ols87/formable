@@ -1,13 +1,6 @@
 import { Field } from "../../field";
 
-import {
-  RadioController,
-  RadioView,
-  RadioEvents,
-  RadioMeta,
-  RadioClass,
-  RadioProperty,
-} from "./types";
+import { RadioView, RadioEvents, RadioClass, RadioProperty } from "./types";
 
 export class RadioField extends Field implements RadioClass {
   protected type: string = "radio";
@@ -15,10 +8,6 @@ export class RadioField extends Field implements RadioClass {
   public view: RadioView;
 
   public events: RadioEvents;
-
-  public meta: RadioMeta;
-
-  public controller: RadioController;
 
   constructor(options: RadioProperty) {
     super(options);

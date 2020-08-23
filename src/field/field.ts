@@ -1,6 +1,5 @@
 import {
   FieldView,
-  FieldMeta,
   FieldEvents,
   FieldClass,
   FieldProperty,
@@ -16,24 +15,28 @@ export class Field implements FieldClass {
 
   public events: FieldEvents;
 
-  public meta: FieldMeta;
-
   public lifecycle: FieldLifecycle;
 
   public validators: Array<Validator>;
 
   public value: any;
 
+  public touched: boolean;
+
+  public submitted: boolean;
+
+  public valid: boolean;
+
   constructor(options: FieldProperty) {
     this.view = options.view;
 
     this.events = options.events || {};
 
-    this.meta = options.meta || {
-      touched: false,
-      submitted: false,
-      valid: this.view.required ? false : true,
-    };
+    this.touched = options.touched || false;
+
+    this.submitted = options.submitted || false;
+
+    this.valid = this.view.required ? options.valid || false : true;
 
     this.validators = options.validators || null;
 
@@ -55,13 +58,13 @@ export class Field implements FieldClass {
   }
 
   touch() {
-    this.meta.touched = true;
+    this.touched = true;
 
     this.validate();
   }
 
   unTouch() {
-    this.meta.touched = false;
+    this.touched = false;
 
     this.validate();
   }
@@ -75,7 +78,7 @@ export class Field implements FieldClass {
   }
 
   submit() {
-    this.meta.submitted = true;
+    this.submitted = true;
 
     this.touch();
 
@@ -85,9 +88,9 @@ export class Field implements FieldClass {
   }
 
   classes(): string {
-    const touched = this.meta.touched ? "touched" : "untouched";
+    const touched = this.touched ? "touched" : "untouched";
 
-    const submitted = this.meta.submitted ? "submitted" : "unsubmitted";
+    const submitted = this.submitted ? "submitted" : "unsubmitted";
 
     const error = this.view.errors?.length > 0 ? "error" : "valid";
 

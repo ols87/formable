@@ -13,7 +13,7 @@ import {
   DatepickerProperty,
 } from "./components/types";
 
-import { FormProperty } from "./components/form/types/property";
+import { FormProperty } from "./components/form/types";
 
 @Component({
   tag: "vf-test",

@@ -6,6 +6,7 @@ import {
   EventEmitter,
   ComponentInterface,
 } from "@stencil/core";
+
 import { TextareaProperty } from "./types";
 
 @Component({

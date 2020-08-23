@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CheckboxProperty } from "./components/checkbox/types";
 import { DatepickerProperty } from "./components/datepicker/types";
 import { EditorProperty } from "./components/editor/types";
-import { FormProperty } from "./components/form/types/property";
+import { FormProperty } from "./components/form/types";
 import { InputProperty } from "./components/input/types";
 import { RadioProperty } from "./components/radio/types";
 import { SelectProperty } from "./components/select/types";

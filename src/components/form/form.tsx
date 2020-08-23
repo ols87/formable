@@ -8,7 +8,7 @@ import {
   EventEmitter,
 } from "@stencil/core";
 
-import { FormProperty } from "./types/property";
+import { FormProperty } from "./types";
 
 import {
   InputProperty,
