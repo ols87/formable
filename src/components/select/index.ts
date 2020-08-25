@@ -2,10 +2,10 @@ import { Field } from "../../field";
 
 import { SelectView, SelectEvents, SelectClass, SelectProperty } from "./types";
 
-export { SelectProperty } from "./types";
+import { FieldComponent } from "../../field/types";
 
 export class SelectField extends Field implements SelectClass {
-  readonly type: string = "select";
+  public type: FieldComponent = "select";
 
   public view: SelectView;
 

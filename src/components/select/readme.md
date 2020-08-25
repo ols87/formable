@@ -25,14 +25,14 @@
 
 ### Used by
 
+ - [component-test](../..)
  - [vf-form](../form)
- - [vf-test](../..)
 
 ### Graph
 ```mermaid
 graph TD;
+  component-test --> vf-select
   vf-form --> vf-select
-  vf-test --> vf-select
   style vf-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

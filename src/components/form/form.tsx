@@ -6,9 +6,10 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
 } from "@stencil/core";
 
-import { FormProperty } from "./types";
+import { FormClass } from "./types";
 
 import {
   InputProperty,
@@ -25,70 +26,27 @@ import {
   tag: "vf-form",
 })
 export class FormableForm implements ComponentInterface {
-  @Prop() fields: FormProperty = {};
+  @Prop() form: FormClass;
 
   @Element() el: HTMLElement;
 
-  @Event() eventChange: EventEmitter<FormProperty>;
-  @Event() eventSubmit: EventEmitter<Partial<boolean>>;
-  @Event() eventReset: EventEmitter;
-  reset(event: CustomEvent) {
-    event.stopPropagation();
-    event.preventDefault();
-
-    for (const key in this.fields) {
-      if (this.fields.hasOwnProperty(key)) {
-        this.fields[key] = this.fields[key].clear();
-      }
-    }
-
-    this.fields = { ...this.fields };
-
-    this.eventReset.emit();
-  }
-
-  submit(event: CustomEvent) {
-    event.stopPropagation();
-    event.preventDefault();
-
-    let valid = true;
-
-    for (const key in this.fields) {
-      if (this.fields.hasOwnProperty(key)) {
-        this.fields[key] = this.fields[key].submit();
-
-        if (!this.fields[key].valid) valid = false;
-      }
-    }
-
-    this.fields = { ...this.fields };
-
-    this.eventSubmit.emit(valid);
-  }
+  @Event() eventChange: EventEmitter<FormClass>;
 
   event(key: string) {
-    this.fields[key] = this.fields[key].render();
+    this.form.fields[key] = this.form.fields[key].render();
 
-    this.fields = { ...this.fields };
-
-    this.eventChange.emit(this.fields);
+    this.form = this.form.render();
   }
 
   render() {
     return (
-      <form
-        noValidate
-        onSubmit={(event: CustomEvent) => this.submit(event)}
-        onReset={(event: CustomEvent) => this.reset(event)}
-      >
-        {Object.keys(this.fields ?? {}).map((key: string) => {
-          const field = this.fields[key];
+      <Host>
+        {Object.keys(this.form.fields ?? {}).map((key: string) => {
+          const field = this.form.fields[key];
 
           return this.renderField(field.type, key);
         })}
-
-        <slot></slot>
-      </form>
+      </Host>
     );
   }
 
@@ -141,6 +99,6 @@ export class FormableForm implements ComponentInterface {
       ),
     };
 
-    return fields[type](this.fields[key]);
+    return fields[type](this.form.fields[key]);
   }
 }

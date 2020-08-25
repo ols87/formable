@@ -31,14 +31,14 @@
 
 ### Used by
 
+ - [component-test](../..)
  - [vf-form](../form)
- - [vf-test](../..)
 
 ### Graph
 ```mermaid
 graph TD;
+  component-test --> vf-datepicker
   vf-form --> vf-datepicker
-  vf-test --> vf-datepicker
   style vf-datepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

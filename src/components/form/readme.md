@@ -7,25 +7,23 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type           | Default |
-| -------- | --------- | ----------- | -------------- | ------- |
-| `fields` | --        |             | `FormProperty` | `{}`    |
+| Property | Attribute | Description | Type                          | Default     |
+| -------- | --------- | ----------- | ----------------------------- | ----------- |
+| `form`   | --        |             | `FormFields & FormController` | `undefined` |
 
 
 ## Events
 
-| Event         | Description | Type                                                                 |
-| ------------- | ----------- | -------------------------------------------------------------------- |
-| `eventChange` |             | `CustomEvent<{ [x: string]: FieldProperty & DynamicFormProperty; }>` |
-| `eventReset`  |             | `CustomEvent<any>`                                                   |
-| `eventSubmit` |             | `CustomEvent<boolean>`                                               |
+| Event         | Description | Type                                       |
+| ------------- | ----------- | ------------------------------------------ |
+| `eventChange` |             | `CustomEvent<FormFields & FormController>` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [vf-test](../..)
+ - [form-test](../..)
 
 ### Depends on
 
@@ -49,7 +47,7 @@ graph TD;
   vf-form --> vf-select
   vf-form --> vf-textarea
   vf-form --> vf-toggle
-  vf-test --> vf-form
+  form-test --> vf-form
   style vf-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

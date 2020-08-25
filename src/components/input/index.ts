@@ -2,8 +2,10 @@ import { Field } from "../../field";
 
 import { InputView, InputEvents, InputClass, InputProperty } from "./types";
 
+import { FieldComponent } from "../../field/types";
+
 export class InputField extends Field implements InputClass {
-  readonly type: string = "input";
+  public type: FieldComponent = "input";
 
   public view: InputView;
 

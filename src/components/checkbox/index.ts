@@ -7,8 +7,10 @@ import {
   CheckboxProperty,
 } from "./types";
 
+import { FieldComponent } from "../../field/types";
+
 export class CheckboxField extends Field implements CheckboxClass {
-  readonly type: string = "checkbox";
+  public type: FieldComponent = "checkbox";
 
   public view: CheckboxView;
 

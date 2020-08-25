@@ -2,6 +2,8 @@ import { Field } from "../../field";
 
 import { EditorView, EditorEvents, EditorClass, EditorProperty } from "./types";
 
+import { FieldComponent } from "../../field/types";
+
 import Quill from "quill";
 
 const DefaultToolbarOptions: any[] = [
@@ -15,7 +17,7 @@ const DefaultToolbarOptions: any[] = [
 ];
 
 export class EditorField extends Field implements EditorClass {
-  readonly type: string = "editor";
+  public type: FieldComponent = "editor";
 
   public view: EditorView;
 

@@ -7,8 +7,10 @@ import {
   TextareaProperty,
 } from "./types";
 
+import { FieldComponent } from "../../field/types";
+
 export class TextareaField extends Field implements TextareaClass {
-  readonly type: string = "textarea";
+  public type: FieldComponent = "textarea";
 
   public view: TextareaView;
 

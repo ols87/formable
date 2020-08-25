@@ -4,6 +4,7 @@ import {
   FieldClass,
   FieldProperty,
   FieldLifecycle,
+  FieldComponent,
 } from "./types";
 
 import { Validation } from "../validation";
@@ -11,6 +12,8 @@ import { Validation } from "../validation";
 import { Validator } from "../validation/types";
 
 export class Field implements FieldClass {
+  public type: FieldComponent;
+
   public view: FieldView;
 
   public events: FieldEvents;
@@ -28,6 +31,8 @@ export class Field implements FieldClass {
   public valid: boolean;
 
   constructor(options: FieldProperty) {
+    this.type = options.type;
+
     this.view = options.view;
 
     this.events = options.events || {};
@@ -118,6 +123,7 @@ export class Field implements FieldClass {
 
   validate(): boolean {
     const validation = new Validation(this);
+
     return validation.check();
   }
 }

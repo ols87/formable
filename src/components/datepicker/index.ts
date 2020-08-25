@@ -7,11 +7,13 @@ import {
   DatepickerProperty,
 } from "./types";
 
+import { FieldComponent } from "../../field/types";
+
 import Pikaday from "pikaday";
 import moment from "moment";
 
 export class DatepickerField extends Field implements DatepickerClass {
-  readonly type: string = "datepicker";
+  public type: FieldComponent = "datepicker";
 
   public view: DatepickerView;
 

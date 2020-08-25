@@ -28,14 +28,14 @@
 
 ### Used by
 
+ - [component-test](../..)
  - [vf-form](../form)
- - [vf-test](../..)
 
 ### Graph
 ```mermaid
 graph TD;
+  component-test --> vf-textarea
   vf-form --> vf-textarea
-  vf-test --> vf-textarea
   style vf-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

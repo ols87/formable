@@ -13,12 +13,10 @@ import {
   DatepickerProperty,
 } from "./components/types";
 
-import { FormProperty } from "./components/form/types";
-
 @Component({
-  tag: "vf-test",
+  tag: "component-test",
 })
-export class ComponentInput {
+export class ComponentTest {
   @Prop() input: InputProperty = Formable.input({
     view: {
       id: "input",
@@ -113,37 +111,7 @@ export class ComponentInput {
     },
   });
 
-  @Prop() formFields: FormProperty = {
-    textarea: Formable.textarea({
-      view: {
-        id: "textarea",
-        label: "Textarea",
-        required: true,
-        rows: 3,
-      },
-    }),
-    editor: Formable.datepicker({
-      view: {
-        id: "datepicker",
-        label: "Datepicker",
-        required: true,
-      },
-    }),
-  };
-
   componentDidLoad() {}
-
-  submit(valid: boolean) {
-    this.formFields = { ...this.formFields };
-
-    if (!valid) {
-      return;
-    }
-  }
-
-  reset() {
-    this.formFields = { ...this.formFields };
-  }
 
   render() {
     return (
@@ -201,19 +169,6 @@ export class ComponentInput {
         Textarea: {this.textarea.value}
         <br />
         Datepicker: {this.datepicker.value}
-        <h1>Form Type 2</h1>
-        <vf-form
-          fields={this.formFields}
-          onEventChange={() => (this.formFields = { ...this.formFields })}
-          onEventSubmit={(valid) => this.submit(valid.detail)}
-          onEventReset={() => this.reset()}
-        >
-          <button type="submit">Submit 2</button>
-          <button type="reset">Reset 2</button>
-        </vf-form>
-        Textarea: {this.formFields.textarea.value}
-        <br />
-        Editor: {this.formFields.editor.value}
       </div>
     );
   }

@@ -2,8 +2,10 @@ import { Field } from "../../field";
 
 import { ToggleView, ToggleEvents, ToggleClass, ToggleProperty } from "./types";
 
+import { FieldComponent } from "../../field/types";
+
 export class ToggleField extends Field implements ToggleClass {
-  readonly type: string = "toggle";
+  public type: FieldComponent = "toggle";
 
   public view: ToggleView;
 

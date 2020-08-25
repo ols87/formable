@@ -20,7 +20,12 @@ import {
   DatepickerProperty,
 } from "./components/types";
 
+import { FormProperty, FormClass } from "components/form/types";
+
+import { Form } from "components/form";
+
 export interface Formable {
+  form: (fields: FormProperty) => FormClass;
   checkbox: (options: CheckboxProperty) => CheckboxField;
   datepicker: (options: DatepickerProperty) => DatepickerField;
   editor: (options: EditorProperty) => EditorField;
@@ -32,6 +37,9 @@ export interface Formable {
 }
 
 export const Formable: Formable = {
+  form(fields: FormProperty) {
+    return new Form(fields);
+  },
   checkbox(options: CheckboxProperty) {
     return new CheckboxField(options);
   },

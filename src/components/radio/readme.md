@@ -25,14 +25,14 @@
 
 ### Used by
 
+ - [component-test](../..)
  - [vf-form](../form)
- - [vf-test](../..)
 
 ### Graph
 ```mermaid
 graph TD;
+  component-test --> vf-radio
   vf-form --> vf-radio
-  vf-test --> vf-radio
   style vf-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -26,14 +26,14 @@
 
 ### Used by
 
+ - [component-test](../..)
  - [vf-form](../form)
- - [vf-test](../..)
 
 ### Graph
 ```mermaid
 graph TD;
+  component-test --> vf-editor
   vf-form --> vf-editor
-  vf-test --> vf-editor
   style vf-editor fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
