@@ -157,7 +157,7 @@ declare namespace LocalJSX {
     }
     interface VfForm {
         "fields"?: FormProperty;
-        "onEventChange"?: (event: CustomEvent<Partial<FormProperty>>) => void;
+        "onEventChange"?: (event: CustomEvent<FormProperty>) => void;
         "onEventReset"?: (event: CustomEvent<any>) => void;
         "onEventSubmit"?: (event: CustomEvent<Partial<boolean>>) => void;
     }
@@ -188,7 +188,6 @@ declare namespace LocalJSX {
         "editor"?: EditorProperty;
         "formFields"?: FormProperty;
         "input"?: InputProperty;
-        "onFormSubmit"?: (event: CustomEvent<any>) => void;
         "radio"?: RadioProperty;
         "select"?: SelectProperty;
         "textarea"?: TextareaProperty;

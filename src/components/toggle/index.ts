@@ -3,7 +3,7 @@ import { Field } from "../../field";
 import { ToggleView, ToggleEvents, ToggleClass, ToggleProperty } from "./types";
 
 export class ToggleField extends Field implements ToggleClass {
-  protected type: string = "toggle";
+  readonly type: string = "toggle";
 
   public view: ToggleView;
 

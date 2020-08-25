@@ -8,7 +8,7 @@ import {
 } from "./types";
 
 export class CheckboxField extends Field implements CheckboxClass {
-  protected type: string = "checkbox";
+  readonly type: string = "checkbox";
 
   public view: CheckboxView;
 

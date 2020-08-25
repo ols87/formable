@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from "@stencil/core";
+import { Component, h, Prop } from "@stencil/core";
 
 import { Formable } from "./formable";
 
@@ -19,14 +19,6 @@ import { FormProperty } from "./components/form/types";
   tag: "vf-test",
 })
 export class ComponentInput {
-  @Event({
-    eventName: "formSubmit",
-    composed: true,
-    cancelable: true,
-    bubbles: true,
-  })
-  todoCompleted: EventEmitter<any>;
-
   @Prop() input: InputProperty = Formable.input({
     view: {
       id: "input",
@@ -143,8 +135,6 @@ export class ComponentInput {
 
   submit(valid: boolean) {
     this.formFields = { ...this.formFields };
-
-    console.log(this.formFields);
 
     if (!valid) {
       return;

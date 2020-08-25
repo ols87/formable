@@ -1,9 +1,5 @@
-import { FieldProperty } from "../../field/types";
-
-export interface DynamicFormProperty {
-  [key: string]: any;
-}
+import { FieldClass } from "../../field/types";
 
 export interface FormProperty {
-  [key: string]: FieldProperty & DynamicFormProperty;
+  [key: string]: FieldClass;
 }

@@ -15,7 +15,7 @@ const DefaultToolbarOptions: any[] = [
 ];
 
 export class EditorField extends Field implements EditorClass {
-  protected type: string = "editor";
+  readonly type: string = "editor";
 
   public view: EditorView;
 
@@ -64,7 +64,7 @@ export class EditorField extends Field implements EditorClass {
 
     this.editor.blur();
 
-    super.clear();
+    return super.clear();
   }
 
   render(): EditorField {

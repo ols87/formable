@@ -70,11 +70,15 @@ export class Field implements FieldClass {
   }
 
   clear() {
+    this.submitted = false;
+
     this.unTouch();
 
     this.set(undefined);
 
     this.validate();
+
+    return this.render();
   }
 
   submit() {

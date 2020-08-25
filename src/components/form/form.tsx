@@ -29,21 +29,16 @@ export class FormableForm implements ComponentInterface {
 
   @Element() el: HTMLElement;
 
-  @Event() eventChange: EventEmitter<Partial<FormProperty>>;
+  @Event() eventChange: EventEmitter<FormProperty>;
   @Event() eventSubmit: EventEmitter<Partial<boolean>>;
   @Event() eventReset: EventEmitter;
-
-  componentWillLoad() {}
-
   reset(event: CustomEvent) {
     event.stopPropagation();
     event.preventDefault();
 
     for (const key in this.fields) {
       if (this.fields.hasOwnProperty(key)) {
-        this.fields[key].meta.submitted = false;
-        this.fields[key].clear();
-        this.fields[key] = this.fields[key].render();
+        this.fields[key] = this.fields[key].clear();
       }
     }
 
@@ -60,13 +55,9 @@ export class FormableForm implements ComponentInterface {
 
     for (const key in this.fields) {
       if (this.fields.hasOwnProperty(key)) {
-        this.fields[key].meta.submitted = true;
-        this.fields[key].touch();
-        this.fields[key] = this.fields[key].render();
+        this.fields[key] = this.fields[key].submit();
 
-        if (!this.fields[key].meta.valid) {
-          valid = false;
-        }
+        if (!this.fields[key].valid) valid = false;
       }
     }
 

@@ -8,7 +8,7 @@ import {
 } from "./types";
 
 export class TextareaField extends Field implements TextareaClass {
-  protected type: string = "textarea";
+  readonly type: string = "textarea";
 
   public view: TextareaView;
 
