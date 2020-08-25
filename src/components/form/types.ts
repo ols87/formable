@@ -1,15 +1,14 @@
-import { InputProperty } from "components/input/types";
-import { CheckboxProperty } from "components/checkbox/types";
-import { DatepickerProperty } from "components/datepicker/types";
-import { EditorProperty } from "components/editor/types";
-import { RadioProperty } from "components/radio/types";
-import { SelectProperty } from "components/select/types";
-import { TextareaProperty } from "components/textarea/types";
-import { ToggleProperty } from "components/toggle/types";
-import { FieldComponent } from "field/types";
+import { InputProperty } from "../input/types";
+import { CheckboxProperty } from "../checkbox/types";
+import { DatepickerProperty } from "../datepicker/types";
+import { EditorProperty } from "../editor/types";
+import { RadioProperty } from "../radio/types";
+import { SelectProperty } from "../select/types";
+import { TextareaProperty } from "../textarea/types";
+import { ToggleProperty } from "../toggle/types";
 
 export type FormProperty = {
-  [key in FieldComponent]?:
+  [key: string]:
     | CheckboxProperty
     | DatepickerProperty
     | EditorProperty
@@ -21,7 +20,7 @@ export type FormProperty = {
 };
 
 export interface FormFields {
-  fields: FormProperty;
+  fields: FormProperty & any;
   valid: boolean;
 }
 

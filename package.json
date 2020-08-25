@@ -1,6 +1,6 @@
 {
   "name": "@vudo/formable",
-  "version": "0.3.0",
+  "version": "0.3.7",
   "description": "Vudo Form Components",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -19,6 +19,7 @@
     "registry": "https://npm.vudo.tech/"
   },
   "scripts": {
+    "deploy": "npm run build --prod && npm publish",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve --no-open",
     "test": "stencil test --spec --e2e",

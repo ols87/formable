@@ -6,11 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CheckboxProperty, DatepickerProperty, EditorProperty, InputProperty, RadioProperty, SelectProperty, TextareaProperty, ToggleProperty } from "./components/types";
-import { FormClass } from "components/form/types";
+import { FormClass } from "./components/form/types";
 import { CheckboxProperty as CheckboxProperty1 } from "./components/checkbox/types";
 import { DatepickerProperty as DatepickerProperty1 } from "./components/datepicker/types";
 import { EditorProperty as EditorProperty1 } from "./components/editor/types";
-import { FormClass as FormClass1 } from "./components/form/types";
 import { InputProperty as InputProperty1 } from "./components/input/types";
 import { RadioProperty as RadioProperty1 } from "./components/radio/types";
 import { SelectProperty as SelectProperty1 } from "./components/select/types";

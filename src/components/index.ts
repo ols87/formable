@@ -2,6 +2,7 @@ export * from "./checkbox";
 export * from "./datepicker";
 export * from "./editor";
 export * from "./input";
+export * from "./form";
 export * from "./radio";
 export * from "./select";
 export * from "./toggle";

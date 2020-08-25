@@ -20,9 +20,9 @@ import {
   DatepickerProperty,
 } from "./components/types";
 
-import { FormProperty, FormClass } from "components/form/types";
+import { FormProperty, FormClass } from "./components/form/types";
 
-import { Form } from "components/form";
+import { Form } from "./components/form";
 
 export interface Formable {
   form: (fields: FormProperty) => FormClass;

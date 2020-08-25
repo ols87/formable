@@ -1,5 +1,5 @@
 import { FormProperty, FormClass } from "./types";
-import { Formable } from "formable";
+import { Formable } from "../../formable";
 
 export class Form implements FormClass {
   public fields: FormProperty;
@@ -12,7 +12,10 @@ export class Form implements FormClass {
     for (const key in this.fields) {
       const type = this.fields[key].type;
 
-      this.fields[key] = Formable[type](this.fields[key]);
+      // Cant figure out the error... use any hack
+      const field: any = { ...this.fields[key] };
+
+      this.fields[key] = Formable[type](field);
     }
 
     this.valid = this.validate();

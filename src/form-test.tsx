@@ -1,6 +1,8 @@
 import { Component, h, Prop } from "@stencil/core";
-import { Formable } from "formable";
-import { FormClass } from "components/form/types";
+
+import { Formable } from "./formable";
+
+import { FormClass } from "./components/form/types";
 
 @Component({
   tag: "form-test",
@@ -36,6 +38,8 @@ export class FormTest {
 
   submit(e) {
     e.preventDefault();
+
+    this.form.fields.template.view.options;
 
     this.form = this.form.submit();
   }
