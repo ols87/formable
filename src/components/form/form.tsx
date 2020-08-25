@@ -3,7 +3,6 @@ import {
   ComponentInterface,
   h,
   Prop,
-  Element,
   Event,
   EventEmitter,
   Host,
@@ -27,8 +26,6 @@ import {
 })
 export class FormableForm implements ComponentInterface {
   @Prop() form: FormClass;
-
-  @Element() el: HTMLElement;
 
   @Event() eventChange: EventEmitter<FormClass>;
 
