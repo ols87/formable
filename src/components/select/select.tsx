@@ -52,13 +52,18 @@ export class ComponentSelect implements ComponentInterface {
         >
           <option selected label={view.placeholder ?? "Please select"}></option>
 
-          {view.options.map((item) => (
-            <option
-              value={item.value}
-              selected={value == item.value}
-              label={item.label}
-            ></option>
-          ))}
+          {view.options.map((item) => {
+            const optionValue = item[view.keys?.value] ?? item.value;
+            const optionLabel = item[view.keys?.label] ?? item.label;
+
+            return (
+              <option
+                value={optionValue}
+                selected={value == optionValue}
+                label={optionLabel}
+              ></option>
+            );
+          })}
         </select>
 
         <div class="vf-field-errors vf-select-errors">

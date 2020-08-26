@@ -52,6 +52,11 @@ export class ComponentTest {
         { value: 2, label: "Two" },
       ],
     },
+    events: {
+      onChange(field) {
+        console.log(field.value);
+      },
+    },
   });
 
   @Prop() editor: EditorProperty = Formable.editor({

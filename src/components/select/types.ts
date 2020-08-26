@@ -6,11 +6,11 @@ import {
 } from "../../field/types";
 
 export interface SelectOption {
-  value: any;
-  label: string;
+  [key: string]: any;
 }
 
 export interface SelectView extends FieldView {
+  keys?: SelectOption;
   options?: SelectOption[];
   placeholder?: string;
   value?: string;
