@@ -57,7 +57,7 @@ export class ComponentRadio implements ComponentInterface {
               <input
                 type="radio"
                 {...{ checked: value == option.value }}
-                name={option.value}
+                name={view.id}
                 value={option.value}
                 disabled={view.disabled}
                 onClick={(event: any) =>
