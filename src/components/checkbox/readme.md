@@ -19,6 +19,7 @@
 | `eventChange`  |             | `CustomEvent<CheckboxProperty>` |
 | `eventClick`   |             | `CustomEvent<CheckboxProperty>` |
 | `eventInvalid` |             | `CustomEvent<CheckboxProperty>` |
+| `fieldChange`  |             | `CustomEvent<CheckboxProperty>` |
 
 
 ## Dependencies

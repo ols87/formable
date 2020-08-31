@@ -19,6 +19,7 @@
 | `eventChange`  |             | `CustomEvent<RadioProperty>` |
 | `eventClick`   |             | `CustomEvent<RadioProperty>` |
 | `eventInvalid` |             | `CustomEvent<RadioProperty>` |
+| `fieldChange`  |             | `CustomEvent<RadioProperty>` |
 
 
 ## Dependencies

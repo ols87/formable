@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event         | Description | Type                                       |
-| ------------- | ----------- | ------------------------------------------ |
-| `eventChange` |             | `CustomEvent<FormFields & FormController>` |
+| Event        | Description | Type                                       |
+| ------------ | ----------- | ------------------------------------------ |
+| `formChange` |             | `CustomEvent<FormFields & FormController>` |
 
 
 ## Dependencies

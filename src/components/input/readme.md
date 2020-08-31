@@ -22,6 +22,7 @@
 | `eventFocus`   |             | `CustomEvent<InputProperty>` |
 | `eventInput`   |             | `CustomEvent<InputProperty>` |
 | `eventInvalid` |             | `CustomEvent<InputProperty>` |
+| `fieldChange`  |             | `CustomEvent<InputProperty>` |
 
 
 ## Dependencies

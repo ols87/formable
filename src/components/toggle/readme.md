@@ -17,6 +17,7 @@
 | Event         | Description | Type                          |
 | ------------- | ----------- | ----------------------------- |
 | `eventChange` |             | `CustomEvent<ToggleProperty>` |
+| `fieldChange` |             | `CustomEvent<ToggleProperty>` |
 
 
 ## Dependencies

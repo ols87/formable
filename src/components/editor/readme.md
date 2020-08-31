@@ -20,6 +20,7 @@
 | `eventChange` |             | `CustomEvent<EditorProperty>` |
 | `eventClick`  |             | `CustomEvent<EditorProperty>` |
 | `eventFocus`  |             | `CustomEvent<EditorProperty>` |
+| `fieldChange` |             | `CustomEvent<EditorProperty>` |
 
 
 ## Dependencies

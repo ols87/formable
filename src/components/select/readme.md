@@ -19,6 +19,7 @@
 | `eventChange`  |             | `CustomEvent<SelectProperty>` |
 | `eventClick`   |             | `CustomEvent<SelectProperty>` |
 | `eventInvalid` |             | `CustomEvent<SelectProperty>` |
+| `fieldChange`  |             | `CustomEvent<SelectProperty>` |
 
 
 ## Dependencies

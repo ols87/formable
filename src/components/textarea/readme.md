@@ -22,6 +22,7 @@
 | `eventFocus`   |             | `CustomEvent<TextareaProperty>` |
 | `eventInput`   |             | `CustomEvent<TextareaProperty>` |
 | `eventInvalid` |             | `CustomEvent<TextareaProperty>` |
+| `fieldChange`  |             | `CustomEvent<TextareaProperty>` |
 
 
 ## Dependencies

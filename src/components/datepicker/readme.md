@@ -25,6 +25,7 @@
 | `eventInput`   |             | `CustomEvent<DatepickerProperty>` |
 | `eventInvalid` |             | `CustomEvent<DatepickerProperty>` |
 | `eventOpen`    |             | `CustomEvent<DatepickerProperty>` |
+| `fieldChange`  |             | `CustomEvent<DatepickerProperty>` |
 
 
 ## Dependencies
