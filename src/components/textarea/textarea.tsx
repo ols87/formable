@@ -21,14 +21,14 @@ export class ComponentTextarea implements ComponentInterface {
   @Event() eventChange: EventEmitter<TextareaProperty>;
   @Event() eventBlur: EventEmitter<TextareaProperty>;
   @Event() eventInvalid: EventEmitter<TextareaProperty>;
-  @Event() vfFieldChange: EventEmitter<TextareaProperty>;
+  @Event() fieldChange: EventEmitter<TextareaProperty>;
 
   event(name: string, event: any) {
     const handle = this.field.on(name, event.target.value);
 
     this[`event${handle}`].emit(this.field);
 
-    this.vfFieldChange.emit(this.field);
+    this.fieldChange.emit(this.field);
   }
 
   render() {

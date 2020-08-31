@@ -18,14 +18,14 @@ export class ComponentRadio implements ComponentInterface {
   @Event() eventClick: EventEmitter<RadioProperty>;
   @Event() eventChange: EventEmitter<RadioProperty>;
   @Event() eventInvalid: EventEmitter<RadioProperty>;
-  @Event() vfFieldChange: EventEmitter<RadioProperty>;
+  @Event() fieldChange: EventEmitter<RadioProperty>;
 
   event(name: string, value: string) {
     const handle = this.field.on(name, value);
 
     this[`event${handle}`].emit(this.field);
 
-    this.vfFieldChange.emit(this.field);
+    this.fieldChange.emit(this.field);
   }
 
   labelClick(value: string) {

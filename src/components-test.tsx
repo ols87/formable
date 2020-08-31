@@ -111,7 +111,7 @@ export class ComponentTest {
     },
   });
 
-  @Listen("vfFieldChange")
+  @Listen("fieldChange")
   update(event: CustomEvent) {
     const key = event.detail.view.id;
 

@@ -17,7 +17,7 @@ export class ComponentToggle implements ComponentInterface {
   @Prop() field: ToggleProperty;
 
   @Event() eventChange: EventEmitter<ToggleProperty>;
-  @Event() vfFieldChange: EventEmitter<ToggleProperty>;
+  @Event() fieldChange: EventEmitter<ToggleProperty>;
 
   toggle() {
     if (this.field.view.disabled) return;
@@ -28,7 +28,7 @@ export class ComponentToggle implements ComponentInterface {
 
     this.eventChange.emit(this.field);
 
-    this.vfFieldChange.emit(this.field);
+    this.fieldChange.emit(this.field);
   }
 
   render() {

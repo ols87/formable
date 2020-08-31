@@ -27,7 +27,7 @@ export class ComponentDatepicker implements ComponentInterface {
   @Event() eventOpen: EventEmitter<DatepickerProperty>;
   @Event() eventClose: EventEmitter<DatepickerProperty>;
   @Event() eventDraw: EventEmitter<DatepickerProperty>;
-  @Event() vfFieldChange: EventEmitter<DatepickerProperty>;
+  @Event() fieldChange: EventEmitter<DatepickerProperty>;
 
   load() {
     const events: PikadyEvents = {
@@ -56,7 +56,7 @@ export class ComponentDatepicker implements ComponentInterface {
 
       this[`event${handle}`].emit(this.field);
 
-      this.vfFieldChange.emit(this.field);
+      this.fieldChange.emit(this.field);
     }
   }
 

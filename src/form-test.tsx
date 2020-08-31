@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, Listen } from "@stencil/core";
 
 import { Formable } from "./formable";
 
@@ -36,10 +36,13 @@ export class FormTest {
     },
   });
 
+  @Listen("formChange")
+  update(event: CustomEvent) {
+    this.form = event.detail.render();
+  }
+
   submit(e) {
     e.preventDefault();
-
-    this.form.fields.template.view.options;
 
     this.form = this.form.submit();
   }
@@ -58,10 +61,7 @@ export class FormTest {
           onReset={(e) => this.reset(e)}
           novalidate
         >
-          <vf-form
-            form={this.form}
-            onEventChange={() => (this.form = this.form.render())}
-          ></vf-form>
+          <vf-form form={this.form}></vf-form>
 
           <button type="submit">Submit 2</button>
           <button type="reset">Reset 2</button>
