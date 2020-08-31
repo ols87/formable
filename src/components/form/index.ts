@@ -12,7 +12,7 @@ export class Form implements FormClass {
     for (const key in this.fields) {
       const type = this.fields[key].type;
 
-      // Cant figure out the error... use any hack
+      // Cant figure out the Type error... use any hack
       const field: any = { ...this.fields[key] };
 
       this.fields[key] = Formable[type](field);
