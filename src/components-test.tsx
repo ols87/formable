@@ -115,7 +115,7 @@ export class ComponentTest {
   update(event: CustomEvent) {
     const key = event.detail.view.id;
 
-    this[key] = this[key].render();
+    this[key] = this[key].submit();
   }
 
   render() {

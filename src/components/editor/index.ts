@@ -32,10 +32,6 @@ export class EditorField extends Field implements EditorClass {
   }
 
   init(editorElement?: HTMLElement) {
-    const toolbar = document.getElementsByClassName("ql-toolbar")[0];
-
-    if (toolbar && this.editor) toolbar.remove();
-
     if (this.editor) return this.editor;
 
     const element = editorElement.firstElementChild.getElementsByClassName(

@@ -31,7 +31,7 @@ export class ComponentEditor implements ComponentInterface {
     this.field.editor.on("text-change", () => {
       this.event(
         "change",
-        this.field.editor.getLength() > 1
+        this.field.editor?.getLength() > 1
           ? this.field.editor.root.innerHTML
           : ""
       );
@@ -45,7 +45,10 @@ export class ComponentEditor implements ComponentInterface {
   }
 
   event(name: string, event: any) {
-    const eventValue = name === "change" ? event : event.target.innerHTML;
+    let eventValue = name === "change" ? event : event.target.innerHTML;
+
+    if (eventValue === "<p><br></p>" || eventValue === "<br>")
+      eventValue = null;
 
     const handle = this.field.on(name, eventValue);
 
