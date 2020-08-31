@@ -1,4 +1,4 @@
-import { Component, h, Prop } from "@stencil/core";
+import { Component, h, Prop, Listen } from "@stencil/core";
 
 import { Formable } from "./formable";
 
@@ -51,11 +51,6 @@ export class ComponentTest {
         { value: 1, label: "One" },
         { value: 2, label: "Two" },
       ],
-    },
-    events: {
-      onChange(field) {
-        console.log(field.value);
-      },
     },
   });
 
@@ -116,64 +111,63 @@ export class ComponentTest {
     },
   });
 
-  componentDidLoad() {}
+  @Listen("vfFieldChange")
+  update(event: CustomEvent) {
+    const key = event.detail.view.id;
+
+    this[key] = this[key].render();
+  }
 
   render() {
     return (
       <div>
-        <vf-input
-          field={this.input}
-          onEventInput={() => (this.input = this.input.render())}
-        ></vf-input>
-        <hr />
-        <vf-select
-          field={this.select}
-          onEventChange={() => (this.select = this.select.render())}
-        ></vf-select>
-        <hr />
-        <vf-checkbox
-          field={this.checkbox}
-          onEventChange={() => (this.checkbox = this.checkbox.render())}
-        ></vf-checkbox>
-        <hr />
-        <vf-radio
-          field={this.radio}
-          onEventChange={() => (this.radio = this.radio.render())}
-        ></vf-radio>
-        <hr />
-        <vf-editor
-          field={this.editor}
-          onEventChange={() => (this.editor = this.editor.render())}
-        ></vf-editor>
-        <hr />
-        <vf-toggle
-          field={this.toggle}
-          onEventChange={() => (this.toggle = this.toggle.render())}
-        ></vf-toggle>
-        <vf-textarea
-          field={this.textarea}
-          onEventInput={() => (this.textarea = this.textarea.render())}
-        ></vf-textarea>
-        <vf-datepicker
-          field={this.datepicker}
-          onEventChange={() => (this.datepicker = this.datepicker.render())}
-        ></vf-datepicker>
-        <br />
-        Input: {this.input.value}
-        <br />
-        Select: {this.select.value}
-        <br />
-        Checkbox: {this.checkbox.value ? "true" : "false"}
-        <br />
-        Radio: {this.radio.value}
-        <br />
-        Editor: {this.editor.value}
-        <br />
-        Toggle: {this.toggle.value ? "true" : "false"}
-        <br />
-        Textarea: {this.textarea.value}
-        <br />
-        Datepicker: {this.datepicker.value}
+        <vf-input field={this.input}></vf-input>
+        <vf-select field={this.select}></vf-select>
+        <vf-checkbox field={this.checkbox}></vf-checkbox>
+        <vf-radio field={this.radio}></vf-radio>
+        <vf-editor field={this.editor}></vf-editor>
+        <vf-toggle field={this.toggle}></vf-toggle>
+        <vf-textarea field={this.textarea}></vf-textarea>
+        <vf-datepicker field={this.datepicker}></vf-datepicker>
+
+        <table>
+          <tr>
+            <th>Label</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>Input</td>
+            <td>{this.input.value}</td>
+          </tr>
+          <tr>
+            <td>Select</td>
+            <td>{this.select.value}</td>
+          </tr>
+          <tr>
+            <td>Checkbox</td>
+            <td>{this.checkbox.value ? "true" : "false"}</td>
+          </tr>
+          <tr>
+            <td>Radio</td>
+            <td>{this.radio.value}</td>
+          </tr>
+          <tr>
+            <td>Editor</td>
+            <td>{this.editor.value}</td>
+          </tr>
+          <tr>
+            <td>Toggle</td>
+            <td>{this.toggle.value ? "true" : "false"}</td>
+          </tr>
+          <tr>
+            <td>Textarea</td>
+            <td>{this.textarea.value}</td>
+          </tr>
+          <tr>
+            <td>Datepicker</td>
+            <td>{this.datepicker.value}</td>
+          </tr>
+        </table>
       </div>
     );
   }

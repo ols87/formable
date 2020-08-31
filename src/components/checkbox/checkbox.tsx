@@ -18,11 +18,14 @@ export class ComponentCheckbox implements ComponentInterface {
   @Event() eventClick: EventEmitter<CheckboxProperty>;
   @Event() eventChange: EventEmitter<CheckboxProperty>;
   @Event() eventInvalid: EventEmitter<CheckboxProperty>;
+  @Event() vfFieldChange: EventEmitter<CheckboxProperty>;
 
   event(name: string, event: any) {
     const handle = this.field.on(name, event.target.checked);
 
     this[`event${handle}`].emit(this.field);
+
+    this.vfFieldChange.emit(this.field);
   }
 
   render() {

@@ -157,6 +157,7 @@ declare namespace LocalJSX {
         "onEventChange"?: (event: CustomEvent<CheckboxProperty>) => void;
         "onEventClick"?: (event: CustomEvent<CheckboxProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<CheckboxProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<CheckboxProperty>) => void;
     }
     interface VfDatepicker {
         "field"?: DatepickerProperty;
@@ -169,6 +170,7 @@ declare namespace LocalJSX {
         "onEventInput"?: (event: CustomEvent<DatepickerProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<DatepickerProperty>) => void;
         "onEventOpen"?: (event: CustomEvent<DatepickerProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<DatepickerProperty>) => void;
     }
     interface VfEditor {
         "field"?: EditorProperty;
@@ -176,6 +178,7 @@ declare namespace LocalJSX {
         "onEventChange"?: (event: CustomEvent<EditorProperty>) => void;
         "onEventClick"?: (event: CustomEvent<EditorProperty>) => void;
         "onEventFocus"?: (event: CustomEvent<EditorProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<EditorProperty>) => void;
     }
     interface VfForm {
         "form"?: FormClass;
@@ -189,18 +192,21 @@ declare namespace LocalJSX {
         "onEventFocus"?: (event: CustomEvent<InputProperty>) => void;
         "onEventInput"?: (event: CustomEvent<InputProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<InputProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<InputProperty>) => void;
     }
     interface VfRadio {
         "field"?: RadioProperty;
         "onEventChange"?: (event: CustomEvent<RadioProperty>) => void;
         "onEventClick"?: (event: CustomEvent<RadioProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<RadioProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<RadioProperty>) => void;
     }
     interface VfSelect {
         "field"?: SelectProperty;
         "onEventChange"?: (event: CustomEvent<SelectProperty>) => void;
         "onEventClick"?: (event: CustomEvent<SelectProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<SelectProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<SelectProperty>) => void;
     }
     interface VfTextarea {
         "field"?: TextareaProperty;
@@ -210,10 +216,12 @@ declare namespace LocalJSX {
         "onEventFocus"?: (event: CustomEvent<TextareaProperty>) => void;
         "onEventInput"?: (event: CustomEvent<TextareaProperty>) => void;
         "onEventInvalid"?: (event: CustomEvent<TextareaProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<TextareaProperty>) => void;
     }
     interface VfToggle {
         "field"?: ToggleProperty;
         "onEventChange"?: (event: CustomEvent<ToggleProperty>) => void;
+        "onVfFieldChange"?: (event: CustomEvent<ToggleProperty>) => void;
     }
     interface IntrinsicElements {
         "component-test": ComponentTest;

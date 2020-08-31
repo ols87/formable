@@ -20,11 +20,14 @@ export class ComponentInput implements ComponentInterface {
   @Event() eventChange: EventEmitter<InputProperty>;
   @Event() eventBlur: EventEmitter<InputProperty>;
   @Event() eventInvalid: EventEmitter<InputProperty>;
+  @Event() vfFieldChange: EventEmitter<InputProperty>;
 
   event(name: string, event: any) {
     const handle = this.field.on(name, event.target.value);
 
     this[`event${handle}`].emit(this.field);
+
+    this.vfFieldChange.emit(this.field);
   }
 
   render() {

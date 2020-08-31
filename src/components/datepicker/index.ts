@@ -47,12 +47,14 @@ export class DatepickerField extends Field implements DatepickerClass {
       ...this.view.options,
     };
 
-    this.picker = new Pikaday({
-      ...options,
-      ...events,
-    });
+    this.picker =
+      this.picker ||
+      new Pikaday({
+        ...options,
+        ...events,
+      });
 
-    if (this.value) {
+    if (this.value && this.value !== "") {
       const format = this.view.format ?? "DD/MM/YYYY";
       const date = moment(this.value, format);
 

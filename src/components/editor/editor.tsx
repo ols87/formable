@@ -23,6 +23,7 @@ export class ComponentEditor implements ComponentInterface {
   @Event() eventFocus: EventEmitter<EditorProperty>;
   @Event() eventChange: EventEmitter<EditorProperty>;
   @Event() eventBlur: EventEmitter<EditorProperty>;
+  @Event() vfFieldChange: EventEmitter<EditorProperty>;
 
   init() {
     this.field.init(this.editorElement);
@@ -49,6 +50,8 @@ export class ComponentEditor implements ComponentInterface {
     const handle = this.field.on(name, eventValue);
 
     this[`event${handle}`].emit(this.field);
+
+    this.vfFieldChange.emit(this.field);
   }
 
   render() {

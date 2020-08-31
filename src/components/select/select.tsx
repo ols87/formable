@@ -18,11 +18,14 @@ export class ComponentSelect implements ComponentInterface {
   @Event() eventClick: EventEmitter<SelectProperty>;
   @Event() eventChange: EventEmitter<SelectProperty>;
   @Event() eventInvalid: EventEmitter<SelectProperty>;
+  @Event() vfFieldChange: EventEmitter<SelectProperty>;
 
   event(name: string, event: any) {
     const handle = this.field.on(name, event.target.value);
 
     this[`event${handle}`].emit(this.field);
+
+    this.vfFieldChange.emit(this.field);
   }
 
   render() {

@@ -27,6 +27,7 @@ export class ComponentDatepicker implements ComponentInterface {
   @Event() eventOpen: EventEmitter<DatepickerProperty>;
   @Event() eventClose: EventEmitter<DatepickerProperty>;
   @Event() eventDraw: EventEmitter<DatepickerProperty>;
+  @Event() vfFieldChange: EventEmitter<DatepickerProperty>;
 
   load() {
     const events: PikadyEvents = {
@@ -44,22 +45,19 @@ export class ComponentDatepicker implements ComponentInterface {
   }
 
   event(name: string, event: any) {
-    let value = name === "change" ? event : this.field.value;
+    let value: string = this.field.value;
 
-    if (name === "input" && event.target?.value) value = "";
-
-    if (name === "blur") {
-      const datepicker = this.datepickerElement.firstElementChild;
-
-      const input = datepicker.getElementsByTagName("input")[0];
-
-      if (input.value && input.value !== this.field.value)
-        input.value = this.field.value ?? "";
+    if (typeof event === "string") {
+      value = event || this.field.value;
     }
 
-    const handle = this.field.on(name, value);
+    if (name === "change") {
+      const handle = this.field.on(name, value);
 
-    this[`event${handle}`].emit(this.field);
+      this[`event${handle}`].emit(this.field);
+
+      this.vfFieldChange.emit(this.field);
+    }
   }
 
   render() {
