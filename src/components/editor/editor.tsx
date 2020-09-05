@@ -135,6 +135,8 @@ export class ComponentEditor implements ComponentInterface {
   }
 
   async componentDidUpdate() {
+    this.init();
+
     if (this.field.lifecycle?.componentDidUpdate)
       await this.field.lifecycle.componentDidUpdate();
   }

@@ -28,11 +28,17 @@ export class EditorField extends Field implements EditorClass {
   constructor(options: EditorProperty) {
     super(options);
 
-    this.editor = options.editor ? options.editor : null;
+    this.editor = options.editor || this.editor;
   }
 
   init(editorElement?: HTMLElement) {
     if (this.editor) return this.editor;
+
+    const toolbar = editorElement.firstElementChild.getElementsByClassName(
+      "ql-toolbar"
+    );
+
+    if (toolbar.length > 0) toolbar[0].remove();
 
     const element = editorElement.firstElementChild.getElementsByClassName(
       "vf-editor-container"
