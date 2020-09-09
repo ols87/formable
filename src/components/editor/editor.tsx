@@ -26,7 +26,7 @@ export class ComponentEditor implements ComponentInterface {
   @Event() fieldChange: EventEmitter<EditorProperty>;
 
   init() {
-    this.field.init(this.editorElement);
+    this.field.editor = this.field.init(this.editorElement);
 
     this.field.editor.on("text-change", () => {
       this.event(
@@ -108,8 +108,6 @@ export class ComponentEditor implements ComponentInterface {
   }
 
   async componentDidLoad() {
-    this.init();
-
     if (this.field.lifecycle?.componentDidLoad)
       await this.field.lifecycle.componentDidLoad();
   }
@@ -125,6 +123,8 @@ export class ComponentEditor implements ComponentInterface {
   }
 
   async componentDidRender() {
+    this.init();
+
     if (this.field.lifecycle?.componentDidRender)
       await this.field.lifecycle.componentDidRender();
   }
@@ -135,8 +135,6 @@ export class ComponentEditor implements ComponentInterface {
   }
 
   async componentDidUpdate() {
-    this.init();
-
     if (this.field.lifecycle?.componentDidUpdate)
       await this.field.lifecycle.componentDidUpdate();
   }

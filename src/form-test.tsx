@@ -34,6 +34,15 @@ export class FormTest {
         ],
       },
     },
+    editor: {
+      type: "editor",
+      view: {
+        id: "editor",
+        label: "editor",
+        required: true,
+      },
+      value: "abc",
+    },
   });
 
   @Listen("formChange")

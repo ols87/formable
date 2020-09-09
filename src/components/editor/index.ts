@@ -54,9 +54,15 @@ export class EditorField extends Field implements EditorClass {
 
     if (this.view?.disabled) editor.disable();
 
-    editor.pasteHTML(this.value ?? "");
+    const html = this.value ?? "";
+
+    const value = editor.clipboard.convert(html);
+
+    editor.setContents(value);
 
     this.editor = editor;
+
+    return this.editor;
   }
 
   content(): string {
