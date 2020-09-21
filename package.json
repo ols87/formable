@@ -1,6 +1,6 @@
 {
   "name": "@vudo/formable",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Vudo Form Components",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
