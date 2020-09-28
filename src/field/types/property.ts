@@ -1,6 +1,7 @@
-import { FieldView, FieldEvents, FieldClass, FieldLifecycle } from "./";
+import { FieldView, FieldEvents, FieldLifecycle } from "./";
 
 import { Validator } from "../../validation/types";
+import { FieldController } from "./controller";
 
 export type FieldComponent =
   | "checkbox"
@@ -12,7 +13,7 @@ export type FieldComponent =
   | "textarea"
   | "toggle";
 
-export interface FieldProperty extends Partial<FieldClass> {
+export interface FieldProperty extends Partial<FieldController> {
   type?: FieldComponent;
   view: FieldView;
   events?: FieldEvents;
